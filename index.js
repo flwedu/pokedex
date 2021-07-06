@@ -29,9 +29,8 @@ function buscarDadosNaApi(nomePokemon) {
 }
 
 function exibirResultados(resultado) {
-  let resultadoFormatado = document
-    .createElement("div")
-    .className("dados-resultado");
+  let resultadoFormatado = document.createElement("div");
+  resultadoFormatado.classList.add("dados-resultado");
 
   resultadoFormatado.innerHTML = `
     <h3>Nome do pokémon:</h3>
