@@ -4,7 +4,7 @@ const botaoBusca = document.querySelector("#botao-busca");
 
 const campoResultados = document.querySelector(".resultados");
 
-// Criando log
+// Monitorando o clique
 botaoBusca.addEventListener(
   "click",
   () => {
@@ -29,13 +29,15 @@ function buscarDadosNaApi(nomePokemon) {
 }
 
 function exibirResultados(resultado) {
-  let resultadoFormatado = document.createElement("div");
+  let resultadoFormatado = document
+    .createElement("div")
+    .className("dados-resultado");
 
   resultadoFormatado.innerHTML = `
     <h3>Nome do pokémon:</h3>
     <p>${resultado.name}</p>
     <h3>Imagem:</h3>
-    <img src=${resultado.sprites?.back_default}></img>
+    <img src=${resultado.sprites?.front_default}></img>
     `;
 
   campoResultados.appendChild(resultadoFormatado);
