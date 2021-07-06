@@ -32,7 +32,9 @@ function exibirResultados(resultado) {
   let resultadoFormatado = document.createElement("div");
 
   resultadoFormatado.innerHTML = `
-    <h3>${resultado.name}</h3>
+    <h3>Nome do pokémon:</h3>
+    <p>${resultado.name}</p>
+    <h3>Imagem:</h3>
     <img src=${resultado.sprites?.back_default}></img>
     `;
 
