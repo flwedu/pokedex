@@ -14,6 +14,13 @@ botaoBusca.addEventListener(
   true
 );
 
+// Formatar nome
+function formatarNome(texto) {
+  let primeiraLetra = texto.slice(0, 1).toUpperCase();
+  let restanteDoTexto = texto.slice(1, texto.length);
+  return primeiraLetra.concat("", restanteDoTexto);
+}
+
 // Função de busca
 function buscarDadosNaApi(busca) {
   let urlBusca = `https://pokeapi.co/api/v2/pokemon/${busca}`;
@@ -32,12 +39,12 @@ function buscarDadosNaApi(busca) {
 }
 
 function exibirResultados(resultado) {
+  let nomeOcidental = formatarNome(resultado.name);
+
   resultsWindowData.innerHTML = `
-    <h2>${resultado.name}</h2>
+    <h2>${nomeOcidental}</h2>
     <img src=${resultado.sprites?.front_default}></img>
     `;
-
-  campoResultados.appendChild(resultadoFormatado);
 }
 
 function erroNaChamada(erro) {
