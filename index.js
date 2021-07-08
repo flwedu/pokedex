@@ -31,13 +31,14 @@ function buscarDadosNaApi(busca) {
       if (Response.ok) {
         Response.json().then(exibirResultados, erroNaChamada);
       } else {
-        erroNaChamada(Response.status);
+        exibirErroNaTela(Response);
       }
     },
     () => erroNaChamada("Promise não retornou")
   );
 }
 
+// Função que exibe os resultados do Pokémon Recebidos
 function exibirResultados(resultado) {
   let nomeOcidental = formatarNome(resultado.name);
 
@@ -45,6 +46,16 @@ function exibirResultados(resultado) {
     <h2>${nomeOcidental}</h2>
     <img src=${resultado.sprites?.front_default}></img>
     `;
+}
+
+// Função que exibe erros na tela
+function exibirErroNaTela(Response) {
+  resultsWindowData.innerHTML = `
+    <h2>Erro ${Response.status}:</h2>
+    <h2>Nenhum pokémon encontrado</h2>
+  `;
+
+  erroNaChamada(Response);
 }
 
 function erroNaChamada(erro) {
