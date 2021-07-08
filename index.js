@@ -1,6 +1,7 @@
 // Set elementos html
 const campoBusca = document.querySelector("#campo-busca");
 const botaoBusca = document.querySelector("#botao-busca");
+const resultsWindowData = document.querySelector(".results-window-data");
 
 const campoResultados = document.querySelector(".resultados");
 
@@ -29,13 +30,10 @@ function buscarDadosNaApi(nomePokemon) {
 }
 
 function exibirResultados(resultado) {
-  let resultadoFormatado = document.createElement("div");
-  resultadoFormatado.classList.add("dados-resultado");
-
-  resultadoFormatado.innerHTML = `
-    <h3>Nome do pokémon:</h3>
+  resultsWindowData.innerHTML = `
+    <h2>Nome do pokémon:</h2>
     <p>${resultado.name}</p>
-    <h3>Imagem:</h3>
+    <h2>Imagem:</h2>
     <img src=${resultado.sprites?.front_default}></img>
     `;
 
