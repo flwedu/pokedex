@@ -41,10 +41,21 @@ function buscarDadosNaApi(busca) {
 // Função que exibe os resultados do Pokémon Recebidos
 function exibirResultados(resultado) {
   let nomeOcidental = formatarNome(resultado.name);
+  let spriteFrontal = resultado.sprites?.front_default;
+  let tipo1 = resultado.types[0].type.name;
+
+  // Verificando se há um tipo 2
+  let tipo2 = resultado.types[1]?.type.name;
+  if (tipo2) {
+    tipo2 = "/" + tipo2;
+  } else {
+    tipo2 = "";
+  }
 
   resultsWindowData.innerHTML = `
     <h2>${nomeOcidental}</h2>
-    <img src=${resultado.sprites?.front_default}></img>
+    <img src=${spriteFrontal}></img>
+    <p>Tipo: ${tipo1}${tipo2}</p>
     `;
 }
 
