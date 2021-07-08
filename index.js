@@ -1,5 +1,5 @@
 // Set elementos html
-const campoBusca = document.querySelector("#campo-busca");
+const campoBusca = document.querySelector("#search-text");
 const botaoBusca = document.querySelector("#botao-busca");
 const resultsWindowData = document.querySelector(".results-window-data");
 
@@ -15,8 +15,10 @@ botaoBusca.addEventListener(
 );
 
 // Função de busca
-function buscarDadosNaApi(nomePokemon) {
-  let resultados = fetch(`https://pokeapi.co/api/v2/pokemon/${nomePokemon}`);
+function buscarDadosNaApi(busca) {
+  let urlBusca = `https://pokeapi.co/api/v2/pokemon/${busca}`;
+
+  let resultados = fetch(urlBusca);
   resultados.then(
     (Response) => {
       if (Response.ok) {
@@ -31,9 +33,7 @@ function buscarDadosNaApi(nomePokemon) {
 
 function exibirResultados(resultado) {
   resultsWindowData.innerHTML = `
-    <h2>Nome do pokémon:</h2>
-    <p>${resultado.name}</p>
-    <h2>Imagem:</h2>
+    <h2>${resultado.name}</h2>
     <img src=${resultado.sprites?.front_default}></img>
     `;
 
