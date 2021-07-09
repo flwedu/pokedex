@@ -23,7 +23,7 @@ function formatarNome(texto) {
 
 // Função de busca
 function buscarDadosNaApi(busca) {
-  let urlBusca = `https://pokeapi.co/api/v2/pokemon/${busca}`;
+  let urlBusca = `https://pokeapi.co/api/v2/pokemon/${busca.toLowerCase()}`;
 
   let resultados = fetch(urlBusca);
   resultados.then(
@@ -56,7 +56,28 @@ function exibirResultados(resultado) {
     <h2>${nomeOcidental}</h2>
     <img src=${spriteFrontal}></img>
     <p>Tipo: ${tipo1}${tipo2}</p>
+    <p>Peso: ${resultado.weight}</p>
+    <p>Stats Iniciais:</p>
+    ${tabelaDeStats(resultado)}
     `;
+}
+
+// Função que cria uma tabela com os stats iniciais do pokémon
+function tabelaDeStats(resultado) {
+  let atributos = [...resultado.stats];
+  let nomeAtributos = ["HP", "ATK", "DEF", "SP.ATK", "SP.DEF", "SPEED"];
+  let valoresAtributos = atributos.map((atributo) => atributo.base_stat);
+
+  return `
+  <table>
+  <thead>
+  ${nomeAtributos.map((stats) => `<td>${stats}</td>`)}
+  </thead>
+  <tbody>
+  ${valoresAtributos.map((valor) => `<td>${valor}</td>`)}
+  </tbody>
+  </table>
+  `;
 }
 
 // Função que exibe erros na tela
