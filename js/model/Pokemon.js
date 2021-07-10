@@ -1,0 +1,37 @@
+class Pokemon {
+  constructor({ name, sprites, types, weight, stats }) {
+    this.manipuladorDeTexto = new ManipuladorDeTexto();
+
+    this._nomeOcidental = name;
+    this._spriteFrontal = sprites.front_default;
+    this._tipo1 = types[0].type.name;
+    this._tipo2 = types[1]?.type.name;
+    this._peso = weight;
+    this._stats = [...stats].map((atributo) => atributo.base_stat);
+    this._statsLabel = ["HP", "ATK", "DEF", "SP.ATK", "SP.DEF", "SPEED"];
+  }
+
+  get nomeOcidental() {
+    return this.manipuladorDeTexto.formatarNome(this._nomeOcidental);
+  }
+  get spriteFrontal() {
+    return this._spriteFrontal;
+  }
+  get tipo1() {
+    return this._tipo1;
+  }
+  get tipo2() {
+    if (this._tipo2) return "/" + this._tipo2;
+    else return "";
+  }
+  get peso() {
+    return this._peso;
+  }
+  get stats() {
+    return this._stats;
+  }
+
+  get statsLabel() {
+    return this._statsLabel;
+  }
+}
