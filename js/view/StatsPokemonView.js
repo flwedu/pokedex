@@ -1,15 +1,8 @@
-class StatsPokemonView {
-  constructor(seletor) {
-    this.elemento = document.querySelector(seletor);
-  }
-
-  update(pokemon) {
-    this.elemento.innerHTML = this.template(pokemon);
-  }
-
+class StatsPokemonView extends View {
   template(pokemon) {
     return `
-        <table>
+      <p>Stats Iniciais do pokémon</p>
+        <table class='stats-table'>
         <thead>
         ${pokemon.statsLabel.map((stats) => `<td>${stats}</td>`)}
         </thead>
