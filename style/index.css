@@ -10,35 +10,6 @@ body {
   height: 638px;
 }
 
-/* Display de resultados */
-
-.results-window {
-  width: 360px;
-  height: 450px;
-
-  background: #f0f0f0;
-  border: 30px solid #fa0321;
-  box-sizing: border-box;
-  border-radius: 5px 5px 0 0;
-}
-
-.results-window-data {
-  display: flex;
-  flex-grow: 0;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-}
-
-/* Tabela de stats */
-td {
-  text-align: center;
-  font-size: 10px;
-  border: 1px solid black;
-  width: 2rem;
-}
-
 /* Formulário de busca */
 .busca {
   display: flex;

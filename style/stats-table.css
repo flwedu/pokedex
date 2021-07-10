@@ -1,0 +1,7 @@
+/* Tabela de stats */
+td {
+  text-align: center;
+  font-size: 10px;
+  border: 1px solid black;
+  width: 2rem;
+}
