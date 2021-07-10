@@ -5,6 +5,10 @@ class View {
 
   update(pokemon) {
     this.elemento.innerHTML = this.template(pokemon);
+
+    // Adiciona uma classe que fará com que uma animação de fadein seja executada
+    this.elemento.classList.add("emtransicao");
+    setTimeout(() => this.elemento.classList.remove("emtransicao"), 500);
   }
 
   template(pokemon) {
