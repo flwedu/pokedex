@@ -1,12 +1,4 @@
-class StatsPokemonView {
-  constructor(seletor) {
-    this.elemento = document.querySelector(seletor);
-  }
-
-  update(pokemon) {
-    this.elemento.innerHTML = this.template(pokemon);
-  }
-
+class StatsPokemonView extends View {
   template(pokemon) {
     return `
         <table>

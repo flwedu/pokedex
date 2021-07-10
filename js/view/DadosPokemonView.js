@@ -1,12 +1,4 @@
-class DadosPokemonView {
-  constructor(seletor) {
-    this.elemento = document.querySelector(seletor);
-  }
-
-  update(pokemon) {
-    this.elemento.innerHTML = this.template(pokemon);
-  }
-
+class DadosPokemonView extends View {
   /**
    *
    * Retorna um HTML pronto para exibição no painel escolhido.

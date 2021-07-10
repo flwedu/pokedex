@@ -1,8 +1,4 @@
-class ErrorView {
-  constructor(seletor) {
-    this.elemento = document.querySelector(seletor);
-  }
-
+class ErrorView extends View {
   update(Response) {
     this.elemento.innerHTML = this.template(Response);
   }
