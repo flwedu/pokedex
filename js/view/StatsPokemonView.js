@@ -1,8 +1,8 @@
 class StatsPokemonView extends View {
   template(pokemon) {
     return `
+      <p>Stats Iniciais do pokémon</p>
         <table class='stats-table'>
-        Stats Iniciais do pokémon
         <thead>
         ${pokemon.statsLabel.map((stats) => `<td>${stats}</td>`)}
         </thead>
