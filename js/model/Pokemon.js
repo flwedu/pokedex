@@ -3,6 +3,7 @@ class Pokemon {
     this.manipuladorDeTexto = new ManipuladorDeTexto();
 
     const {
+      id,
       name,
       sprites,
       weight,
@@ -15,6 +16,7 @@ class Pokemon {
       },
     } = dados;
 
+    this._id = id;
     this._nomeOcidental = name;
     this._spriteFrontal = sprites.front_default;
     this._tipo1 = typeName;
@@ -24,6 +26,9 @@ class Pokemon {
     this._statsLabel = ["HP", "ATK", "DEF", "SP.ATK", "SP.DEF", "SPEED"];
   }
 
+  get id() {
+    return this._id;
+  }
   get nomeOcidental() {
     return this.manipuladorDeTexto.formatarNome(this._nomeOcidental);
   }
