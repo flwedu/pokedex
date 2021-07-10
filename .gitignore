@@ -1,0 +1,5 @@
+# Pasta do node
+/node_modules
+
+# Arquivos de configuração
+package-lock.json
