@@ -27,14 +27,20 @@ body {
   background: #fa0321;
 }
 
-.busca input {
+.busca input[type="text"] {
   margin: 0.5rem;
+  width: 75%;
+  height: 15%;
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 /* Botão de busca */
 
 .button {
   padding: 0.5rem 1rem;
+  height: 25%;
   border: none;
   color: #f0f0f0;
   background: #00ab30;
@@ -42,5 +48,5 @@ body {
 }
 
 .button:hover {
-  background: #658100;
+  background: #00ee9f;
 }
