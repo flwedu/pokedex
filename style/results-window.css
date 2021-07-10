@@ -3,14 +3,15 @@
   width: 360px;
   height: 380px;
 
-  background: #b4f894;
-  border: 30px solid #fa0321;
+  background: var(--display-color);
+  border: 30px solid var(--case-color);
+  border-bottom: none;
   box-sizing: border-box;
   border-radius: 5px 5px 0 0;
 }
 
 .results-window-data {
-  color: #246d03;
+  color: var(--display-font-color);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 
   display: flex;
