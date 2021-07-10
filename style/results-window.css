@@ -2,7 +2,7 @@
 
 .results-window {
   width: 360px;
-  height: 400px;
+  height: 380px;
 
   background: #f0f0f0;
   border: 30px solid #fa0321;
@@ -13,7 +13,6 @@
 .results-window-data {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
-  flex-grow: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
