@@ -2,6 +2,10 @@
 const campoBusca = document.querySelector("#search-text");
 const botaoBusca = document.querySelector("#botao-busca");
 
+// Navigator
+const botaoPrevious = document.querySelector("#navigation-previous");
+const botaoNext = document.querySelector("#navigation-next");
+
 // Instanciando objetos que desempenharão funções
 const buscasController = new BuscasController(".results-window-data");
 
@@ -13,3 +17,8 @@ botaoBusca.addEventListener(
   },
   true
 );
+
+botaoPrevious.addEventListener("click", () =>
+  buscasController.previousSelectedView()
+);
+botaoNext.addEventListener("click", () => buscasController.nextSelectedView());
