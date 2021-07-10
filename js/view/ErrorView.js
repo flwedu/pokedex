@@ -4,9 +4,16 @@ class ErrorView extends View {
   }
 
   template(Response) {
-    return `
-        <h2>Erro ${Response.status}:</h2>
-        <h2>Nenhum pokémon encontrado</h2>
+    if (Response.status == 404)
+      return `
+        <h2>Erro 404:</h2>
+        <p>Nenhum pokémon encontrado</p>
+        <img src="../../assets/error.svg"></img>
       `;
+
+    return `
+    <h2>Erro ${Response.status}:</h2>
+    <img src="../../assets/error.svg"></img>
+  `;
   }
 }
