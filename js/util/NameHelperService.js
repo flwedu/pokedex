@@ -1,4 +1,4 @@
-class BuscaPorNomePreview {
+class NameHelperService {
   constructor(dataPath) {
     this._arrayDeDados = [];
     this.onload(dataPath, this.extrairPropertyParaArray.bind(this));
