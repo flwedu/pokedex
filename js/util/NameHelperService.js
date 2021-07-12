@@ -23,10 +23,10 @@ class NameHelperService {
     this._arrayDeDados = Object.values(objetoBruto).map((element) =>
       element.name.toLowerCase()
     );
-    console.log(this._arrayDeDados);
   }
 
   listarPorAproximacao(name) {
-    return this._arrayDeDados.filter((item) => item.includes(name));
+    // Retornando os 5 primeiros elementos do array de dados que satisfaçãm a query
+    return this._arrayDeDados.filter((item) => item.includes(name)).slice(0, 5);
   }
 }
