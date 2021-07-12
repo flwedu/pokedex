@@ -16,6 +16,11 @@ botaoBusca.addEventListener("click", realizarBusca, true);
 campoBusca.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {
     realizarBusca();
+  } else {
+    let resultadosParecidos = buscaPorNomePreview.listarPorAproximacao(
+      campoBusca.value
+    );
+    console.log(resultadosParecidos);
   }
 });
 
@@ -28,3 +33,8 @@ botaoNext.addEventListener("click", () => buscasController.nextSelectedView());
 function realizarBusca() {
   buscasController.realizarBusca(campoBusca.value);
 }
+
+// Funçao que busca parcialmente por nome
+const buscaPorNomePreview = new BuscaPorNomePreview(
+  "./data/pokemon_names.json"
+);
