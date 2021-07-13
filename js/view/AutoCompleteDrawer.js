@@ -11,6 +11,8 @@ class AutoCompleteDrawer {
    * @memberof AutoCompleteDrawer
    */
   update(listaResultados) {
+    this.closeList();
+
     listaResultados.forEach((item) => {
       let elementoDaListaNaTela = document.createElement("div");
       elementoDaListaNaTela.innerHTML = `<p>${item}</p>`;
