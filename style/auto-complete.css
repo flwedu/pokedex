@@ -1,14 +1,12 @@
 .auto-complete {
-  width: 6rem;
-  height: 20rem;
-
-  border: 1px solid yellow;
-  background: rgb(236, 236, 155);
+  border: none;
+  background: var(--display-color);
+  width: 75%;
 }
 
 .auto-complete * {
+  margin: 0 0.4rem;
+  color: var(--display-font-color);
   text-align: center;
   border: none;
-  background: white;
-  border-radius: 0.5rem;
 }
