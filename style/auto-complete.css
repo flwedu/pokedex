@@ -1,7 +1,7 @@
 .auto-complete {
+  width: 100%;
   border: none;
   background: var(--display-color);
-  width: 75%;
 }
 
 .auto-complete * {
@@ -9,4 +9,10 @@
   color: var(--display-font-color);
   text-align: center;
   border: none;
+  cursor: pointer;
+}
+
+.auto-complete * :hover {
+  font-weight: bold;
+  background: var(--display-color-shiny);
 }
