@@ -8,19 +8,20 @@ const botaoNext = document.querySelector("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
 const buscasController = new BuscasController(".results-window-data");
+const nameHelperController = new NameHelperController(
+  ".search-helper",
+  "./data/pokemon_names.json"
+);
 
 // Monitorando o clique
 botaoBusca.addEventListener("click", realizarBusca, true);
 
-// Também se o 'Enter' foir teclado
+// Também se o 'Enter' foi teclado
 campoBusca.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {
     realizarBusca();
   } else {
-    let resultadosParecidos = buscaPorNomePreview.listarPorAproximacao(
-      campoBusca.value
-    );
-    console.log(resultadosParecidos);
+    nameHelperController.searchAndUpdateView(campoBusca.value);
   }
 });
 
@@ -33,8 +34,3 @@ botaoNext.addEventListener("click", () => buscasController.nextSelectedView());
 function realizarBusca() {
   buscasController.realizarBusca(campoBusca.value);
 }
-
-// Funçao que busca parcialmente por nome
-const buscaPorNomePreview = new BuscaPorNomePreview(
-  "./data/pokemon_names.json"
-);
