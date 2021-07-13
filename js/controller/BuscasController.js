@@ -1,5 +1,7 @@
 class BuscasController {
-  constructor(seletorResultados) {
+  constructor(seletorResultados, referenciaParaCampoBusca) {
+    this._referenciaParaCampoBusca = referenciaParaCampoBusca;
+
     this._url = "https://pokeapi.co/api/v2/pokemon/";
     this._dadosPokemonView = new DadosPokemonView(seletorResultados);
     this._statsPokemonView = new StatsPokemonView(seletorResultados);
@@ -15,11 +17,13 @@ class BuscasController {
 
   /**
    * Executa uma requisição na API
-   * @param {string} param
+   * Recebe o valor digitado via referencia para o campo de texto de buscas presente no construtor
    */
-  async realizarBusca(param) {
+  async realizarBusca() {
     try {
-      const dados = await fetch(this._url + param.toLowerCase());
+      const dados = await fetch(
+        this._url + this._referenciaParaCampoBusca.value.toLowerCase()
+      );
       if (dados.ok) {
         // Cria um novo pokemon com os dados da Response
         this._pokemon = new Pokemon(await dados.json());

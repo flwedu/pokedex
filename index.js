@@ -7,7 +7,10 @@ const botaoPrevious = document.querySelector("#navigation-previous");
 const botaoNext = document.querySelector("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
-const buscasController = new BuscasController(".results-window-data");
+const buscasController = new BuscasController(
+  ".results-window-data",
+  campoBusca
+);
 const autoCompleteController = new AutoCompleteController(
   ".auto-complete",
   campoBusca,
@@ -33,5 +36,5 @@ botaoNext.addEventListener("click", () => buscasController.nextSelectedView());
 
 // Função que dispara busca
 function realizarBusca() {
-  buscasController.realizarBusca(campoBusca.value);
+  buscasController.realizarBusca();
 }
