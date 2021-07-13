@@ -19,7 +19,7 @@ class NameHelPerView extends View {
   template(listaResultados) {
     return `
 
-        ${listaResultados.map((item) => `<p>${item}</p>`)}
+        ${listaResultados.map((item) => `<p>${item}</p>`).join("")}
         
         `;
   }
