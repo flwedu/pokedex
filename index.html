@@ -10,6 +10,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./style/root.css">
     <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/bottom.css">
     <link rel="stylesheet" href="./style/results-window.css">
     <link rel="stylesheet" href="./style/stats-table.css">
     <link rel="stylesheet" href="./style/name-helper.css">
@@ -23,16 +24,20 @@
                 <span>Aguardando dados</span>
             </div>
         </div>
-        <div class="busca">
+
+        <div class="bottom">
             <div class="navigation">
                 <input type="button" value="<<Prev. Page" id="navigation-previous" class="button">
                 <input type="button" value="Next Page>>" id="navigation-next" class="button">
             </div>
-            <input type="text" name="search-text" id="search-text" placeholder="Nome ou Número do Pokémon">
-            <input type="image" class="button" src="./assets/pokeball.svg" id="botao-busca">
+            <div class="search-bar">
+                <input type="search" name="search-text" id="search-text" placeholder="Nome ou Número do Pokémon">
+                <input type="image" class="button" src="./assets/pokeball.svg" id="botao-busca">
+            </div>
+            <div class="search-helper">
+            </div>
         </div>
     </div>
-    <div class="name-helper-window"></div>
 
     <!-- Importação de Scripts, começando por classes uteis -->
     <script src="./js/util/ManipuladorDeTexto.js"></script>
