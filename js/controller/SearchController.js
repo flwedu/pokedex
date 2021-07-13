@@ -1,4 +1,4 @@
-class BuscasController {
+class SearchController {
   constructor(seletorResultados, referenciaParaCampoBusca) {
     this._referenciaParaCampoBusca = referenciaParaCampoBusca;
 
@@ -19,7 +19,7 @@ class BuscasController {
    * Executa uma requisição na API
    * Recebe o valor digitado via referencia para o campo de texto de buscas presente no construtor
    */
-  async realizarBusca() {
+  async search() {
     try {
       const dados = await fetch(
         this._url + this._referenciaParaCampoBusca.value.toLowerCase()

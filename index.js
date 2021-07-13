@@ -7,7 +7,7 @@ const botaoPrevious = document.querySelector("#navigation-previous");
 const botaoNext = document.querySelector("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
-const buscasController = new BuscasController(
+const searchController = new SearchController(
   ".results-window-data",
   campoBusca
 );
@@ -30,11 +30,11 @@ campoBusca.addEventListener("keydown", (event) => {
 });
 
 botaoPrevious.addEventListener("click", () =>
-  buscasController.previousSelectedView()
+  searchController.previousSelectedView()
 );
-botaoNext.addEventListener("click", () => buscasController.nextSelectedView());
+botaoNext.addEventListener("click", () => searchController.nextSelectedView());
 
 // Função que dispara busca
 function realizarBusca() {
-  buscasController.realizarBusca();
+  searchController.search();
 }
