@@ -2,9 +2,13 @@
  * Classe que cuida das ações da janela de preview de nomes digitados.
  */
 class AutoCompleteController {
-  constructor(seletorElemento, urlFonteDeDados) {
-    this._nameHelperView = new NameHelPerView(seletorElemento);
-    this._nameHelperService = new NameHelperService(urlFonteDeDados);
+  constructor(seletorElemento, referenciaParaCampoBusca, urlFonteDeDados) {
+    this._autoCompleteDrawer = new AutoCompleteDrawer(
+      seletorElemento,
+      referenciaParaCampoBusca
+    );
+    this._referenciaParaCampoBusca = referenciaParaCampoBusca;
+    this._autoCompleteService = new AutoCompleteService(urlFonteDeDados);
   }
 
   /**
@@ -13,18 +17,11 @@ class AutoCompleteController {
    * @param {string} name
    * @memberof AutoCompleteController
    */
-  searchAndUpdateView(name) {
-    let listaResultados = this._nameHelperService.listarPorAproximacao(name);
-    this._nameHelperView.update(listaResultados);
-  }
-
-  /**
-   *Método que faz com que o controller peça a view para ficar visível ou invisível
-   *
-   * @param {boolean} value
-   * @memberof AutoCompleteController
-   */
-  setViewVisibility(value) {
-    this._nameHelperView.setVisibility(value);
+  searchAndUpdateView() {
+    this._autoCompleteDrawer.update(
+      this._autoCompleteService.listarPorAproximacao(
+        this._referenciaParaCampoBusca.value
+      )
+    );
   }
 }
