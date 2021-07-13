@@ -1,0 +1,18 @@
+.name-helper-window {
+  width: 6rem;
+  height: 20rem;
+
+  top: 50%;
+  left: 65%;
+  position: absolute;
+
+  border: 1px solid yellow;
+  background: rgb(236, 236, 155);
+}
+
+.name-helper-window * {
+  text-align: center;
+  border: none;
+  background: white;
+  border-radius: 0.5rem;
+}
