@@ -1,27 +1,27 @@
 // Set elementos html
-const campoBusca = document.querySelector("#search-text");
-const botaoBusca = document.querySelector("#botao-busca");
+const searchTextField = document.querySelector("#search-text");
+const searchButton = document.querySelector("#botao-busca");
 
 // Navigator
-const botaoPrevious = document.querySelector("#navigation-previous");
-const botaoNext = document.querySelector("#navigation-next");
+const buttonPrevious = document.querySelector("#navigation-previous");
+const buttonNext = document.querySelector("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
 const searchController = new SearchController(
   ".results-window-data",
-  campoBusca
+  searchTextField
 );
 const autoCompleteController = new AutoCompleteController(
   ".auto-complete",
-  campoBusca,
+  searchTextField,
   "./data/pokemon_names.json"
 );
 
 // Monitorando o clique
-botaoBusca.addEventListener("click", realizarBusca, true);
+searchButton.addEventListener("click", realizarBusca, true);
 
 // Também se o 'Enter' foi teclado
-campoBusca.addEventListener("keydown", (event) => {
+searchTextField.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {
     realizarBusca();
   } else {
@@ -29,10 +29,10 @@ campoBusca.addEventListener("keydown", (event) => {
   }
 });
 
-botaoPrevious.addEventListener("click", () =>
+buttonPrevious.addEventListener("click", () =>
   searchController.previousSelectedView()
 );
-botaoNext.addEventListener("click", () => searchController.nextSelectedView());
+buttonNext.addEventListener("click", () => searchController.nextSelectedView());
 
 // Função que dispara busca
 function realizarBusca() {
