@@ -2,12 +2,12 @@
 .bottom {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   position: static;
-  width: 360px;
-  height: 150px;
+  width: var(--external-width);
+  height: 13rem;
 
   background: var(--case-color);
 }
