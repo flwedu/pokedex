@@ -8,8 +8,8 @@ const botaoNext = document.querySelector("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
 const buscasController = new BuscasController(".results-window-data");
-const nameHelperController = new NameHelperController(
-  ".search-helper",
+const nameHelperController = new AutoCompleteController(
+  ".auto-complete",
   "./data/pokemon_names.json"
 );
 
