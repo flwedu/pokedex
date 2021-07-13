@@ -8,8 +8,9 @@ const botaoNext = document.querySelector("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
 const buscasController = new BuscasController(".results-window-data");
-const nameHelperController = new AutoCompleteController(
+const autoCompleteController = new AutoCompleteController(
   ".auto-complete",
+  campoBusca,
   "./data/pokemon_names.json"
 );
 
@@ -21,7 +22,7 @@ campoBusca.addEventListener("keydown", (event) => {
   if (event.key == "Enter") {
     realizarBusca();
   } else {
-    nameHelperController.searchAndUpdateView(campoBusca.value);
+    autoCompleteController.searchAndUpdateView();
   }
 });
 
