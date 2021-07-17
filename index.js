@@ -1,16 +1,16 @@
+const $ = document.querySelector.bind(document);
+
 // Set elementos html
-const searchTextField = document.querySelector("#search-text");
-const searchButton = document.querySelector("#botao-busca");
+const searchTextField = $("#search-text");
+const searchButton = $("#botao-busca");
 
 // Navigator
-const buttonPrevious = document.querySelector("#navigation-previous");
-const buttonNext = document.querySelector("#navigation-next");
+const buttonPrevious = $("#navigation-previous");
+const buttonNext = $("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
-const searchController = new SearchController(
-  ".results-window-data",
-  searchTextField
-);
+const viewController = new ViewController(".results-window-data");
+const searchController = new SearchController(searchTextField, viewController);
 const autoCompleteController = new AutoCompleteController(
   ".auto-complete",
   searchTextField,
@@ -30,9 +30,9 @@ searchTextField.addEventListener("keydown", (event) => {
 });
 
 buttonPrevious.addEventListener("click", () =>
-  searchController.previousSelectedView()
+  viewController.previousSelectedView()
 );
-buttonNext.addEventListener("click", () => searchController.nextSelectedView());
+buttonNext.addEventListener("click", () => viewController.nextSelectedView());
 
 // Função que dispara busca
 function realizarBusca() {
