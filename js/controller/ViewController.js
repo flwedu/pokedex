@@ -1,4 +1,8 @@
 class ViewController {
+  /**
+   * Inicializa um ViewController.
+   * @param {String} seletorResultados: Seletor CSS para indicar qual elemento renderizará os resultados.
+   */
   constructor(seletorResultados) {
     this._errorView = new ErrorView(seletorResultados);
 
