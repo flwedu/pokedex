@@ -24,4 +24,11 @@ class AutoCompleteController {
       )
     );
   }
+
+  /**
+   * Solicita o fechamento da lista.
+   */
+  closeList() {
+    this._autoCompleteDrawer.closeList();
+  }
 }
