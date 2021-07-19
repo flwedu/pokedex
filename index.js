@@ -22,12 +22,14 @@ searchButton.addEventListener("click", realizarBusca, true);
 
 // Também se o 'Enter' foi teclado
 searchTextField.addEventListener("keydown", (event) => {
-  if (event.key == "Enter") {
-    realizarBusca();
-  } else {
-    autoCompleteController.searchAndUpdateView();
-  }
+  keyMapper[event.key] ? keyMapper[event.key]() : keyMapper["Default"]();
 });
+
+// Mapeamento de todas as keys e ações disparadas
+const keyMapper = {
+  Enter: () => realizarBusca(),
+  Default: () => autoCompleteController.searchAndUpdateView(),
+};
 
 buttonPrevious.addEventListener("click", () =>
   viewController.previousSelectedView()
