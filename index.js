@@ -20,7 +20,7 @@ const autoCompleteController = new AutoCompleteController(
 // Monitorando o clique
 searchButton.addEventListener("click", realizarBusca, true);
 
-// Também se o 'Enter' foi teclado
+// Monitorando teclas digitadas no campo de texto
 searchTextField.addEventListener("keydown", (event) => {
   keyMapper[event.key] ? keyMapper[event.key]() : keyMapper["Default"]();
 });
