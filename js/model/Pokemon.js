@@ -1,3 +1,8 @@
+/**
+ * Essa classe abstrai os resultados de uma consulta à API.
+ *
+ * @class Pokemon
+ */
 class Pokemon {
   constructor(dados) {
     this.manipuladorDeTexto = new ManipuladorDeTexto();
