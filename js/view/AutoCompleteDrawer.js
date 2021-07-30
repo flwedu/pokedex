@@ -26,6 +26,9 @@ class AutoCompleteDrawer {
     });
   }
 
+  /**
+   * Esse método zera limpa a lista.
+   */
   closeList() {
     this._elemento.innerHTML = "";
   }
