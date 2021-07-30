@@ -6,3 +6,7 @@ package-lock.json
 package.json
 .eslintrc.json
 .vscode/settings.json
+.idea/modules.xml
+.idea/pokedex.iml
+.idea/vcs.xml
+.idea/inspectionProfiles/Project_Default.xml
