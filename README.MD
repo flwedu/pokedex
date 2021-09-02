@@ -2,7 +2,7 @@
 
 https://pokedexjsc.netlify.app/
 
-Projeto de pokédex utilizando a API do [Pokeapi](https://github.com/PokeAPI/pokeapi) para receber os dados do Pokémon. Este app utiliza HTML, CSS e Javascript.
+Projeto de pokédex simples, que consome a API do [Pokeapi](https://github.com/PokeAPI/pokeapi) para receber os dados do Pokémon. Este app utiliza HTML, CSS e Javascript.
 
 Para o recurso de busca por aproximação dos nomes foi utilizado um JSON gerado pela API do [PoGo API](https://pogoapi.net/documentation/).
 
