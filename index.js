@@ -37,6 +37,10 @@ buttonPrevious.addEventListener("click", () =>
 buttonNext.addEventListener("click", () => viewController.nextSelectedView());
 
 // Função que dispara busca
-function realizarBusca() {
-  searchController.search();
+async function realizarBusca() {
+  try {
+    await searchController.search();
+  } catch (err){
+    console.error(err)
+  }
 }
