@@ -1,20 +1,16 @@
 class AutoCompleteService {
   constructor(dataPath) {
     this._arrayDeDados = [];
-    this.onload(dataPath, this.extrairPropertyParaArray.bind(this));
+    this.onload(dataPath);
   }
 
-  onload(dataPath, callback) {
-    var requestFile = new XMLHttpRequest();
-    requestFile.overrideMimeType("application/json");
-    requestFile.open("GET", dataPath, true);
-    requestFile.onreadystatechange = function () {
-      if (requestFile.readyState === 4 && requestFile.status == "200") {
-        let dadosBrutos = JSON.parse(requestFile.responseText);
-        callback(dadosBrutos);
-      }
-    };
-    requestFile.send(null);
+  onload(dataPath) {
+    fetch(dataPath)
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(res.status);
+      })
+      .then((res) => this.extrairPropertyParaArray(res))
+      .catch(console.error);
   }
 
   extrairPropertyParaArray(objetoBruto) {
