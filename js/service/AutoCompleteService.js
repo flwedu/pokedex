@@ -22,7 +22,7 @@ class AutoCompleteService {
   }
 
   listarPorAproximacao(name) {
-    // Retornando os 5 primeiros elementos do array de dados que satisfaçãm a query
+    // Retornando os 5 primeiros elementos do array de dados que satisfaçam a query
     return this._arrayDeDados.filter((item) => item.includes(name)).slice(0, 5);
   }
 }
