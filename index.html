@@ -1,48 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
-    <link rel="shortcut icon" href="./assets/pokeball.svg" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./assets/pokeball.svg"
+      type="image/x-icon"
+    />
     <!-- CSS -->
-    <link rel="stylesheet" href="./style/root.css">
-    <link rel="stylesheet" href="./style/index.css">
-    <link rel="stylesheet" href="./style/bottom.css">
-    <link rel="stylesheet" href="./style/results-window.css">
-    <link rel="stylesheet" href="./style/stats-table.css">
-    <link rel="stylesheet" href="./style/auto-complete.css">
-</head>
+    <link rel="stylesheet" href="./style/root.css" />
+    <link rel="stylesheet" href="./style/index.css" />
+    <link rel="stylesheet" href="./style/bottom.css" />
+    <link rel="stylesheet" href="./style/results-window.css" />
+    <link rel="stylesheet" href="./style/stats-table.css" />
+    <link rel="stylesheet" href="./style/auto-complete.css" />
+  </head>
 
-<body>
+  <body>
     <div class="main">
-        <div class="results-window">
-
-            <div class="results-window-data">
-                <span>Aguardando dados</span>
-            </div>
+      <div class="results-window">
+        <div class="results-window-data">
+          <span>Aguardando dados</span>
         </div>
+      </div>
 
-        <div class="bottom">
-            <div class="navigation">
-                <input type="button" id="navigation-previous" class="nav-button">
-                <input type="button" id="navigation-next" class="nav-button">
-            </div>
-            <div class="search-bar">
-                <div class="search-tools">
-                    <input id="search-text" name="search-text" placeholder="Nome ou Número do Pokémon" type="search">
-                    <div class="auto-complete"></div>
-                </div>
-                <input type="image" class="button" src="./assets/pokeball.svg" id="botao-busca" alt="pokéball">
-            </div>
+      <div class="bottom">
+        <div class="navigation">
+          <input type="button" id="navigation-previous" class="nav-button" />
+          <input type="button" id="navigation-next" class="nav-button" />
         </div>
+        <div class="search-bar">
+          <div class="search-tools">
+            <input
+              id="search-text"
+              name="search-text"
+              placeholder="Nome ou Número do Pokémon"
+              type="search"
+            />
+            <div class="auto-complete"></div>
+          </div>
+          <input
+            type="image"
+            class="button"
+            src="./assets/pokeball.svg"
+            id="botao-busca"
+            alt="pokéball"
+          />
+        </div>
+      </div>
     </div>
 
     <!-- Importação de Scripts, começando por classes uteis -->
-    <script src="./js/util/ManipuladorDeTexto.js"></script>
-    <script src="./js/util/AutoCompleteService.js"></script>
+    <script src="./js/util/text.js"></script>
+    <script src="./js/service/AutoCompleteService.js"></script>
     <!-- Model -->
     <script src="./js/model/Pokemon.js"></script>
     <!-- View -->
@@ -57,6 +70,5 @@
     <script src="./js/controller/ViewController.js"></script>
     <!-- App -->
     <script src="index.js"></script>
-</body>
-
+  </body>
 </html>

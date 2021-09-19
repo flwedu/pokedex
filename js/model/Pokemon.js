@@ -5,8 +5,6 @@
  */
 class Pokemon {
   constructor(dados) {
-    this.manipuladorDeTexto = new ManipuladorDeTexto();
-
     const {
       id,
       name,
@@ -35,7 +33,7 @@ class Pokemon {
     return this._id;
   }
   get nomeOcidental() {
-    return this.manipuladorDeTexto.formatarNome(this._nomeOcidental);
+    return formatText(this._nomeOcidental);
   }
   get spriteFrontal() {
     return this._spriteFrontal;
