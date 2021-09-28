@@ -1,21 +1,20 @@
+const errorImageSrc = "../../assets/error.svg";
+
+const errorMessages = {
+  default: "Error",
+  404: "No Pokémon found",
+  500: "Server Error",
+};
 class ErrorView extends View {
   update(Response) {
     this.elemento.innerHTML = this.template(Response);
   }
 
   template(Response) {
-    const errorImageSrc = "../../assets/error.svg";
-
-    if (Response.status == 404)
-      return `
+    return `
         <h2>Erro 404:</h2>
-        <p>Nenhum pokémon encontrado</p>
+        <p>${errorMessages[Response.status] | errorMessages.default}</p>
         <img src=${errorImageSrc}></img>
       `;
-
-    return `
-    <h2>Erro ${Response.status}:</h2>
-    <img src=${errorImageSrc}></img>
-  `;
   }
 }
