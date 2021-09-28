@@ -22,7 +22,7 @@ export default class Pokemon {
 
     this._id = id;
     this._nomeOcidental = name;
-    this._spriteFrontal = sprites.front_default;
+    this._spriteFrontal = sprites?.front_default || "";
     this._tipo1 = typeName;
     this._tipo2 = typeName2 || "";
     this._peso = weight;
