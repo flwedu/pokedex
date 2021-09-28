@@ -1,4 +1,7 @@
 import Pokemon from "../model/Pokemon.js";
+import ErrorView from "../view/ErrorView.js";
+import DadosPokemonView from "../view/DadosPokemonView.js";
+import StatsPokemonView from "../view/StatsPokemonView.js";
 export default class ViewController {
   /**
    * Inicializa um ViewController.

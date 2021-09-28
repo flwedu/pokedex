@@ -1,3 +1,4 @@
+import formatText from "../util/text.js";
 /**
  * Essa classe abstrai os resultados de uma consulta à API.
  *

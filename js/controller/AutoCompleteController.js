@@ -1,3 +1,5 @@
+import AutoCompleteService from "../service/AutoCompleteService.js";
+import AutoCompleteDrawer from "../view/AutoCompleteDrawer.js";
 /**
  * Classe que cuida das ações da janela de preview de nomes digitados.
  */
