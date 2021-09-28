@@ -13,7 +13,7 @@ const buttonPrevious = $("#navigation-previous");
 const buttonNext = $("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
-const viewController = new ViewController(".results-window-data");
+const viewController = new ViewController($(".results-window-data"));
 const searchController = new SearchController(searchTextField, viewController);
 const autoCompleteController = new AutoCompleteController(
   ".auto-complete",
