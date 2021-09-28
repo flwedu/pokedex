@@ -11,3 +11,6 @@ Para o recurso de busca por aproximação dos nomes foi utilizado um JSON gerado
 Basta digitar o ID ou o nome de um pokémon no campo de buscas e teclar `'Enter'` (ou clicar na Pokébola 😜) para buscar.
 Os resultados são separados por páginas (no momento apenas 2), que podem ser navegadas utilizando os botões de Avançar e Recuar.
 
+## Tecnologias utlizadas:
+- Javascript
+- Jest (para testes unitários e de coverage)
