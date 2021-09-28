@@ -10,3 +10,6 @@ package.json
 .idea/pokedex.iml
 .idea/vcs.xml
 .idea/inspectionProfiles/Project_Default.xml
+
+# Arquivos Jest
+/coverage

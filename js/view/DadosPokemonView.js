@@ -1,4 +1,5 @@
-class DadosPokemonView extends View {
+import View from "./View.js";
+export default class DadosPokemonView extends View {
   template(pokemon) {
     return `
     <h2>Nº:${pokemon.id} / ${pokemon.nomeOcidental}</h2>

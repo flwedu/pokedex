@@ -1,3 +1,7 @@
+import ViewController from "./js/controller/ViewController.js";
+import SearchController from "./js/controller/SearchController.js";
+import AutoCompleteController from "./js/controller/AutoCompleteController.js";
+
 const $ = document.querySelector.bind(document);
 
 // Set elementos html
@@ -9,7 +13,7 @@ const buttonPrevious = $("#navigation-previous");
 const buttonNext = $("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
-const viewController = new ViewController(".results-window-data");
+const viewController = new ViewController($(".results-window-data"));
 const searchController = new SearchController(searchTextField, viewController);
 const autoCompleteController = new AutoCompleteController(
   ".auto-complete",

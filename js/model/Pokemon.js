@@ -1,9 +1,10 @@
+import formatText from "../util/text.js";
 /**
  * Essa classe abstrai os resultados de uma consulta à API.
  *
  * @class Pokemon
  */
-class Pokemon {
+export default class Pokemon {
   constructor(dados) {
     const {
       id,
@@ -21,7 +22,7 @@ class Pokemon {
 
     this._id = id;
     this._nomeOcidental = name;
-    this._spriteFrontal = sprites.front_default;
+    this._spriteFrontal = sprites?.front_default || "";
     this._tipo1 = typeName;
     this._tipo2 = typeName2 || "";
     this._peso = weight;
