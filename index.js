@@ -40,7 +40,7 @@ buttonNext.addEventListener("click", () => viewController.nextSelectedView());
 async function realizarBusca() {
   try {
     await searchController.search();
-  } catch (err){
-    console.error(err)
+  } catch (err) {
+    console.error(err);
   }
 }
