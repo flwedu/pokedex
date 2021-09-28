@@ -1,4 +1,4 @@
-class AutoCompleteService {
+export default class AutoCompleteService {
   constructor(dataPath) {
     this._arrayDeDados = [];
     this.onload(dataPath);

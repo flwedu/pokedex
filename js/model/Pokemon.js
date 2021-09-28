@@ -3,7 +3,7 @@
  *
  * @class Pokemon
  */
-class Pokemon {
+export default class Pokemon {
   constructor(dados) {
     const {
       id,

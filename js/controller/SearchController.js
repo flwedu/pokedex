@@ -1,4 +1,6 @@
-class SearchController {
+import Pokemon from "../model/Pokemon.js";
+
+export default class SearchController {
   /**
    * Inicializa um SeachController com referências para objetos necessários:
    * @param {HTMLElement} referenciaParaCampoBusca

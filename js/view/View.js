@@ -1,21 +1,25 @@
+import Pokemon from "../model/Pokemon.js";
 /**
  * Classe que representa objetos que retornam HTML que serão renderizados no DOM
  *
  * @class View
  */
-class View {
+export default class View {
   /**
    * Creates an instance of View.
    * @param {*} seletor Elemento HTML que renderizará o texto vindo do método template()
    * @memberof View
    */
   constructor(seletor) {
-    this.elemento = document.querySelector(seletor);
+    // Verifica se foi passado um seletor ou o próprio elemento html
+    if (typeof seletor == typeof "string")
+      this.elemento = document.querySelector(seletor);
+    else this.elemento = seletor;
   }
 
   /**
    * Recebe um objeto com os dados, cria um template e passa para o elemento HTML (escolhido no construtor) que irá renderiza-lo.
-   * @param {*} pokemon Objeto que encapsula todos os dados retornados pela busca.
+   * @param {Pokemon} pokemon Objeto que encapsula todos os dados retornados pela busca.
    * @memberof View
    */
   update(pokemon) {

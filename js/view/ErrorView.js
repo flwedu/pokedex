@@ -1,3 +1,5 @@
+import View from "./View.js";
+
 const errorImageSrc = "../../assets/error.svg";
 
 const errorMessages = {
@@ -5,14 +7,14 @@ const errorMessages = {
   404: "No Pokémon found",
   500: "Server Error",
 };
-class ErrorView extends View {
+export default class ErrorView extends View {
   update(Response) {
     this.elemento.innerHTML = this.template(Response);
   }
 
   template(Response) {
     return `
-        <h2>Erro 404:</h2>
+        <h2>Erro:</h2>
         <p>${errorMessages[Response.status] | errorMessages.default}</p>
         <img src=${errorImageSrc}></img>
       `;

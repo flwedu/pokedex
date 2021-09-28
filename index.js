@@ -1,3 +1,7 @@
+import ViewController from "./js/controller/ViewController.js";
+import SearchController from "./js/controller/SearchController.js";
+import AutoCompleteController from "./js/controller/AutoCompleteController.js";
+
 const $ = document.querySelector.bind(document);
 
 // Set elementos html
