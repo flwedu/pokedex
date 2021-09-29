@@ -50,6 +50,6 @@ export function errorMessageWithResponseCode(response) {
   return `
         <h2>Error ${response.status}:</h2>
         <p>${errorMessages[response.status] || errorMessages.default}</p>
-        <img src=${errorImageSrc}></img>
+        <img src="${errorImageSrc}"></img>
       `;
 }
