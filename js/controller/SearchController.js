@@ -3,12 +3,12 @@ import Pokemon from "../model/Pokemon.js";
 export default class SearchController {
   /**
    * Inicializa um SeachController com referências para objetos necessários:
-   * @param {HTMLElement} referenciaParaCampoBusca
-   * @param {ViewController} referenciaParaViewController
+   * @param {HTMLElement} searchInputHtmlElement
+   * @param {ViewController} viewController
    */
-  constructor(referenciaParaCampoBusca, referenciaParaViewController) {
-    this._referenciaParaCampoBusca = referenciaParaCampoBusca;
-    this._viewController = referenciaParaViewController;
+  constructor(searchInputHtmlElement, viewController) {
+    this._searchInputHtmlElement = searchInputHtmlElement;
+    this._viewController = viewController;
 
     this._url = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -23,7 +23,7 @@ export default class SearchController {
   async search() {
     try {
       const dataResponse = await fetch(
-        this._url + this._referenciaParaCampoBusca.value.toLowerCase()
+        this._url + this._searchInputHtmlElement.value.toLowerCase()
       );
       if (dataResponse.ok) {
         // Cria um novo pokemon com os dataResponse da Response
