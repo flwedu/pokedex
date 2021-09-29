@@ -1,17 +1,14 @@
+import Pokemon from "../model/Pokemon.js";
+import { sucessTextWithPokemonStats } from "../util/ResponseDisplayMessages.js";
 import View from "./View.js";
 
 export default class StatsPokemonView extends View {
+  /**
+   *
+   * @param {Pokemon} pokemon
+   * @returns {}
+   */
   template(pokemon) {
-    return `
-      <p>Stats Iniciais do pokémon</p>
-        <table class='stats-table'>
-        <thead>
-        ${pokemon.statsLabel.map((stats) => `<td>${stats}</td>`).join("")}
-        </thead>
-        <tbody>
-        ${pokemon.stats.map((valor) => `<td>${valor}</td>`).join("")}
-        </tbody>
-        </table>
-        `;
+    return sucessTextWithPokemonStats(pokemon);
   }
 }
