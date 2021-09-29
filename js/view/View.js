@@ -10,11 +10,8 @@ export default class View {
    * @param {HTMLElement} seletor Elemento HTML que renderizará o texto vindo do método template()
    * @memberof View
    */
-  constructor(seletor) {
-    // Verifica se foi passado um seletor ou o próprio elemento html
-    if (typeof seletor == typeof "string")
-      this.elemento = document.querySelector(seletor);
-    else this.elemento = seletor;
+  constructor(resultsHtmlElement) {
+    this._resultsHtmlElement = resultsHtmlElement;
   }
 
   /**
@@ -23,11 +20,14 @@ export default class View {
    * @memberof View
    */
   update(pokemon) {
-    this.elemento.innerHTML = this.template(pokemon);
+    this._resultsHtmlElement.innerHTML = this.template(pokemon);
 
     // Adiciona uma classe que fará com que uma animação de fadein seja executada
-    this.elemento.classList.add("emtransicao");
-    setTimeout(() => this.elemento.classList.remove("emtransicao"), 500);
+    this._resultsHtmlElement.classList.add("emtransicao");
+    setTimeout(
+      () => this._resultsHtmlElement.classList.remove("emtransicao"),
+      500
+    );
   }
 
   /**
