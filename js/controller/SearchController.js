@@ -1,4 +1,5 @@
 import Pokemon from "../model/Pokemon.js";
+import ViewController from "./ViewController.js";
 
 export default class SearchController {
   /**
