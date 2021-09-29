@@ -1,6 +1,6 @@
 export default class AutoCompleteDrawer {
-  constructor(seletor, referenciaParaCampoBusca) {
-    this._elemento = document.querySelector(seletor);
+  constructor(elemento, referenciaParaCampoBusca) {
+    this._elemento = elemento;
     this._referenciaParaCampoBusca = referenciaParaCampoBusca;
   }
 

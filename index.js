@@ -16,7 +16,7 @@ const buttonNext = $("#navigation-next");
 const viewController = new ViewController($(".results-window-data"));
 const searchController = new SearchController(searchTextField, viewController);
 const autoCompleteController = new AutoCompleteController(
-  ".auto-complete",
+  $(".auto-complete"),
   searchTextField,
   "./data/pokemon_names.json"
 );

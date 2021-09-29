@@ -9,7 +9,7 @@ const errorMessages = {
 };
 export default class ErrorView extends View {
   update(Response) {
-    this.elemento.innerHTML = this.template(Response);
+    this._resultsHtmlElement.innerHTML = this.template(Response);
   }
 
   template(Response) {
