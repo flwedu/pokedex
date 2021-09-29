@@ -1,7 +1,10 @@
 export const dittoData = {
   id: 132,
   name: "Ditto",
-  sprites: null,
+  sprites: {
+    front_default:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
+  },
   weight: 40,
   stats: [
     {
@@ -63,10 +66,3 @@ export const dittoData = {
     },
   ],
 };
-
-export const HtmlWithDittoData = `
-    <h2>Nº:132 / Ditto</h2>
-    <img src="">
-    <p>Tipo: normal</p>
-    <p>Peso: 40</p>
-    `;
