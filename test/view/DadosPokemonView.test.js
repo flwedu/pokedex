@@ -1,6 +1,7 @@
 import Pokemon from "../../js/model/Pokemon.js";
+import { sucessTextWithPokemonData } from "../../js/util/ResponseDisplayMessages.js";
 import DadosPokemonView from "../../js/view/DadosPokemonView.js";
-import { dittoData, HtmlWithDittoData } from "../TestData.js";
+import { dittoData } from "../TestData.js";
 
 describe("Should create a View with pokemon data", () => {
   test("Should create an View object", () => {
@@ -15,10 +16,15 @@ describe("Should create a View with pokemon data", () => {
 describe("Should render the correct pokemon data", () => {
   test("InnerHTML of View Element is correct", () => {
     const htmlElement = document.createElement("div");
+    const htmlWithExpectedText = document.createElement("div");
+
     const view = new DadosPokemonView(htmlElement);
 
-    view.update(new Pokemon(dittoData));
+    const testPokemon = new Pokemon(dittoData);
 
-    expect(htmlElement.innerHTML).toBe(HtmlWithDittoData);
+    view.update(testPokemon);
+
+    htmlWithExpectedText.innerHTML = sucessTextWithPokemonData(testPokemon);
+    expect(htmlElement.innerHTML).toBe(htmlWithExpectedText.innerHTML);
   });
 });
