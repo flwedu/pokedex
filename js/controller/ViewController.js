@@ -5,16 +5,16 @@ import StatsPokemonView from "../view/StatsPokemonView.js";
 export default class ViewController {
   /**
    * Inicializa um ViewController.
-   * @param {String} seletorResultados: Seletor CSS para indicar qual elemento renderizará os resultados.
+   * @param {HTMLElement} resultsHtmlElement: elemento Html que renderizará os resultados.
    */
-  constructor(seletorResultados) {
-    this._errorView = new ErrorView(seletorResultados);
+  constructor(resultsHtmlElement) {
+    this._errorView = new ErrorView(resultsHtmlElement);
 
     // Descreve quais as views disponíveis para exibição
     this._selectedView = 0;
     this._avaliableViews = [
-      new DadosPokemonView(seletorResultados),
-      new StatsPokemonView(seletorResultados),
+      new DadosPokemonView(resultsHtmlElement),
+      new StatsPokemonView(resultsHtmlElement),
     ];
 
     this._pokemonExibido = null;
