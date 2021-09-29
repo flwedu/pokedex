@@ -4,16 +4,18 @@ import AutoCompleteDrawer from "../view/AutoCompleteDrawer.js";
  * Classe que cuida das ações da janela de preview de nomes digitados.
  */
 export default class AutoCompleteController {
-  constructor(
-    elementoHtmlResultado,
-    referenciaParaCampoBusca,
-    urlFonteDeDados
-  ) {
+  /**
+   *
+   * @param {HTMLElement} resulsHtmlElement
+   * @param {HTMLInputElement} searchInputElement
+   * @param {string} urlFonteDeDados
+   */
+  constructor(resulsHtmlElement, searchInputElement, urlFonteDeDados) {
     this._autoCompleteDrawer = new AutoCompleteDrawer(
-      elementoHtmlResultado,
-      referenciaParaCampoBusca
+      resulsHtmlElement,
+      searchInputElement
     );
-    this._referenciaParaCampoBusca = referenciaParaCampoBusca;
+    this._searchInputElement = searchInputElement;
     this._autoCompleteService = new AutoCompleteService(urlFonteDeDados);
   }
 
@@ -26,7 +28,7 @@ export default class AutoCompleteController {
   searchAndUpdateView() {
     this._autoCompleteDrawer.update(
       this._autoCompleteService.listarPorAproximacao(
-        this._referenciaParaCampoBusca.value
+        this._searchInputElement.value
       )
     );
   }
