@@ -7,7 +7,7 @@ import Pokemon from "../model/Pokemon.js";
 export default class View {
   /**
    * Creates an instance of View.
-   * @param {*} seletor Elemento HTML que renderizará o texto vindo do método template()
+   * @param {HTMLElement} seletor Elemento HTML que renderizará o texto vindo do método template()
    * @memberof View
    */
   constructor(seletor) {
