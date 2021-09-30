@@ -26,7 +26,8 @@ searchButton.addEventListener("click", realizarBusca, true);
 
 // Monitorando teclas digitadas no campo de texto
 searchTextField.addEventListener("keydown", (event) => {
-  keyMapper[event.key] ? keyMapper[event.key]() : keyMapper["Default"]();
+  if (keyMapper[event.key]) keyMapper[event.key]();
+  else keyMapper["Default"]();
 });
 
 // Mapeamento de todas as keys e ações disparadas
