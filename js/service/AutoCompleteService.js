@@ -2,10 +2,10 @@ const dataPath = "./data/pokemon_names.json";
 export default class AutoCompleteService {
   constructor() {
     this._arrayDeDados = [];
-    this.onload(dataPath);
+    this.loadDataFromFile(dataPath);
   }
 
-  onload(dataPath) {
+  loadDataFromFile(dataPath) {
     fetch(dataPath)
       .then((res) => {
         return res.ok ? res.json() : Promise.reject(res.status);
