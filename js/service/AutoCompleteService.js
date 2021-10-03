@@ -1,5 +1,6 @@
+const dataPath = "./data/pokemon_names.json";
 export default class AutoCompleteService {
-  constructor(dataPath) {
+  constructor() {
     this._arrayDeDados = [];
     this.onload(dataPath);
   }

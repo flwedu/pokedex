@@ -17,8 +17,7 @@ const viewController = new ViewController($(".results-window-data"));
 const searchController = new SearchController(viewController);
 const autoCompleteController = new AutoCompleteController(
   $(".auto-complete"),
-  searchTextField,
-  "./data/pokemon_names.json"
+  searchTextField
 );
 
 // Monitorando o clique
