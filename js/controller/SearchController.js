@@ -16,6 +16,9 @@ export default class SearchController {
    * @param {HTMLInputElement} searchInputHtmlElement
    */
   search(searchInputHtmlElement) {
+    if (searchInputHtmlElement.value.length < 1) {
+      return;
+    }
     searchInAPI(searchInputHtmlElement.value.toLowerCase())
       .then((response) => {
         this._viewController.setPokemonExibido(new Pokemon(response));
