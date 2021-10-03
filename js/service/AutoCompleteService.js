@@ -5,19 +5,26 @@ export default class AutoCompleteService {
     this.loadDataFromFile(dataPath);
   }
 
-  loadDataFromFile(dataPath) {
-    fetch(dataPath)
-      .then((res) => {
-        return res.ok ? res.json() : Promise.reject(res.status);
-      })
-      .then((res) => this.extrairPropertyParaArray(res))
-      .catch(console.error);
+  async loadDataFromFile(dataPath) {
+    try {
+      const results = await fetch(dataPath);
+      if (results.ok) {
+        this._arrayDeDados = this.extrairPropertyParaArray(
+          await results.json()
+        );
+      } else {
+        throw new Error(results);
+      }
+    } catch (err) {
+      console.error("Error getting pokémon lists to AutoCompleteService");
+      console.error(err);
+    }
   }
 
   extrairPropertyParaArray(objetoBruto) {
     // Transferindo os valores do objeto para o array
     // Dos valores já são retirados os nomes e convertidos para lowercase
-    this._arrayDeDados = Object.values(objetoBruto).map((element) =>
+    return Object.values(objetoBruto).map((element) =>
       element.name.toLowerCase()
     );
   }
