@@ -21,7 +21,7 @@ export default class ViewController {
   }
 
   /**
-   * Armazena os dados sobre o pokemon pesquisado para exibição posterior
+   * Stores the pokemon data
    * @param {Pokemon} pokemon
    */
   setPokemonExibido(pokemon) {
@@ -29,13 +29,10 @@ export default class ViewController {
   }
 
   /**
-   * Atualiza a view selecionada com os dados pesquisados.
-   * Caso ainda não tenha sido realizada nenhuma pesquisa, lança um erro
+   * Updates the selected view with pokemon data
    */
   updateSelectedView() {
-    if (this._pokemonExibido)
-      this.getSelectedView().update(this._pokemonExibido);
-    else console.error("Ainda não foi buscado nenhum pokemon");
+    this.getSelectedView().update(this._pokemonExibido);
   }
 
   /**
