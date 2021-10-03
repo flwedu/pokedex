@@ -14,7 +14,7 @@ const buttonNext = $("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
 const viewController = new ViewController($(".results-window-data"));
-const searchController = new SearchController(searchTextField, viewController);
+const searchController = new SearchController(viewController);
 const autoCompleteController = new AutoCompleteController(
   $(".auto-complete"),
   searchTextField,
@@ -42,10 +42,6 @@ buttonPrevious.addEventListener("click", () =>
 buttonNext.addEventListener("click", () => viewController.nextSelectedView());
 
 // Função que dispara busca
-async function realizarBusca() {
-  try {
-    await searchController.search();
-  } catch (err) {
-    console.error(err);
-  }
+function realizarBusca() {
+  searchController.search(searchTextField);
 }
