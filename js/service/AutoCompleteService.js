@@ -9,7 +9,7 @@ export default class AutoCompleteService {
     try {
       const results = await fetch(dataPath);
       if (results.ok) {
-        this._arrayDeDados = this.extrairPropertyParaArray(
+        this._arrayDeDados = this.extractPropertiesToArray(
           await results.json()
         );
       } else {
@@ -21,12 +21,10 @@ export default class AutoCompleteService {
     }
   }
 
-  extrairPropertyParaArray(objetoBruto) {
+  extractPropertiesToArray(rawData) {
     // Transferindo os valores do objeto para o array
     // Dos valores já são retirados os nomes e convertidos para lowercase
-    return Object.values(objetoBruto).map((element) =>
-      element.name.toLowerCase()
-    );
+    return Object.values(rawData).map((element) => element.name.toLowerCase());
   }
 
   listarPorAproximacao(name) {
