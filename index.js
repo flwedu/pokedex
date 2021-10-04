@@ -2,26 +2,32 @@ import ViewController from "./js/controller/ViewController.js";
 import SearchController from "./js/controller/SearchController.js";
 import AutoCompleteController from "./js/controller/AutoCompleteController.js";
 
-const $ = document.querySelector.bind(document);
-
 // Set elementos html
-const searchTextField = $("#search-text");
-const searchButton = $("#botao-busca");
+const searchTextField = document.querySelector("#search-text");
+const searchButton = document.querySelector("#botao-busca");
 
 // Navigator
-const buttonPrevious = $("#navigation-previous");
-const buttonNext = $("#navigation-next");
+const buttonPrevious = document.querySelector("#navigation-previous");
+const buttonNext = document.querySelector("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
-const viewController = new ViewController($(".results-window-data"));
+const viewController = new ViewController(
+  document.querySelector(".results-window-data")
+);
 const searchController = new SearchController(viewController);
 const autoCompleteController = new AutoCompleteController(
-  $(".auto-complete"),
+  document.querySelector(".auto-complete"),
   searchTextField
 );
 
 // Monitorando o clique
-searchButton.addEventListener("click", realizarBusca, true);
+searchButton.addEventListener("click", realizarBusca, false);
+document
+  .querySelector("#pokemon-next")
+  .addEventListener("click", () => searchController.searchNext(), false);
+document
+  .querySelector("#pokemon-previous")
+  .addEventListener("click", () => searchController.searchPrevious(), false);
 
 // Monitorando teclas digitadas no campo de texto
 searchTextField.addEventListener("keydown", (event) => {
