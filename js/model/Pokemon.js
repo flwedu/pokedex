@@ -20,40 +20,13 @@ export default class Pokemon {
       },
     } = dados;
 
-    this._id = id;
-    this._nomeOcidental = name;
-    this._spriteFrontal = sprites?.front_default || "";
-    this._tipo1 = typeName;
-    this._tipo2 = typeName2 || "";
-    this._peso = weight;
-    this._stats = [...stats].map((atributo) => atributo.base_stat);
-    this._statsLabel = ["HP", "ATK", "DEF", "SP.ATK", "SP.DEF", "SPEED"];
-  }
-
-  get id() {
-    return this._id;
-  }
-  get nomeOcidental() {
-    return formatText(this._nomeOcidental);
-  }
-  get spriteFrontal() {
-    return this._spriteFrontal;
-  }
-  get tipo1() {
-    return this._tipo1;
-  }
-  get tipo2() {
-    if (this._tipo2) return "/" + this._tipo2;
-    else return "";
-  }
-  get peso() {
-    return this._peso;
-  }
-  get stats() {
-    return this._stats;
-  }
-
-  get statsLabel() {
-    return this._statsLabel;
+    this.id = id;
+    this.nomeOcidental = formatText(name);
+    this.spriteFrontal = sprites?.front_default || "";
+    this.tipo1 = typeName;
+    this.tipo2 = typeName2;
+    this.peso = weight;
+    this.stats = [...stats].map((atributo) => atributo.base_stat);
+    this.statsLabel = ["HP", "ATK", "DEF", "SP.ATK", "SP.DEF", "SPEED"];
   }
 }
