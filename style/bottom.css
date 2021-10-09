@@ -18,12 +18,12 @@
   height: 2rem;
   width: 15rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .nav-button {
-  padding: 0.5rem;
-  width: 35%;
+  margin: 0 0.5rem;
+  width: 49%;
   height: 100%;
   background: var(--buton-color);
   border: none;
@@ -31,42 +31,6 @@
 
 .nav-button:hover {
   animation: stretching 1s infinite;
-}
-
-#navigation-previous {
-  clip-path: polygon(
-    40% 0%,
-    40% 20%,
-    100% 20%,
-    100% 80%,
-    40% 80%,
-    40% 100%,
-    0% 50%
-  );
-}
-
-@keyframes stretching {
-  0% {
-    transform: scaleX(1);
-  }
-  50% {
-    transform: scaleX(1.1);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-}
-
-#navigation-next {
-  clip-path: polygon(
-    0% 20%,
-    60% 20%,
-    60% 0%,
-    100% 50%,
-    60% 100%,
-    60% 80%,
-    0% 80%
-  );
 }
 
 /* Search bar & tools */
