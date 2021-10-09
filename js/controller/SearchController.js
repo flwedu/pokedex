@@ -21,6 +21,7 @@ export default class SearchController {
       .then((response) => {
         this.pokemon = new Pokemon(response);
         this._viewController.setPokemonExibido(this.pokemon);
+        this._viewController.setSelectedView(0);
         this._viewController.updateSelectedView();
       })
       .catch((errorResponse) => {
