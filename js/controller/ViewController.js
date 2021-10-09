@@ -1,20 +1,26 @@
 import Pokemon from "../model/Pokemon.js";
-import ErrorView from "../view/ErrorView.js";
-import DadosPokemonView from "../view/DadosPokemonView.js";
-import StatsPokemonView from "../view/StatsPokemonView.js";
+import View from "../view/View.js";
+import {
+  errorMessageWithResponseCode,
+  sucessTextWithPokemonData,
+  sucessTextWithPokemonStats,
+} from "../util/ResponseDisplayMessages.js";
 export default class ViewController {
   /**
    * Inicializa um ViewController.
    * @param {HTMLElement} resultsHtmlElement: elemento Html que renderizará os resultados.
    */
   constructor(resultsHtmlElement) {
-    this._errorView = new ErrorView(resultsHtmlElement);
+    this._errorView = new View(
+      resultsHtmlElement,
+      errorMessageWithResponseCode
+    );
 
     // Descreve quais as views disponíveis para exibição
     this._selectedView = 0;
     this._avaliableViews = [
-      new DadosPokemonView(resultsHtmlElement),
-      new StatsPokemonView(resultsHtmlElement),
+      new View(resultsHtmlElement, sucessTextWithPokemonData),
+      new View(resultsHtmlElement, sucessTextWithPokemonStats),
     ];
 
     this._pokemonExibido = null;
