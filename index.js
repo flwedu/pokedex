@@ -24,10 +24,10 @@ const autoCompleteController = new AutoCompleteController(
 searchButton.addEventListener("click", realizarBusca, false);
 document
   .querySelector("#pokemon-next")
-  .addEventListener("click", () => searchController.searchNext(), false);
+  .addEventListener("click", searchController.searchNext(), false);
 document
   .querySelector("#pokemon-previous")
-  .addEventListener("click", () => searchController.searchPrevious(), false);
+  .addEventListener("click", searchController.searchPrevious(), false);
 
 // Monitorando teclas digitadas no campo de texto
 searchTextField.addEventListener("keydown", (event) => {

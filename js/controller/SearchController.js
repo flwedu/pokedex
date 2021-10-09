@@ -8,7 +8,7 @@ export default class SearchController {
    * @param {ViewController} viewController
    */
   constructor(viewController) {
-    this.lastSearched = 0;
+    this.pokemon = null;
     this._viewController = viewController;
   }
 
@@ -19,10 +19,9 @@ export default class SearchController {
   doTheApiSearchAndUpdateControllers(param) {
     searchInAPI(param)
       .then((response) => {
-        let pokemon = new Pokemon(response);
-        this._viewController.setPokemonExibido(pokemon);
+        this.pokemon = new Pokemon(response);
+        this._viewController.setPokemonExibido(this.pokemon);
         this._viewController.updateSelectedView();
-        this.lastSearched = pokemon.id;
       })
       .catch((errorResponse) => {
         this._viewController.renderErrorView(errorResponse);
@@ -46,15 +45,17 @@ export default class SearchController {
    * Search data for the next pokemon
    */
   searchNext() {
-    this.doTheApiSearchAndUpdateControllers(this.lastSearched + 1);
+    return () => this.doTheApiSearchAndUpdateControllers(this.pokemon.id + 1);
   }
 
   /**
    * Search data for the previous pokemon
    */
   searchPrevious() {
-    if (this.lastSearched > 1) {
-      this.doTheApiSearchAndUpdateControllers(this.lastSearched - 1);
-    }
+    return () => {
+      if (this.pokemon.id > 1) {
+        this.doTheApiSearchAndUpdateControllers(this.pokemon.id - 1);
+      }
+    };
   }
 }
