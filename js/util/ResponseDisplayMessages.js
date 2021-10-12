@@ -15,16 +15,15 @@ const errorMessages = {
  */
 export function sucessTextWithPokemonData(pokemon) {
   const parentElement = document.createElement("div");
-  const h2 = (document.createElement(
-    "h2"
-  ).textContent = `Nº:${pokemon.id} / ${pokemon.nomeOcidental}`);
-  const img = (document.createElement("img").src = pokemon.spriteFrontal);
-  const p = (document.createElement("p").textContent = `Type: ${
-    pokemon.tipo1
-  } ${pokemon.tipo2 ? " + " + pokemon.tipo2 : ""}`);
-  const pw = (document.createElement(
-    "p"
-  ).textContent = `Weight: ${pokemon.peso} (in hectograms)`);
+  const h2 = document.createElement("h2");
+  const img = document.createElement("img");
+  const p = document.createElement("p");
+  const pw = document.createElement("p");
+
+  h2.textContent = `Nº:${pokemon.id} / ${pokemon.nomeOcidental}`;
+  img.src = pokemon.spriteFrontal;
+  p.textContent = `Type: ${pokemon.tipo1} ${pokemon.tipo2 ? " + " + pokemon.tipo2 : ""}`;
+  pw.textContent = `Weight: ${pokemon.peso} (in hectograms)`;
 
   parentElement.append(h2, img, p, pw);
   return parentElement.innerHTML;
@@ -37,10 +36,10 @@ export function sucessTextWithPokemonData(pokemon) {
  */
 export function sucessTextWithPokemonStats(pokemon) {
   const parentElement = document.createElement("div");
-  const p = (document.createElement("p").textContent =
-    "Initial Stats of Pokémon");
+  const p = document.createElement("p");
   const table = document.createElement("table");
 
+  p.textContent = "Initial Stats of Pokémon";
   table.className = "stats-table";
 
   table.innerHTML = `
@@ -63,13 +62,12 @@ export function sucessTextWithPokemonStats(pokemon) {
  */
 export function errorMessageWithResponseCode(response) {
   const parentElement = document.createElement("div");
-  const h2 = (document.createElement(
-    "h2"
-  ).textContent = `Error ${response.status}`);
-  const p = (document.createElement("p").textContent = `${
-    errorMessages[response.status] || errorMessages.default
-  }`);
+  const h2 = document.createElement("h2");
+  const p = document.createElement("p");
   const img = document.createElement("img");
+
+  h2.textContent = `Error ${response.status}`;
+  p.textContent = `${errorMessages[response.status] || errorMessages.default}`;
   img.src = errorImageSrc;
 
   parentElement.append(h2, p, img);
