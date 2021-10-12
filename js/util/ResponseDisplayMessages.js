@@ -14,12 +14,20 @@ const errorMessages = {
  * @returns {string}
  */
 export function sucessTextWithPokemonData(pokemon) {
-  return `
-    <h2>Nº:${pokemon.id} / ${pokemon.nomeOcidental}</h2>
-    <img src="${pokemon.spriteFrontal}"></img>
-    <p>Type: ${pokemon.tipo1} ${pokemon.tipo2 ? " + " + pokemon.tipo2 : ""}</p>
-    <p>Weight: ${pokemon.peso} (in hectograms)</p>
-    `;
+  const parentElement = document.createElement("div");
+  const h2 = (document.createElement(
+    "h2"
+  ).textContent = `Nº:${pokemon.id} / ${pokemon.nomeOcidental}`);
+  const img = (document.createElement("img").src = pokemon.spriteFrontal);
+  const p = (document.createElement("p").textContent = `Type: ${
+    pokemon.tipo1
+  } ${pokemon.tipo2 ? " + " + pokemon.tipo2 : ""}`);
+  const pw = (document.createElement(
+    "p"
+  ).textContent = `Weight: ${pokemon.peso} (in hectograms)`);
+
+  parentElement.append(h2, img, p, pw);
+  return parentElement.innerHTML;
 }
 
 /**
@@ -28,17 +36,24 @@ export function sucessTextWithPokemonData(pokemon) {
  * @returns {string}
  */
 export function sucessTextWithPokemonStats(pokemon) {
-  return `
-      <p>Initial Stats of Pokémon</p>
-        <table class='stats-table'>
-        <thead>
-        ${pokemon.statsLabel.map((stats) => `<td>${stats}</td>`).join("")}
-        </thead>
-        <tbody>
-        ${pokemon.stats.map((valor) => `<td>${valor}</td>`).join("")}
-        </tbody>
-        </table>
-        `;
+  const parentElement = document.createElement("div");
+  const p = (document.createElement("p").textContent =
+    "Initial Stats of Pokémon");
+  const table = document.createElement("table");
+
+  table.className = "stats-table";
+
+  table.innerHTML = `
+  <thead>
+    ${pokemon.statsLabel.map((stats) => `<td>${stats}</td>`).join("")}
+  </thead>
+  <tbody>
+    ${pokemon.stats.map((valor) => `<td>${valor}</td>`).join("")}
+  </tbody>
+  `;
+
+  parentElement.append(p, table);
+  return parentElement.innerHTML;
 }
 
 /**
@@ -47,9 +62,17 @@ export function sucessTextWithPokemonStats(pokemon) {
  * @returns {string}
  */
 export function errorMessageWithResponseCode(response) {
-  return `
-        <h2>Error ${response.status}:</h2>
-        <p>${errorMessages[response.status] || errorMessages.default}</p>
-        <img src="${errorImageSrc}"></img>
-      `;
+  const parentElement = document.createElement("div");
+  const h2 = (document.createElement(
+    "h2"
+  ).textContent = `Error ${response.status}`);
+  const p = (document.createElement("p").textContent = `${
+    errorMessages[response.status] || errorMessages.default
+  }`);
+  const img = document.createElement("img");
+  img.src = errorImageSrc;
+
+  parentElement.append(h2, p, img);
+
+  return parentElement.innerHTML;
 }
