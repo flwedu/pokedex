@@ -7,7 +7,7 @@ export function searchInAPI(params) {
   return new Promise((resolve, reject) => {
     fetch(URL + params)
       .then((response) => {
-        if (response.status == 200) {
+        if (response.ok) {
           response.json().then(resolve);
         } else {
           reject(response);
