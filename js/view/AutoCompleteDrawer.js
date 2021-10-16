@@ -1,4 +1,9 @@
 export default class AutoCompleteDrawer {
+  /**
+   *
+   * @param {HTMLElement} elemento
+   * @param {HTMLInputElement} referenciaParaCampoBusca
+   */
   constructor(elemento, referenciaParaCampoBusca) {
     this._elemento = elemento;
     this._referenciaParaCampoBusca = referenciaParaCampoBusca;
@@ -27,7 +32,7 @@ export default class AutoCompleteDrawer {
   }
 
   /**
-   * Esse método zera limpa a lista.
+   * Esse método limpa a lista.
    */
   closeList() {
     this._elemento.innerHTML = "";
