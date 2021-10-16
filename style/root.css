@@ -1,11 +1,13 @@
 :root {
+  --shadow: #242424;
+
   --light-color: #f0f0f0;
   --case-color: #fa0321;
   --display-color: #b4f894;
   --display-font-color: #246d03;
   --display-color-shiny: #00ee9f;
 
-  --buton-color: #86e9f7;
+  --buton-color: #ffe800;
   --button-color-alt: #bdbdbd;
 
   --external-width: 22.5rem;
