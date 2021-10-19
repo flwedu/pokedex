@@ -1,7 +1,7 @@
 /* Display de resultados */
 .results-window {
   width: var(--external-width);
-  height: 23.75rem;
+  height: var(--top-height);
 
   background: var(--display-color);
   border: 30px solid var(--case-color);

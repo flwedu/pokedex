@@ -7,6 +7,19 @@
   margin: auto;
 
   position: relative;
-  width: 360px;
-  height: 638px;
+  width: var(--external-width);
+  height: 40rem;
+}
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  text-justify: auto;
 }

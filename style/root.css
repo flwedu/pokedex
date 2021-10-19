@@ -10,5 +10,7 @@
   --buton-color: #ffe800;
   --button-color-alt: #bdbdbd;
 
-  --external-width: 22.5rem;
+  --external-width: 20rem;
+  --top-height: 20rem;
+  --bottom-height: 13rem;
 }
