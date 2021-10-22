@@ -1,10 +1,9 @@
-/* Tabela de stats */
 table,
 th,
 td {
   font-size: 10px;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid $dark;
   border-collapse: collapse;
 
   padding: 8px;

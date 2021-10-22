@@ -1,0 +1,39 @@
+/* Display de resultados */
+.results-window {
+  width: $externalWidth;
+  height: $topHeight;
+
+  background: $displayColor;
+  border: 30px solid $caseColor;
+  border-bottom: none;
+  box-sizing: border-box;
+  border-radius: 5px 5px 0 0;
+
+  box-shadow: -2px 2px 0 inset $shadow;
+
+  &-data {
+    color: $displayFontColor;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.5rem;
+
+    /* Classe adicional que executa a animação */
+    &.emtransicao {
+      animation: fadein 1s;
+    }
+  }
+  /* Animação de transição */
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

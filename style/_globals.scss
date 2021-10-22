@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap");
+
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+
+  font-family: "Roboto", sans-serif;
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -7,18 +16,16 @@
   margin: auto;
 
   position: relative;
-  width: var(--external-width);
+  width: $externalWidth;
   height: 40rem;
 }
 
 h2 {
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 1.4rem;
 }
 
 p {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
   text-align: center;
   text-justify: auto;
