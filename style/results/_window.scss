@@ -3,7 +3,7 @@
   width: $externalWidth;
   height: $topHeight;
 
-  background: $displayColor;
+  background: linear-gradient($displayDarkColor, $displayColor);
   border: 30px solid $caseColor;
   border-bottom: none;
   box-sizing: border-box;
@@ -13,7 +13,6 @@
 
   &-data {
     color: $displayFontColor;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
     display: flex;
     flex-direction: column;
