@@ -58,11 +58,22 @@ p {
   background: #00ee9f;
 }
 
+.background-img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  max-width: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#bdbdbd), to(#ffe800));
+  background-image: linear-gradient(#bdbdbd, #ffe800);
+}
+
 /* Display de resultados */
 .results-window {
   width: 20rem;
   height: 20rem;
-  background: #b4f894;
+  background: -webkit-gradient(linear, left top, left bottom, from(#66ff48), to(#b4f894));
+  background: linear-gradient(#66ff48, #b4f894);
   border: 30px solid #e60721;
   border-bottom: none;
   -webkit-box-sizing: border-box;
@@ -75,7 +86,6 @@ p {
 
 .results-window-data {
   color: #246d03;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
