@@ -1,0 +1,18 @@
+.auto-complete {
+  width: 100%;
+  border: none;
+  background: $displayColor;
+
+  * {
+    margin: 0 0.4rem;
+    color: $displayFontColor;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      font-weight: bold;
+      background: $displayColorShiny;
+    }
+  }
+}
