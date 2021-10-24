@@ -1,14 +1,9 @@
 /* Display de resultados */
 .results-window {
-  width: $externalWidth;
-  height: $topHeight;
+  width: $externalWidth - 2.5rem;
+  height: $topHeight - 2.5rem;
 
   background: linear-gradient($displayDarkColor, $displayColor);
-  border: 30px solid $caseColor;
-  border-bottom: none;
-  box-sizing: border-box;
-  border-radius: 5px 5px 0 0;
-
   box-shadow: -2px 2px 0 inset $shadow;
 
   &-data {

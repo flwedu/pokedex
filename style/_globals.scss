@@ -7,19 +7,6 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0px;
-  margin: auto;
-
-  position: relative;
-  width: $externalWidth;
-  height: 40rem;
-}
-
 h2 {
   font-weight: 700;
   font-size: 1.4rem;

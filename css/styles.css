@@ -7,27 +7,6 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
-.main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0px;
-  margin: auto;
-  position: relative;
-  width: 20rem;
-  height: 40rem;
-}
-
 h2 {
   font-weight: 700;
   font-size: 1.4rem;
@@ -68,17 +47,38 @@ p {
   background-image: linear-gradient(#bdbdbd, #ffe800);
 }
 
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0px;
+  margin: auto;
+  position: relative;
+  width: 20rem;
+  height: 32rem;
+  background-color: #e60721;
+  border: 0 solid #e60721;
+  border-radius: 1rem;
+  -webkit-box-shadow: -0.2rem 0.5rem #242424;
+          box-shadow: -0.2rem 0.5rem #242424;
+}
+
 /* Display de resultados */
 .results-window {
-  width: 20rem;
-  height: 20rem;
+  width: 17.5rem;
+  height: 17.5rem;
   background: -webkit-gradient(linear, left top, left bottom, from(#66ff48), to(#b4f894));
   background: linear-gradient(#66ff48, #b4f894);
-  border: 30px solid #e60721;
-  border-bottom: none;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 5px 5px 0 0;
   -webkit-box-shadow: -2px 2px 0 inset #242424;
           box-shadow: -2px 2px 0 inset #242424;
   /* Animação de transição */
@@ -154,7 +154,7 @@ td {
           align-items: center;
   position: static;
   width: 20rem;
-  height: 13rem;
+  height: 12rem;
   background: #e60721;
 }
 
@@ -170,7 +170,7 @@ td {
       justify-content: space-around;
 }
 
-.nav-button {
+.navigation input {
   font-family: arial;
   font-size: x-small;
   text-transform: uppercase;

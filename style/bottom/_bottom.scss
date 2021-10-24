@@ -7,7 +7,7 @@
 
   position: static;
   width: $externalWidth;
-  height: $bottomHeight;
+  height: $externalHeight - $topHeight;
 
   background: $caseColor;
 }
