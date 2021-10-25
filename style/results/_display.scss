@@ -1,12 +1,12 @@
 /* Display de resultados */
-.results-window {
+.top {
   width: $externalWidth - 2.5rem;
   height: $topHeight - 2.5rem;
 
   background: linear-gradient($displayDarkColor, $displayColor);
   box-shadow: -2px 2px 0 inset $shadow;
 
-  &-data {
+  &__data {
     color: $displayFontColor;
 
     display: flex;

@@ -74,7 +74,7 @@ p {
 }
 
 /* Display de resultados */
-.results-window {
+.top {
   width: 17.5rem;
   height: 17.5rem;
   background: -webkit-gradient(linear, left top, left bottom, from(#66ff48), to(#b4f894));
@@ -84,7 +84,7 @@ p {
   /* Animação de transição */
 }
 
-.results-window-data {
+.top__data {
   color: #246d03;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -103,7 +103,7 @@ p {
   /* Classe adicional que executa a animação */
 }
 
-.results-window-data.emtransicao {
+.top__data.emtransicao {
   -webkit-animation: fadein 1s;
           animation: fadein 1s;
 }
