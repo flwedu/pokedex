@@ -162,7 +162,7 @@ td {
 .navigation {
   margin: 0.5rem;
   height: 2rem;
-  width: 15rem;
+  width: 17rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -186,6 +186,10 @@ td {
   height: 100%;
   background: #ffe800;
   border: none;
+}
+
+.navigation:first-child {
+  margin-top: 2rem;
 }
 
 /* Search bar & tools */

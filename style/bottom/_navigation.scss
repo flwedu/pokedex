@@ -2,10 +2,14 @@
 .navigation {
   margin: 0.5rem;
   height: 2rem;
-  width: 15rem;
+  width: 17rem;
   display: flex;
   justify-content: space-around;
   input {
     @include button;
+  }
+
+  &:first-child {
+    margin-top: 2rem;
   }
 }
