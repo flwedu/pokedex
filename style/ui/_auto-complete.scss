@@ -1,13 +1,14 @@
 .auto-complete {
-  width: 100%;
+  width: 10rem;
+  height: fit-content;
   border: none;
   background: $displayColor;
 
-  * {
-    margin: 0 0.4rem;
+  p {
+    margin: 0.3rem;
     color: $displayFontColor;
     text-align: center;
-    border: none;
+    border-bottom: dotted 1px $displayFontColor;
     cursor: pointer;
 
     &:hover {
