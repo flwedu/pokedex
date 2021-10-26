@@ -28,6 +28,7 @@ export default class AutoCompleteDrawer {
       });
 
       this._elemento.appendChild(elementoDaListaNaTela);
+      this._elemento.classList.remove("invisible");
     });
   }
 
@@ -35,6 +36,7 @@ export default class AutoCompleteDrawer {
    * Esse método limpa a lista.
    */
   closeList() {
+    this._elemento.classList.add("invisible");
     this._elemento.innerHTML = "";
   }
 }
