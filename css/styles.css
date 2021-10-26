@@ -18,21 +18,28 @@ p {
   text-justify: auto;
 }
 
+.invisible {
+  display: none;
+}
+
 .auto-complete {
-  width: 100%;
+  width: 10rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   border: none;
   background: #b4f894;
 }
 
-.auto-complete * {
-  margin: 0 0.4rem;
+.auto-complete p {
+  margin: 0.3rem;
   color: #246d03;
   text-align: center;
-  border: none;
+  border-bottom: dotted 1px #246d03;
   cursor: pointer;
 }
 
-.auto-complete *:hover {
+.auto-complete p:hover {
   font-weight: bold;
   background: #00ee9f;
 }
