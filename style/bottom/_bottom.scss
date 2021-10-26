@@ -1,11 +1,10 @@
 /* Formulário de busca */
 .bottom {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  display: grid;
+  justify-items: center;
 
-  position: static;
+  grid-template-rows: 5fr 2fr 5fr;
+
   width: $externalWidth;
   height: $externalHeight - $topHeight;
 

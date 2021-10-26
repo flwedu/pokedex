@@ -3,13 +3,30 @@
   margin: 0.5rem;
   height: 2rem;
   width: 17rem;
-  display: flex;
-  justify-content: space-around;
-  input {
-    @include button;
+
+  display: grid;
+  grid-template-areas:
+    "a b"
+    "c d";
+
+  > input:nth-child(1) {
+    grid-area: a;
   }
 
-  &:first-child {
-    margin-top: 2rem;
+  > input:nth-child(2) {
+    grid-area: b;
+  }
+
+  > input:nth-child(3) {
+    grid-area: c;
+  }
+
+  > input:nth-child(4) {
+    grid-area: d;
+  }
+
+  input {
+    margin: 0.5rem auto;
+    @include button;
   }
 }
