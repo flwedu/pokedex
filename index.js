@@ -37,6 +37,11 @@ searchTextField.addEventListener("keydown", (event) => {
 const keyMapper = {
   Enter: () => realizarBusca(),
   Default: () => autoCompleteController.searchAndUpdateView(),
+  Backspace: () => {
+    if (searchTextField.value.length < 2) {
+      autoCompleteController.closeList();
+    }
+  },
 };
 
 buttonPrevious.addEventListener("click", () =>
