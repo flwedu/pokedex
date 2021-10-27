@@ -74,8 +74,8 @@ p {
 }
 
 .bottom {
-  -ms-grid-rows: 5fr 2fr;
-      grid-template-rows: 5fr 2fr;
+  -ms-grid-rows: auto 2fr;
+      grid-template-rows: auto 2fr;
   width: 19rem;
   height: 13rem;
   background: #e60721;
@@ -135,8 +135,6 @@ td {
 
 /* Left and right arrows */
 #navigation {
-  margin: 0.5rem;
-  height: 2rem;
   width: 17rem;
       grid-template-areas: "a b" "c d";
 }

@@ -16,7 +16,7 @@
 }
 
 .bottom {
-  grid-template-rows: 5fr 2fr;
+  grid-template-rows: auto 2fr;
 
   width: $externalWidth - 1rem;
   height: $externalHeight - $topHeight;

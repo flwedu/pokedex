@@ -1,8 +1,6 @@
 /* Left and right arrows */
 #navigation {
-  margin: 0.5rem;
-  height: 2rem;
-  width: 17rem;
+  width: $externalWidth - 3rem;
 
   grid-template-areas:
     "a b"
