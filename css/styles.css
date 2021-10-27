@@ -23,6 +23,10 @@ p {
 }
 
 .auto-complete {
+  position: absolute;
+  top: 26.5rem;
+  -webkit-transform: translateX(-1rem);
+          transform: translateX(-1rem);
   width: 10rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -55,24 +59,12 @@ p {
 }
 
 .main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0px;
   margin: auto;
-  position: relative;
+  display: -ms-grid;
+  display: grid;
+  justify-items: center;
   width: 20rem;
-  height: 32rem;
+  height: 28rem;
   background-color: #e60721;
   border: 0 solid #e60721;
   border-radius: 1rem;
@@ -82,6 +74,7 @@ p {
 
 /* Display de resultados */
 .top {
+  margin-top: 1.5rem;
   width: 17.5rem;
   height: 12.5rem;
   background: -webkit-gradient(linear, left top, left bottom, from(#66ff48), to(#b4f894));
@@ -149,10 +142,10 @@ td {
   display: -ms-grid;
   display: grid;
   justify-items: center;
-  -ms-grid-rows: 5fr 2fr 5fr;
-      grid-template-rows: 5fr 2fr 5fr;
+  -ms-grid-rows: 5fr 2fr;
+      grid-template-rows: 5fr 2fr;
   width: 20rem;
-  height: 17rem;
+  height: 12rem;
   background: #e60721;
 }
 
@@ -166,31 +159,7 @@ td {
       grid-template-areas: "a b" "c d";
 }
 
-.navigation > input:nth-child(1) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: a;
-}
-
-.navigation > input:nth-child(2) {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: b;
-}
-
-.navigation > input:nth-child(3) {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: c;
-}
-
-.navigation > input:nth-child(4) {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
-  grid-area: d;
-}
-
-.navigation input {
+.navigation > input {
   margin: 0.5rem auto;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
