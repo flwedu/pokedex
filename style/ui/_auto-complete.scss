@@ -1,4 +1,8 @@
 .auto-complete {
+  position: absolute;
+  top: $externalHeight - 1.5rem;
+  transform: translateX(-1rem);
+
   width: 10rem;
   height: fit-content;
   border: none;
