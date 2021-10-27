@@ -1,9 +1,6 @@
 /* Search bar & tools */
-.search-tools {
-  width: 14rem;
-  display: grid;
+#search-tools {
   grid-template-columns: 12rem 2rem;
-  align-items: center;
   justify-content: space-between;
 }
 

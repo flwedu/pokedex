@@ -1,5 +1,5 @@
 /* Display de resultados */
-.top {
+.display {
   margin-top: 1.5rem;
 
   width: $externalWidth - 2.5rem;
@@ -10,11 +10,6 @@
 
   &__data {
     color: $displayFontColor;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
     padding: 0.5rem;
 

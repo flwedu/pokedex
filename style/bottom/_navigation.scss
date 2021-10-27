@@ -1,16 +1,15 @@
 /* Left and right arrows */
-.navigation {
+#navigation {
   margin: 0.5rem;
   height: 2rem;
   width: 17rem;
 
-  display: grid;
   grid-template-areas:
     "a b"
     "c d";
 
   > input {
     margin: 0.5rem auto;
-    @include button;
+    @include button(7rem, 2rem);
   }
 }

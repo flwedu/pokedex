@@ -1,9 +1,4 @@
 .main {
-  margin: auto;
-
-  display: grid;
-  justify-items: center;
-
   width: $externalWidth;
   height: $externalHeight;
 
@@ -12,4 +7,19 @@
   border-radius: 1rem;
 
   box-shadow: -0.2rem 0.5rem $shadow;
+}
+
+.container {
+  margin: auto;
+  display: grid;
+  justify-items: center;
+}
+
+.bottom {
+  grid-template-rows: 5fr 2fr;
+
+  width: $externalWidth - 1rem;
+  height: $externalHeight - $topHeight;
+
+  background: $caseColor;
 }

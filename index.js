@@ -11,7 +11,9 @@ const buttonPrevious = document.querySelector("#navigation-previous");
 const buttonNext = document.querySelector("#navigation-next");
 
 // Instanciando objetos que desempenharão funções
-const viewController = new ViewController(document.querySelector(".top__data"));
+const viewController = new ViewController(
+  document.querySelector(".display__data")
+);
 const searchController = new SearchController(viewController);
 const autoCompleteController = new AutoCompleteController(
   document.querySelector(".auto-complete"),

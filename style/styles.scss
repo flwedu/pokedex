@@ -2,5 +2,5 @@
 @import "globals";
 @import "mixins";
 @import "./ui/auto-complete", "./ui/background", "./ui/main";
-@import "./results/display", "./results/stats-table";
-@import "./bottom/bottom", "./bottom/navigation", "./bottom/search";
+@import "./display/display", "./display/stats-table";
+@import "./bottom/navigation", "./bottom/search";
