@@ -54,4 +54,5 @@ buttonNext.addEventListener("click", () => viewController.nextSelectedView());
 // Função que dispara busca
 function realizarBusca() {
   searchController.search(searchTextField);
+  autoCompleteController.closeList();
 }
