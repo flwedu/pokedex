@@ -23,8 +23,9 @@ p {
 }
 
 .auto-complete {
-  position: absolute;
-  top: 26.5rem;
+  position: relative;
+  top: -2rem;
+  left: -1rem;
   width: 10rem;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -166,6 +167,7 @@ td {
 }
 
 #search-text {
+  width: 90%;
   padding: 0.4rem;
   text-align: center;
   -webkit-box-shadow: -1px 1px 0 inset #242424;

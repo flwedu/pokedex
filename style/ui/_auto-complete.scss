@@ -1,6 +1,7 @@
 .auto-complete {
-  position: absolute;
-  top: $externalHeight - 1.5rem;
+  position: relative;
+  top: -2rem;
+  left: -1rem;
 
   width: 10rem;
   height: fit-content;
