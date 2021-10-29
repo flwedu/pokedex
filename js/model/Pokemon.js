@@ -1,4 +1,5 @@
 import formatText from "../util/text.js";
+
 /**
  * Essa classe abstrai os resultados de uma consulta à API.
  *
@@ -27,6 +28,7 @@ export default class Pokemon {
     this.tipo2 = typeName2;
     this.peso = weight;
     this.stats = [...stats].map((atributo) => atributo.base_stat);
-    this.statsLabel = ["HP", "ATK", "DEF", "SP.ATK", "SP.DEF", "SPEED"];
   }
 }
+
+Pokemon.statsLabel = ["HP", "ATK", "DEF", "SP.ATK", "SP.DEF", "SPEED"];

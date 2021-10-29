@@ -22,7 +22,9 @@ export function sucessTextWithPokemonData(pokemon) {
 
   h2.textContent = `Nº:${pokemon.id} / ${pokemon.nomeOcidental}`;
   img.src = pokemon.spriteFrontal;
-  p.textContent = `Type: ${pokemon.tipo1} ${pokemon.tipo2 ? " + " + pokemon.tipo2 : ""}`;
+  p.textContent = `Type: ${pokemon.tipo1} ${
+    pokemon.tipo2 ? " + " + pokemon.tipo2 : ""
+  }`;
   pw.textContent = `Weight: ${pokemon.peso} (in hectograms)`;
 
   parentElement.append(h2, img, p, pw);
@@ -44,7 +46,7 @@ export function sucessTextWithPokemonStats(pokemon) {
 
   table.innerHTML = `
   <thead>
-    ${pokemon.statsLabel.map((stats) => `<td>${stats}</td>`).join("")}
+    ${Pokemon.statsLabel.map((stats) => `<td>${stats}</td>`).join("")}
   </thead>
   <tbody>
     ${pokemon.stats.map((valor) => `<td>${valor}</td>`).join("")}
