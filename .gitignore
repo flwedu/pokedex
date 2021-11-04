@@ -2,8 +2,6 @@
 /node_modules
 
 # Arquivos de configuração
-package-lock.json
-package.json
 .eslintrc.json
 .vscode/settings.json
 .idea/modules.xml
