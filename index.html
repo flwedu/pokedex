@@ -16,8 +16,6 @@
   </head>
 
   <body>
-    <img class="background-img"></img>
-
     <section class="container main">
       <section class="container display">
         <div class="container display__data">
@@ -27,44 +25,28 @@
 
       <section class="container bottom">
         <div class="container" id="navigation">
-          <input
-            type="button"
-            id="navigation-previous"
-            value="Prev. Page"
-          />
-          <input
-            type="button"
-            id="navigation-next"
-            value="Next Page"
-          />
-          <input
-            type="button"
-            value="Prev. Pokemon"
-            id="pokemon-previous"
-          />
-          <input
-            type="button"
-            value="Next Pokemon"
-            id="pokemon-next"
-          />
+          <input type="button" id="navigation-previous" value="Prev. Page" />
+          <input type="button" id="navigation-next" value="Next Page" />
+          <input type="button" value="Prev. Pokemon" id="pokemon-previous" />
+          <input type="button" value="Next Pokemon" id="pokemon-next" />
         </div>
-          <div class="container" id="search-tools">
-            <input
-              id="search-text"
-              name="search-text"
-              placeholder="Pokémon name or number"
-              type="search"
-            />
-            <input
+        <div class="container" id="search-tools">
+          <input
+            id="search-text"
+            name="search-text"
+            placeholder="Pokémon name or number"
+            type="search"
+          />
+          <input
             type="image"
             class="button"
             src="./assets/pokeball.svg"
             id="botao-busca"
             alt="pokéball"
-            />
-          </div>
-        </section>
-        <div class="auto-complete invisible"></div>
+          />
+        </div>
+      </section>
+      <div class="auto-complete invisible"></div>
     </section>
 
     <script type="module" src="index.js"></script>
