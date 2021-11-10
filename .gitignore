@@ -1,5 +1,5 @@
-# Pasta do node
 /node_modules
+/dist
 
 # Arquivos de configuração
 .eslintrc.json
@@ -9,8 +9,4 @@
 .idea/vcs.xml
 .idea/inspectionProfiles/Project_Default.xml
 
-# Arquivos Jest
 /coverage
-
-#arquivos pré bundle
-/dist
