@@ -8,18 +8,21 @@
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
+    "copy-webpack-plugin": "^9.0.1",
     "eslint": "^7.30.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^27.2.3",
     "typescript": "^4.4.4",
     "webpack": "^5.63.0",
     "webpack-cli": "^4.9.1"
   },
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "build-dev": "webpack --mode development --config webpack.config.js"
   },
   "repository": "git+https://github.com/flwedu/pokedex.git",
   "author": "Eduardo <edutraquino@gmail.com>",
@@ -27,6 +30,5 @@
   "bugs": {
     "url": "https://github.com/flwedu/pokedex/issues"
   },
-  "homepage": "https://github.com/flwedu/pokedex#readme",
-  "type": "module"
+  "homepage": "https://github.com/flwedu/pokedex#readme"
 }
