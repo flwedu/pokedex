@@ -1,4 +1,3 @@
-import { statsLabel } from "../model/Pokemon";
 import formatText from "./text";
 const errorImageSrc = "../../assets/error.svg";
 const errorMessages = new Map();
@@ -31,18 +30,14 @@ export function sucessTextWithPokemonData(pokemon) {
 export function sucessTextWithPokemonStats(pokemon) {
     const parentElement = document.createElement("div");
     const p = document.createElement("p");
-    const table = document.createElement("table");
+    const ul = document.createElement("ul");
     p.textContent = "Initial Stats of Pokémon";
-    table.className = "stats-table";
-    table.innerHTML = `
-  <thead>
-    ${statsLabel.map((stats) => `<td>${stats}</td>`).join("")}
-  </thead>
-  <tbody>
-    ${pokemon.stats.map(stat => `<td>${stat.base_stat}<td>`)}
-  </tbody>
+    ul.innerHTML = `
+  ${pokemon.stats.map(stat => `
+  <li>${stat.stat.name}: ${stat.base_stat}<li>
+  `).join("")}
   `;
-    parentElement.append(p, table);
+    parentElement.append(p, ul);
     return parentElement.innerHTML;
 }
 /**
