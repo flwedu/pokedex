@@ -1,84 +1,72 @@
-import Pokemon from "../model/Pokemon.js";
-import View from "../view/View.js";
-import {
-  errorMessageWithResponseCode,
-  sucessTextWithPokemonData,
-  sucessTextWithPokemonStats,
-} from "../util/ResponseDisplayMessages.js";
-export default class ViewController {
-  /**
-   * Inicializa um ViewController.
-   * @param {HTMLElement} resultsHtmlElement: elemento Html que renderizará os resultados.
-   */
-  constructor(resultsHtmlElement) {
-    this._errorView = new View(
-      resultsHtmlElement,
-      errorMessageWithResponseCode
-    );
-
-    // Descreve quais as views disponíveis para exibição
-    this._selectedView = 0;
-    this._avaliableViews = [
-      new View(resultsHtmlElement, sucessTextWithPokemonData),
-      new View(resultsHtmlElement, sucessTextWithPokemonStats),
-    ];
-
-    this._pokemonExibido = null;
-  }
-
-  /**
-   * Stores the pokemon data
-   * @param {Pokemon} pokemon
-   */
-  setPokemonExibido(pokemon) {
-    this._pokemonExibido = pokemon;
-  }
-
-  /**
-   * Updates the selected view with pokemon data
-   */
-  updateSelectedView() {
-    this.getSelectedView().update(this._pokemonExibido);
-  }
-
-  /**
-   * Renderiza alguma mensagem de erro na tela de resultados.
-   * @param {Response} responseError
-   */
-  renderErrorView(responseError) {
-    this._errorView.update(responseError);
-  }
-
-  /**
-   * Muda a view selecionada para o id selecionado
-   * @param {int} id
-   */
-  setSelectedView(id = 0) {
-    if (id < this._avaliableViews.length - 1) this._selectedView = id;
-    this.updateSelectedView();
-  }
-
-  /**
-   * Seleciona a próxima view disponível
-   */
-  nextSelectedView() {
-    if (this._selectedView < this._avaliableViews.length - 1)
-      this._selectedView++;
-    this.updateSelectedView();
-  }
-
-  /**
-   * Seleciona a view desponível anterior
-   */
-  previousSelectedView() {
-    if (this._selectedView > 0) this._selectedView--;
-    this.updateSelectedView();
-  }
-
-  /**
-   * Recupera o id da view que está selecionada
-   */
-  getSelectedView() {
-    return this._avaliableViews[this._selectedView];
-  }
-}
+import View from "../view/View";
+import { errorMessageWithResponseCode, sucessTextWithPokemonData, sucessTextWithPokemonStats, } from "../util/ResponseDisplayMessages.js";
+var ViewController = /** @class */ (function () {
+    /**
+     * Inicializa um ViewController.
+     * @param {HTMLElement} resultsHtmlElement: elemento Html que renderizará os resultados.
+     */
+    function ViewController(resultsHtmlElement) {
+        this._errorView = new View(resultsHtmlElement, errorMessageWithResponseCode);
+        // Descreve quais as views disponíveis para exibição
+        this._selectedView = 0;
+        this._avaliableViews = [
+            new View(resultsHtmlElement, sucessTextWithPokemonData),
+            new View(resultsHtmlElement, sucessTextWithPokemonStats),
+        ];
+    }
+    /**
+     * Stores the pokemon data
+     * @param {IPokemon} pokemon
+     */
+    ViewController.prototype.setPokemonExibido = function (pokemon) {
+        this._pokemonExibido = pokemon;
+    };
+    /**
+     * Updates the selected view with pokemon data
+     */
+    ViewController.prototype.updateSelectedView = function () {
+        if (this._pokemonExibido)
+            this.getSelectedView().update(this._pokemonExibido);
+    };
+    /**
+     * Renderiza alguma mensagem de erro na tela de resultados.
+     * @param {Response} responseError
+     */
+    ViewController.prototype.renderErrorView = function (responseError) {
+        this._errorView.update(responseError);
+    };
+    /**
+     * Muda a view selecionada para o id selecionado
+     * @param {int} id
+     */
+    ViewController.prototype.setSelectedView = function (id) {
+        if (id === void 0) { id = 0; }
+        if (id < this._avaliableViews.length - 1)
+            this._selectedView = id;
+        this.updateSelectedView();
+    };
+    /**
+     * Seleciona a próxima view disponível
+     */
+    ViewController.prototype.nextSelectedView = function () {
+        if (this._selectedView < this._avaliableViews.length - 1)
+            this._selectedView++;
+        this.updateSelectedView();
+    };
+    /**
+     * Seleciona a view desponível anterior
+     */
+    ViewController.prototype.previousSelectedView = function () {
+        if (this._selectedView > 0)
+            this._selectedView--;
+        this.updateSelectedView();
+    };
+    /**
+     * Recupera o id da view que está selecionada
+     */
+    ViewController.prototype.getSelectedView = function () {
+        return this._avaliableViews[this._selectedView];
+    };
+    return ViewController;
+}());
+export default ViewController;
