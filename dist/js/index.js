@@ -32,8 +32,8 @@ searchTextField.addEventListener("keydown", (event) => {
 });
 // Mapeamento de todas as keys e ações disparadas
 const keyMapper = new Map();
-keyMapper.set("Default", () => autoCompleteController.searchAndUpdateView());
 keyMapper.set("Enter", () => realizarBusca());
+keyMapper.set("Default", () => autoCompleteController.searchAndUpdateView());
 keyMapper.set("Backspace", () => {
   //@ts-ignore
   if (searchTextField.value.length < 2) {
