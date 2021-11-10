@@ -11,3 +11,6 @@
 
 # Arquivos Jest
 /coverage
+
+#arquivos pré bundle
+/dist
