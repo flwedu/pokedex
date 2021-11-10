@@ -1,0 +1,1 @@
+export const searchTextField = document.getElementById("search-text");
