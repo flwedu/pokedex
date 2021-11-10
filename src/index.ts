@@ -23,16 +23,16 @@ const autoCompleteController = new AutoCompleteController(
 // Monitorando o clique
 searchButton.addEventListener("click", realizarBusca, false);
 document
-    .querySelector("#pokemon-next")
+    .getElementById("pokemon-next")
     .addEventListener("click", searchController.searchNext(), false);
 document
-    .querySelector("#pokemon-previous")
+    .getElementById("pokemon-previous")
     .addEventListener("click", searchController.searchPrevious(), false);
 
 // Monitorando teclas digitadas no campo de texto
 searchTextField.addEventListener("keydown", (event) => {
-    if (keyMapper.has(event.key)) keyMapper.get(event.key);
-    else keyMapper.get("Default");
+    if (keyMapper.has(event.key.toString())) keyMapper.get(event.key.toString())();
+    else keyMapper.get("Default")();
 });
 
 // Mapeamento de todas as keys e ações disparadas
