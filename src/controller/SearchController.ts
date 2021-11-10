@@ -49,7 +49,7 @@ export default class SearchController {
   searchNext() {
     return () => {
       if (this.lastSearchedPokemon)
-        this.doTheApiSearchAndUpdateControllers(this.lastSearchedPokemon.id.toString());
+        this.doTheApiSearchAndUpdateControllers((this.lastSearchedPokemon.id + 1).toString());
     }
   }
 
