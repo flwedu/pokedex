@@ -1,10 +1,10 @@
-var AutoCompleteDrawer = /** @class */ (function () {
+export default class AutoCompleteDrawer {
     /**
      *
      * @param {HTMLElement} elemento
      * @param {HTMLInputElement} referenciaParaCampoBusca
      */
-    function AutoCompleteDrawer(elemento, referenciaParaCampoBusca) {
+    constructor(elemento, referenciaParaCampoBusca) {
         this._elemento = elemento;
         this._referenciaParaCampoBusca = referenciaParaCampoBusca;
     }
@@ -14,27 +14,24 @@ var AutoCompleteDrawer = /** @class */ (function () {
      * @param {Array} listaResultados
      * @memberof AutoCompleteDrawer
      */
-    AutoCompleteDrawer.prototype.update = function (listaResultados) {
-        var _this = this;
+    update(listaResultados) {
         this._elemento.innerHTML = "";
-        listaResultados.forEach(function (item) {
-            var elementoDaListaNaTela = document.createElement("div");
-            elementoDaListaNaTela.innerHTML = "<p>" + item + "</p>";
-            elementoDaListaNaTela.addEventListener("click", function () {
-                _this._referenciaParaCampoBusca.value = item;
-                _this.closeList();
+        listaResultados.forEach((item) => {
+            let elementoDaListaNaTela = document.createElement("div");
+            elementoDaListaNaTela.innerHTML = `<p>${item}</p>`;
+            elementoDaListaNaTela.addEventListener("click", () => {
+                this._referenciaParaCampoBusca.value = item;
+                this.closeList();
             });
-            _this._elemento.appendChild(elementoDaListaNaTela);
-            _this._elemento.classList.remove("invisible");
+            this._elemento.appendChild(elementoDaListaNaTela);
+            this._elemento.classList.remove("invisible");
         });
-    };
+    }
     /**
      * Esse método limpa a lista.
      */
-    AutoCompleteDrawer.prototype.closeList = function () {
+    closeList() {
         this._elemento.classList.add("invisible");
         this._elemento.innerHTML = "";
-    };
-    return AutoCompleteDrawer;
-}());
-export default AutoCompleteDrawer;
+    }
+}

@@ -1,12 +1,12 @@
-var URL = "https://pokeapi.co/api/v2/pokemon/";
+const URL = "https://pokeapi.co/api/v2/pokemon/";
 /**
  * Executes a call to the API with params
  * @param {string} params
  */
 export function searchInAPI(params) {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         fetch(URL + params)
-            .then(function (response) {
+            .then((response) => {
             if (response.ok) {
                 response.json().then(resolve);
             }
