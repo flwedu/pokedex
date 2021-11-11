@@ -47,16 +47,6 @@ p {
   background: #00ee9f;
 }
 
-.background-img {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  max-width: 100%;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#bdbdbd), to(#ffe800));
-  background-image: linear-gradient(#bdbdbd, #ffe800);
-}
-
 .main {
   width: 20rem;
   height: 28rem;
@@ -137,7 +127,7 @@ td {
 /* Left and right arrows */
 #navigation {
   width: 17rem;
-      grid-template-areas: "a b" "c d";
+      grid-template-areas: "a b" "c d";
 }
 
 #navigation > input {
