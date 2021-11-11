@@ -1,8 +1,8 @@
-import { EventEmitter } from "../core/EventEmitter";
-import { searchTextField } from "./DomElements";
 
-const buttonPrevious = document.getElementById("navigation-previous") as HTMLButtonElement;
-const buttonNext = document.getElementById("navigation-next") as HTMLButtonElement;
-const buttonSearch = document.getElementById("botao-busca") as HTMLButtonElement;
+const button__previous_view = document.getElementById("navigation-previous") as HTMLButtonElement;
+const button__next_view = document.getElementById("navigation-next") as HTMLButtonElement;
+const button__search = document.getElementById("botao-busca") as HTMLButtonElement;
+const button__previous_pokemon = document.getElementById("pokemon-previous") as HTMLInputElement;
+const button__next_pokemon = document.getElementById("pokemon-next") as HTMLInputElement;
 
-export { buttonNext, buttonPrevious, buttonSearch }
+export { button__next_view, button__previous_view, button__search, button__next_pokemon, button__previous_pokemon };

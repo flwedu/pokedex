@@ -1,7 +1,7 @@
 import { EventEmitter } from "./core/EventEmitter";
 import { IPokemon } from "./model/Pokemon";
 import { searchInAPI } from "./service/SearchService";
-import { buttonNext, buttonPrevious, buttonSearch } from "./ui/Buttons";
+import { button__next_view, button__previous_view, button__search } from "./ui/Buttons";
 import { searchTextField } from "./ui/DomElements";
 import { renderPokemonData, renderPokemonStats, renderWithError } from "./view/updateViewFunctions";
 
@@ -37,15 +37,15 @@ function saveSearch(pokemon: IPokemon) {
 }
 
 // Buttons actions
-buttonSearch.addEventListener("click", () => {
+button__search.addEventListener("click", () => {
     EventEmitter.emit("search", searchTextField.value);
 })
 
-buttonNext.addEventListener("click", () => {
+button__next_view.addEventListener("click", () => {
     renderNextView(lastSearchedPokemon);
 })
 
-buttonPrevious.addEventListener("click", () => {
+button__previous_view.addEventListener("click", () => {
     renderpreviousView(lastSearchedPokemon);
 })
 
