@@ -1,5 +1,5 @@
 /node_modules
-/dist
+dist/js
 
 # Arquivos de configuração
 .eslintrc.json
