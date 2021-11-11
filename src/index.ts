@@ -1,58 +1,64 @@
-import AutoCompleteController from "./controller/AutoCompleteController";
-import SearchController from "./controller/SearchController";
-import ViewController from "./controller/ViewController";
+import { EventEmitter } from "./core/EventEmitter";
+import { IPokemon } from "./model/Pokemon";
+import { searchInAPI } from "./service/SearchService";
+import { button__next_pokemon, button__next_view, button__previous_pokemon, button__previous_view, button__search } from "./ui/Buttons";
+import { searchTextField } from "./ui/DomElements";
+import { renderPokemonData, renderPokemonStats, renderWithError } from "./view/updateViewFunctions";
 
-// Set elementos html
-const searchTextField = document.getElementById("search-text");
-const searchButton = document.getElementById("botao-busca");
+let lastSearchedPokemon: IPokemon | undefined;
 
-// Navigator
-const buttonPrevious = document.getElementById("navigation-previous");
-const buttonNext = document.getElementById("navigation-next");
+// Declaring avaliables view
+const avaliableViews = [renderPokemonData, renderPokemonStats];
+let actualView = 0;
 
-// Instanciando objetos que desempenharão funções
-const viewController = new ViewController(
-    document.querySelector(".display__data")
-);
-const searchController = new SearchController(viewController);
-const autoCompleteController = new AutoCompleteController(
-    document.querySelector(".auto-complete"),
-    searchTextField
-);
+// Functions to execute render the results
+function renderView(pokemon: IPokemon) {
+    avaliableViews[actualView](pokemon);
+}
 
-// Monitorando o clique
-searchButton.addEventListener("click", realizarBusca, false);
-document
-    .getElementById("pokemon-next")
-    .addEventListener("click", searchController.searchNext(), false);
-document
-    .getElementById("pokemon-previous")
-    .addEventListener("click", searchController.searchPrevious(), false);
-
-// Monitorando teclas digitadas no campo de texto
-searchTextField.addEventListener("keydown", (event) => {
-    if (keyMapper.has(event.key.toString())) keyMapper.get(event.key.toString())();
-    else keyMapper.get("Default")();
-});
-
-// Mapeamento de todas as keys e ações disparadas
-const keyMapper = new Map();
-keyMapper.set("Enter", () => realizarBusca());
-keyMapper.set("Default", () => autoCompleteController.searchAndUpdateView());
-keyMapper.set("Backspace", () => {
-    //@ts-ignore
-    if (searchTextField.value.length < 2) {
-        autoCompleteController.closeList();
+function renderNextView(pokemon: IPokemon) {
+    if (actualView < avaliableViews.length) {
+        actualView++;
+        avaliableViews[actualView](pokemon);
     }
+}
+
+function renderpreviousView(pokemon: IPokemon) {
+    if (actualView > 0) {
+        actualView--;
+        avaliableViews[actualView](pokemon);
+    }
+}
+
+//Function to save the last search
+function saveSearch(pokemon: IPokemon) {
+    lastSearchedPokemon = pokemon;
+    return pokemon;
+}
+
+// Buttons actions
+button__search.addEventListener("click", () => {
+    EventEmitter.emit("search", searchTextField.value);
 })
 
-buttonPrevious.addEventListener("click", () =>
-    viewController.previousSelectedView()
-);
-buttonNext.addEventListener("click", () => viewController.nextSelectedView());
+button__next_view.addEventListener("click", () => {
+    renderNextView(lastSearchedPokemon);
+})
 
-// Função que dispara busca
-function realizarBusca() {
-    searchController.search(searchTextField);
-    autoCompleteController.closeList();
-}
+button__previous_view.addEventListener("click", () => {
+    renderpreviousView(lastSearchedPokemon);
+})
+
+button__next_pokemon.addEventListener("click", () => {
+    EventEmitter.emit("search", lastSearchedPokemon.id + 1);
+})
+
+button__previous_pokemon.addEventListener("click", () => {
+    EventEmitter.emit("search", lastSearchedPokemon.id - 1);
+})
+
+// Listning to events
+EventEmitter.on("search", (searchParam: string) => {
+    searchInAPI(searchParam).then(saveSearch).then(renderView).catch(renderWithError);
+})
+
