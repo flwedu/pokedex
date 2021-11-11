@@ -1,7 +1,7 @@
 import { EventEmitter } from "./core/EventEmitter";
 import { IPokemon } from "./model/Pokemon";
 import { searchInAPI } from "./service/SearchService";
-import { button__next_view, button__previous_view, button__search } from "./ui/Buttons";
+import { button__next_pokemon, button__next_view, button__previous_pokemon, button__previous_view, button__search } from "./ui/Buttons";
 import { searchTextField } from "./ui/DomElements";
 import { renderPokemonData, renderPokemonStats, renderWithError } from "./view/updateViewFunctions";
 
@@ -47,6 +47,14 @@ button__next_view.addEventListener("click", () => {
 
 button__previous_view.addEventListener("click", () => {
     renderpreviousView(lastSearchedPokemon);
+})
+
+button__next_pokemon.addEventListener("click", () => {
+    EventEmitter.emit("search", lastSearchedPokemon.id + 1);
+})
+
+button__previous_pokemon.addEventListener("click", () => {
+    EventEmitter.emit("search", lastSearchedPokemon.id - 1);
 })
 
 // Listning to events
