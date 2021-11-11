@@ -1,45 +1,44 @@
-import AutoCompleteController from "./controller/AutoCompleteController";
-import SearchController from "./controller/SearchController";
-import ViewController from "./controller/ViewController";
-// Set elementos html
-const searchTextField = document.getElementById("search-text");
-const searchButton = document.getElementById("botao-busca");
-// Navigator
-const buttonPrevious = document.getElementById("navigation-previous");
-const buttonNext = document.getElementById("navigation-next");
-// Instanciando objetos que desempenharão funções
-const viewController = new ViewController(document.querySelector(".display__data"));
-const searchController = new SearchController(viewController);
-const autoCompleteController = new AutoCompleteController(document.querySelector(".auto-complete"), searchTextField);
-// Monitorando o clique
-searchButton.addEventListener("click", realizarBusca, false);
-document
-    .getElementById("pokemon-next")
-    .addEventListener("click", searchController.searchNext(), false);
-document
-    .getElementById("pokemon-previous")
-    .addEventListener("click", searchController.searchPrevious(), false);
-// Monitorando teclas digitadas no campo de texto
-searchTextField.addEventListener("keydown", (event) => {
-    if (keyMapper.has(event.key.toString()))
-        keyMapper.get(event.key.toString())();
-    else
-        keyMapper.get("Default")();
-});
-// Mapeamento de todas as keys e ações disparadas
-const keyMapper = new Map();
-keyMapper.set("Enter", () => realizarBusca());
-keyMapper.set("Default", () => autoCompleteController.searchAndUpdateView());
-keyMapper.set("Backspace", () => {
-    //@ts-ignore
-    if (searchTextField.value.length < 2) {
-        autoCompleteController.closeList();
-    }
-});
-buttonPrevious.addEventListener("click", () => viewController.previousSelectedView());
-buttonNext.addEventListener("click", () => viewController.nextSelectedView());
-// Função que dispara busca
-function realizarBusca() {
-    searchController.search(searchTextField);
-    autoCompleteController.closeList();
+import { EventEmitter } from "./core/EventEmitter";
+import { searchInAPI } from "./service/SearchService";
+import { buttonNext, buttonPrevious, buttonSearch } from "./ui/Buttons";
+import { searchTextField } from "./ui/DomElements";
+import { renderPokemonData, renderPokemonStats, renderWithError } from "./view/updateViewFunctions";
+let lastSearchedPokemon;
+// Declaring avaliables view
+const avaliableViews = [renderPokemonData, renderPokemonStats];
+let actualView = 0;
+// Functions to execute render the results
+function renderView(pokemon) {
+    avaliableViews[actualView](pokemon);
 }
+function renderNextView(pokemon) {
+    if (actualView < avaliableViews.length) {
+        actualView++;
+        avaliableViews[actualView](pokemon);
+    }
+}
+function renderpreviousView(pokemon) {
+    if (actualView > 0) {
+        actualView--;
+        avaliableViews[actualView](pokemon);
+    }
+}
+//Function to save the last search
+function saveSearch(pokemon) {
+    lastSearchedPokemon = pokemon;
+    return pokemon;
+}
+// Buttons actions
+buttonSearch.addEventListener("click", () => {
+    EventEmitter.emit("search", searchTextField.value);
+});
+buttonNext.addEventListener("click", () => {
+    renderNextView(lastSearchedPokemon);
+});
+buttonPrevious.addEventListener("click", () => {
+    renderpreviousView(lastSearchedPokemon);
+});
+// Listning to events
+EventEmitter.on("search", (searchParam) => {
+    searchInAPI(searchParam).then(saveSearch).then(renderView).catch(renderWithError);
+});
