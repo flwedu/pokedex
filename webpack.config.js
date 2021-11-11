@@ -9,6 +9,18 @@ module.exports = {
     path: path.resolve(__dirname, "build/app"),
     clean: true,
   },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".ts", ".js"],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
