@@ -1,10 +1,12 @@
 export default class AutoCompleteDrawer {
+  private _elemento;
+  private _referenciaParaCampoBusca;
   /**
    *
    * @param {HTMLElement} elemento
    * @param {HTMLInputElement} referenciaParaCampoBusca
    */
-  constructor(elemento, referenciaParaCampoBusca) {
+  constructor(elemento: any, referenciaParaCampoBusca: any) {
     this._elemento = elemento;
     this._referenciaParaCampoBusca = referenciaParaCampoBusca;
   }
@@ -15,7 +17,7 @@ export default class AutoCompleteDrawer {
    * @param {Array} listaResultados
    * @memberof AutoCompleteDrawer
    */
-  update(listaResultados) {
+  update(listaResultados: any[]) {
     this._elemento.innerHTML = "";
 
     listaResultados.forEach((item) => {

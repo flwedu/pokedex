@@ -2,27 +2,28 @@
  * This class loads data from a file and provides an array with the pokemon names
  */
 export default class AutoCompleteService {
+  private _arrayDeDados: any;
   /**
    * @param {string} dataPath URL path to Pokémon names Json resource
    */
-  constructor(dataPath) {
-    this.loadDataFromFile(dataPath).then(
-      (result) => (this._arrayDeDados = result)
-    );
+  constructor(dataPath: string) {
+    this.loadDataFromFile(dataPath)
+      .then(this.extractPropertiesToArray)
+      .then((result) => (this._arrayDeDados = result)
+      ).catch(() => this._arrayDeDados = []);
   }
 
   /**
    * Loads the data of an local JSON file.
    * @param {string | URL} dataPath URL of the file
-   * @returns {JSON} an JSON object.
    */
-  async loadDataFromFile(dataPath) {
+  async loadDataFromFile(dataPath: string) {
     try {
       const results = await fetch(dataPath);
       if (results.ok) {
-        return this.extractPropertiesToArray(await results.json());
+        return await results.json();
       } else {
-        throw new Error(results);
+        throw new Error(await results.text());
       }
     } catch (err) {
       console.error("Error getting pokémon lists to AutoCompleteService");
@@ -35,7 +36,7 @@ export default class AutoCompleteService {
    * @param {JSON} rawData data in JSON format.
    * @returns {string[]} a string array containing the extracted values.
    */
-  extractPropertiesToArray(rawData) {
+  private extractPropertiesToArray(rawData: JSON): string[] {
     // Transferindo os valores do objeto para o array
     // Dos valores já são retirados os nomes e convertidos para lowercase
     return Object.values(rawData).map((element) => element.name.toLowerCase());
@@ -46,8 +47,8 @@ export default class AutoCompleteService {
    * @param {string} name the value to be searched in the array
    * @returns {string[]} a string array
    */
-  listarPorAproximacao(name) {
+  public listarPorAproximacao(name: string): string[] {
     // Retornando os 5 primeiros elementos do array de dados que satisfaçam a query
-    return this._arrayDeDados.filter((item) => item.includes(name)).slice(0, 5);
+    return this._arrayDeDados.filter((item: string) => item.includes(name)).slice(0, 5);
   }
 }

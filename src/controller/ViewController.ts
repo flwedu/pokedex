@@ -1,16 +1,20 @@
-import Pokemon from "../model/Pokemon.js";
-import View from "../view/View.js";
+import View from "../view/View";
 import {
   errorMessageWithResponseCode,
   sucessTextWithPokemonData,
   sucessTextWithPokemonStats,
 } from "../util/ResponseDisplayMessages.js";
+import { IPokemon } from "../model/Pokemon.js";
 export default class ViewController {
+  _errorView: View;
+  _selectedView: number;
+  _avaliableViews: View[];
+  _pokemonExibido: IPokemon | undefined;
   /**
    * Inicializa um ViewController.
    * @param {HTMLElement} resultsHtmlElement: elemento Html que renderizará os resultados.
    */
-  constructor(resultsHtmlElement) {
+  constructor(resultsHtmlElement: HTMLElement) {
     this._errorView = new View(
       resultsHtmlElement,
       errorMessageWithResponseCode
@@ -22,15 +26,13 @@ export default class ViewController {
       new View(resultsHtmlElement, sucessTextWithPokemonData),
       new View(resultsHtmlElement, sucessTextWithPokemonStats),
     ];
-
-    this._pokemonExibido = null;
   }
 
   /**
    * Stores the pokemon data
-   * @param {Pokemon} pokemon
+   * @param {IPokemon} pokemon
    */
-  setPokemonExibido(pokemon) {
+  setPokemonExibido(pokemon: IPokemon) {
     this._pokemonExibido = pokemon;
   }
 
@@ -38,14 +40,15 @@ export default class ViewController {
    * Updates the selected view with pokemon data
    */
   updateSelectedView() {
-    this.getSelectedView().update(this._pokemonExibido);
+    if (this._pokemonExibido)
+      this.getSelectedView().update(this._pokemonExibido);
   }
 
   /**
    * Renderiza alguma mensagem de erro na tela de resultados.
    * @param {Response} responseError
    */
-  renderErrorView(responseError) {
+  renderErrorView(responseError: Response) {
     this._errorView.update(responseError);
   }
 

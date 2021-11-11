@@ -1,27 +1,34 @@
-import Pokemon from "../model/Pokemon.js";
+import { IPokemon } from "../model/Pokemon";
+
 /**
  * Classe que representa objetos que retornam HTML que serão renderizados no DOM
  *
  * @class View
  */
 export default class View {
+  private _resultsHtmlElement: HTMLElement;
+  private _responseDisplayMessageFunction: Function /**
+ * Classe que representa objetos que retornam HTML que serão renderizados no DOM
+ *
+ * @class View
+ */;
   /**
    * Creates an instance of View.
    * @param {HTMLElement} resultsHtmlElement HTMLElement que renderizará o texto
    * @param {Function} responseDisplayMessageFunction função que formatará os dados e retornará uma string a ser exibida no InnerHTMl do HTMLElement.
    * @memberof View
    */
-  constructor(resultsHtmlElement, responseDisplayMessageFunction) {
+  constructor(resultsHtmlElement: HTMLElement, responseDisplayMessageFunction: Function) {
     this._resultsHtmlElement = resultsHtmlElement;
     this._responseDisplayMessageFunction = responseDisplayMessageFunction;
   }
 
   /**
    * Recebe um objeto com os dados, cria um template e passa para o elemento HTML (escolhido no construtor) que irá renderiza-lo.
-   * @param {Pokemon | Response} data Objeto que encapsula todos os dados para exibição.
+   * @param {IPokemon | Response} data Objeto que encapsula todos os dados para exibição.
    * @memberof View
    */
-  update(data) {
+  update(data: IPokemon | Response) {
     this._resultsHtmlElement.innerHTML = this.template(data);
 
     // Adiciona uma classe que fará com que uma animação de fadein seja executada
@@ -34,11 +41,11 @@ export default class View {
 
   /**
    * Método que gera um template que será renderizado pelo elemento HTML escolhido no construtor.
-   * @param {Pokemon | Response} data Objeto que encapsula todos os dados para exibição.
+   * @param {IPokemon | Response} data Objeto que encapsula todos os dados para exibição.
    * @return {InnerHTML} texto HTML pronto para ser renderizado pelo HTMLElement.
    * @memberof View
    */
-  template(data) {
+  template(data: IPokemon | Response) {
     return this._responseDisplayMessageFunction(data);
   }
 }

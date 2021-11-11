@@ -1,5 +1,5 @@
-import AutoCompleteService from "../service/AutoCompleteService.js";
-import AutoCompleteDrawer from "../view/AutoCompleteDrawer.js";
+import AutoCompleteService from "../service/AutoCompleteService";
+import AutoCompleteDrawer from "../view/AutoCompleteDrawer";
 
 const dataPath = "./data/pokemon_names.json";
 
@@ -7,12 +7,11 @@ const dataPath = "./data/pokemon_names.json";
  * Classe que cuida das ações da janela de preview de nomes digitados.
  */
 export default class AutoCompleteController {
-  /**
-   *
-   * @param {HTMLElement} resulsHtmlElement
-   * @param {HTMLInputElement} searchInputElement
-   */
-  constructor(resulsHtmlElement, searchInputElement) {
+  private _searchInputElement;
+  private _autoCompleteDrawer: AutoCompleteDrawer;
+  private _autoCompleteService: AutoCompleteService;
+
+  constructor(resulsHtmlElement: any, searchInputElement: any) {
     this._autoCompleteDrawer = new AutoCompleteDrawer(
       resulsHtmlElement,
       searchInputElement
