@@ -1,8 +1,9 @@
 import { EventEmitter } from "./core/EventEmitter";
 import { IPokemon } from "./model/Pokemon";
+import AutoCompleteService from "./service/AutoCompleteService";
 import { searchInAPI } from "./service/SearchService";
 import { button__next_pokemon, button__next_view, button__previous_pokemon, button__previous_view, button__search } from "./ui/Buttons";
-import { searchTextField } from "./ui/DomElements";
+import { display__autocomplete, searchTextField } from "./ui/DomElements";
 import { renderPokemonData, renderPokemonStats, renderWithError } from "./view/updateViewFunctions";
 
 let lastSearchedPokemon: IPokemon | undefined;
@@ -62,3 +63,15 @@ EventEmitter.on("search", (searchParam: string) => {
     searchInAPI(searchParam).then(saveSearch).then(renderView).catch(renderWithError);
 })
 
+// Autocomplete
+const autoCompleteService = new AutoCompleteService("data/pokemon_names.json");
+
+EventEmitter.on("autoComplete", (text: string) => {
+    display__autocomplete.innerHTML = autoCompleteService.listarPorAproximacao(text).map(line => `<p>${line}</p>`).join("");
+    display__autocomplete.classList.remove("invisible");
+})
+
+EventEmitter.on("closeAutoComplete", () => {
+    display__autocomplete.innerHTML = "";
+    display__autocomplete.classList.add("invisible");
+})
