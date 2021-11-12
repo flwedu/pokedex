@@ -1,3 +1,4 @@
+import "../style/styles.scss";
 import { EventEmitter } from "./core/EventEmitter";
 import { IPokemon } from "./model/Pokemon";
 import "./view/AutoCompleteView";
