@@ -37,10 +37,6 @@ module.exports = {
           from: "./assets",
           to: "assets",
         },
-        {
-          from: "./data",
-          to: "data",
-        },
       ],
     }),
   ],

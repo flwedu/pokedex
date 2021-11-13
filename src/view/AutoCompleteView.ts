@@ -3,7 +3,7 @@ import AutoCompleteService from "../service/AutoCompleteService";
 import { display__autocomplete, input__search } from "../ui/DomElements";
 
 // Autocomplete
-const autoCompleteService = new AutoCompleteService("data/pokemon_names.json");
+const autoCompleteService = new AutoCompleteService("assets/data/pokemon_names.json");
 
 EventEmitter.on("autoComplete", (text: string) => {
     display__autocomplete.innerHTML = "";
