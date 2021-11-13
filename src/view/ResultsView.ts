@@ -1,29 +1,42 @@
 import { IPokemon } from "../model/Pokemon";
-import { renderPokemonData, renderPokemonStats } from "./updateViewFunctions";
+import { display__data } from "../ui/DomElements";
+import { errorMessageWithResponseCode, sucessTextWithPokemonData, sucessTextWithPokemonStats } from "../util/ResponseDisplayMessages";
 
 
 export const ResultsView = {
 
     // Declaring avaliables view
-    avaliableViews: [renderPokemonData, renderPokemonStats],
+    avaliableRenderViewsFunctions: [sucessTextWithPokemonData, sucessTextWithPokemonStats],
     actualView: 0,
 
     // Functions to execute render the results
     renderView: function (pokemon: IPokemon) {
-        ResultsView.avaliableViews[ResultsView.actualView](pokemon);
+        display__data.innerHTML = ResultsView.avaliableRenderViewsFunctions[ResultsView.actualView](pokemon);
+        playTransition();
     },
 
     renderNextView: function (pokemon: IPokemon) {
-        if (ResultsView.actualView < ResultsView.avaliableViews.length) {
+        if (ResultsView.actualView < ResultsView.avaliableRenderViewsFunctions.length) {
             ResultsView.actualView++;
-            ResultsView.avaliableViews[ResultsView.actualView](pokemon);
+            ResultsView.renderView(pokemon);
         }
     },
 
     renderpreviousView: function (pokemon: IPokemon) {
         if (ResultsView.actualView > 0) {
             ResultsView.actualView--;
-            ResultsView.avaliableViews[ResultsView.actualView](pokemon);
+            ResultsView.renderView(pokemon);
         }
     },
+    renderWithError: (response: Response) => {
+
+        display__data.innerHTML = errorMessageWithResponseCode(response);
+        playTransition();
+    }
+}
+
+function playTransition() {
+    display__data.classList.add("emtransicao");
+    setTimeout(() => display__data.classList.remove("emtransicao"), 1000);
+
 }

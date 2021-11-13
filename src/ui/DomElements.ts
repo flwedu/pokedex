@@ -1,24 +1,24 @@
 import { EventEmitter } from "../core/EventEmitter";
 
-const searchTextField = document.getElementById("search-text") as HTMLInputElement;
+const input__search = document.getElementById("search-text") as HTMLInputElement;
 const display__data = document.querySelector(".display__data") as HTMLDivElement;
 const display__autocomplete = document.getElementById("display__autocomplete") as HTMLDivElement;
 
 // Monitorando teclas digitadas no campo de texto
-searchTextField.addEventListener("keydown", (event) => {
+input__search.addEventListener("keydown", (event) => {
     if (keyMapper.has(event.key.toString())) keyMapper.get(event.key.toString())();
     else keyMapper.get("Default")();
 });
 
 // Mapeamento de todas as keys e ações disparadas
 const keyMapper = new Map();
-keyMapper.set("Enter", () => EventEmitter.emit("search", searchTextField.value));
-keyMapper.set("Default", () => EventEmitter.emit("autoComplete", searchTextField.value));
+keyMapper.set("Enter", () => EventEmitter.emit("search", input__search.value));
+keyMapper.set("Default", () => EventEmitter.emit("autoComplete", input__search.value));
 keyMapper.set("Backspace", () => {
     //@ts-ignore
-    if (searchTextField.value.length < 2) {
+    if (input__search.value.length < 2) {
         EventEmitter.emit("closeAutoComplete", null);
     }
 })
 
-export { searchTextField, display__data, display__autocomplete }
+export { input__search, display__data, display__autocomplete }

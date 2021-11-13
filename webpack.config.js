@@ -16,6 +16,10 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
     ],
   },
   resolve: {
@@ -30,16 +34,8 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: "./dist/css",
-          to: "css",
-        },
-        {
           from: "./assets",
           to: "assets",
-        },
-        {
-          from: "./data",
-          to: "data",
         },
       ],
     }),

@@ -4,7 +4,11 @@
   "description": "Projeto de pokédex utilizando a API do [Pokeapi](https://github.com/PokeAPI/pokeapi). Utilizando HTML e Javascript puro (inicialmente).",
   "main": "index.js",
   "dependencies": {
-    "commonjs": "^0.0.1"
+    "commonjs": "^0.0.1",
+    "css-loader": "^6.5.1",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",

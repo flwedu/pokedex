@@ -6,7 +6,7 @@ const errorImageSrc = "../../assets/error.svg";
 const errorMessages = new Map();
 errorMessages.set("default", "Error");
 errorMessages.set("404", "No Pokémon found");
-errorMessages.set("500", "Server Erro");
+errorMessages.set("500", "Server Error");
 
 /**
  * Function that returns a literal string with pokemon data to be used in the element inner text
