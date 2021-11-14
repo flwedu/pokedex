@@ -25,9 +25,11 @@ EventEmitter.on("search", (searchParam: string) => {
 })
 
 EventEmitter.on("nextPokemon", () => {
-    EventEmitter.emit("search", getLastSearchedPokemon().id + 1);
+    if (getLastSearchedPokemon())
+        EventEmitter.emit("search", getLastSearchedPokemon().id + 1);
 })
 
 EventEmitter.on("previousPokemon", () => {
-    EventEmitter.emit("search", getLastSearchedPokemon().id - 1);
+    if (getLastSearchedPokemon())
+        EventEmitter.emit("search", getLastSearchedPokemon().id - 1);
 })

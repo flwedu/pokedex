@@ -44,9 +44,11 @@ function playTransition() {
 }
 
 EventEmitter.on("nextView", () => {
-    ResultsView.renderNextView(getLastSearchedPokemon());
+    if (getLastSearchedPokemon())
+        ResultsView.renderNextView(getLastSearchedPokemon());
 })
 
 EventEmitter.on("previousView", () => {
-    ResultsView.renderpreviousView(getLastSearchedPokemon());
+    if (getLastSearchedPokemon())
+        ResultsView.renderpreviousView(getLastSearchedPokemon());
 })
