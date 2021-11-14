@@ -1,3 +1,5 @@
+import { EventEmitter } from "../core/EventEmitter";
+import { getLastSearchedPokemon } from "../index";
 import { IPokemon } from "../model/Pokemon";
 import { display__data } from "../ui/DomElements";
 import { errorMessageWithResponseCode, sucessTextWithPokemonData, sucessTextWithPokemonStats } from "../util/ResponseDisplayMessages";
@@ -40,3 +42,11 @@ function playTransition() {
     setTimeout(() => display__data.classList.remove("emtransicao"), 1000);
 
 }
+
+EventEmitter.on("nextView", () => {
+    ResultsView.renderNextView(getLastSearchedPokemon());
+})
+
+EventEmitter.on("previousView", () => {
+    ResultsView.renderpreviousView(getLastSearchedPokemon());
+})

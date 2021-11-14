@@ -24,14 +24,6 @@ EventEmitter.on("search", (searchParam: string) => {
     searchInAPI(searchParam).then(saveSearch).then(ResultsView.renderView).catch(ResultsView.renderWithError);
 })
 
-EventEmitter.on("nextView", () => {
-    ResultsView.renderNextView(getLastSearchedPokemon());
-})
-
-EventEmitter.on("previousView", () => {
-    ResultsView.renderpreviousView(getLastSearchedPokemon());
-})
-
 EventEmitter.on("nextPokemon", () => {
     EventEmitter.emit("search", getLastSearchedPokemon().id + 1);
 })
