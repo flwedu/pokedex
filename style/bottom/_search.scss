@@ -4,7 +4,7 @@
   justify-content: space-between;
 }
 
-#search-text {
+#input__search {
   width: 90%;
   padding: 0.4rem;
   text-align: center;
@@ -13,10 +13,11 @@
 }
 /* Botão de busca */
 
-#botao-busca {
+#button__search {
   width: 2rem;
   height: 2rem;
   background: none;
+  box-shadow: none;
 
   &:hover {
     animation: spin 1s infinite linear;

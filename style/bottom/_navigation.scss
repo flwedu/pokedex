@@ -8,6 +8,8 @@
 
   > input {
     margin: 0.5rem auto;
-    @include button(7rem, 2rem);
   }
+}
+.button {
+  @include button(7rem, 2rem);
 }

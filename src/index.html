@@ -15,22 +15,41 @@
   <body>
     <section class="container main">
       <section class="container display">
-        <div class="container display__data">
+        <div class="container display__data" id="display__data">
           <span>Waiting for parameters...</span>
         </div>
       </section>
 
       <section class="container bottom">
         <div class="container" id="navigation">
-          <input type="button" id="navigation-previous" value="Prev. Page" />
-          <input type="button" id="navigation-next" value="Next Page" />
-          <input type="button" value="Prev. Pokemon" id="pokemon-previous" />
-          <input type="button" value="Next Pokemon" id="pokemon-next" />
+          <input
+            type="button"
+            class="button"
+            id="button__previous_view"
+            value="Prev. Page"
+          />
+          <input
+            type="button"
+            class="button"
+            id="button__next_view"
+            value="Next Page"
+          />
+          <input
+            type="button"
+            class="button"
+            value="Prev. Pokemon"
+            id="button__previous_pokemon"
+          />
+          <input
+            type="button"
+            class="button"
+            value="Next Pokemon"
+            id="button__next_pokemon"
+          />
         </div>
         <div class="container" id="search-tools">
           <input
-            id="search-text"
-            name="search-text"
+            id="input__search"
             placeholder="Pokémon name or number"
             type="search"
           />
@@ -38,7 +57,7 @@
             type="image"
             class="button"
             src="./assets/pokeball.svg"
-            id="botao-busca"
+            id="button__search"
             alt="pokéball"
           />
         </div>

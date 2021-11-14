@@ -1,7 +1,7 @@
 import { EventEmitter } from "../core/EventEmitter";
 
-const input__search = document.getElementById("search-text") as HTMLInputElement;
-const display__data = document.querySelector(".display__data") as HTMLDivElement;
+const input__search = document.getElementById("input__search") as HTMLInputElement;
+const display__data = document.getElementById("display__data") as HTMLDivElement;
 const display__autocomplete = document.getElementById("display__autocomplete") as HTMLDivElement;
 
 // Monitorando teclas digitadas no campo de texto
