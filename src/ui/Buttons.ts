@@ -1,5 +1,4 @@
 import { EventEmitter } from "../core/EventEmitter";
-import { getLastSearchedPokemon } from "../index";
 import { input__search } from "./DomElements";
 
 const button__previous_view = document.getElementById("navigation-previous") as HTMLButtonElement;
