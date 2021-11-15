@@ -2,21 +2,23 @@ import "../style/styles.scss";
 import { EventEmitter } from "./core/EventEmitter";
 import { IPokemon } from "./model/Pokemon";
 import { searchInAPI } from "./service/SearchService";
-import "./ui/Buttons"
+import "./ui/Buttons";
 import "./view/AutoCompleteView";
 import { ResultsView } from "./view/ResultsView";
 
-let lastSearchedPokemon: undefined | IPokemon;
+const searchResultsList: IPokemon[] = [];
 
 //Function to save the last search
 export function saveSearch(pokemon: IPokemon) {
-    lastSearchedPokemon = pokemon;
+    if (searchResultsList.length > 10)
+        searchResultsList.pop();
+    searchResultsList.unshift(pokemon);
     return pokemon;
 };
 
 // Function to load the last saved pokemon
 export function getLastSearchedPokemon() {
-    return lastSearchedPokemon;
+    return searchResultsList[0];
 }
 
 // Listning to events
