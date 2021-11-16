@@ -2,14 +2,11 @@
 #navigation {
   width: $externalWidth - 3rem;
 
-  grid-template-areas:
-    "a b"
-    "c d";
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 
-  > input {
-    margin: 0.5rem auto;
+  .button {
+    @include button(7rem, 2rem);
   }
-}
-.button {
-  @include button(7rem, 2rem);
 }

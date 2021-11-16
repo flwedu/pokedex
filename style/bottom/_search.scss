@@ -1,11 +1,11 @@
 /* Search bar & tools */
 #search-tools {
   grid-template-columns: 12rem 2rem;
+  gap: 0.5rem;
   justify-content: space-between;
 }
 
 #input__search {
-  width: 90%;
   padding: 0.4rem;
   text-align: center;
 
