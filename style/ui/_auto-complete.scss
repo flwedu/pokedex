@@ -1,7 +1,7 @@
 #display__autocomplete {
   position: absolute;
   top: $externalHeight - 3.5rem;
-  right: vh / 2 + 3rem;
+  left: auto;
 
   width: 10rem;
   height: fit-content;
