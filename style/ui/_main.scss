@@ -2,6 +2,9 @@
   width: $externalWidth;
   height: $externalHeight;
 
+  grid-template-rows: 2fr 2fr;
+  gap: 1rem;
+
   background-color: $caseColor;
   border: 0 solid $caseColor;
   border-radius: 1rem;
@@ -16,10 +19,7 @@
 }
 
 .bottom {
-  grid-template-rows: auto 2fr;
-
-  width: $externalWidth - 1rem;
-  height: $externalHeight - $topHeight;
+  grid-template-rows: 3fr 2fr 1fr;
 
   background: $caseColor;
 }

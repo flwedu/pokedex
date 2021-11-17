@@ -1,15 +1,17 @@
-.auto-complete {
-  position: relative;
-  top: -2rem;
-  left: -1rem;
+#display__autocomplete {
+  position: absolute;
+  top: $externalHeight - 3.5rem;
+  left: auto;
 
   width: 10rem;
   height: fit-content;
   border: none;
   background: $displayColor;
 
-  p {
-    margin: 0.3rem;
+  > p {
+    height: 1rem;
+    margin: 0.4rem;
+
     color: $displayFontColor;
     text-align: center;
     border-bottom: dotted 1px $displayFontColor;

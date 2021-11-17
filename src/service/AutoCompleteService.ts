@@ -49,6 +49,6 @@ export default class AutoCompleteService {
    */
   public listarPorAproximacao(name: string): string[] {
     // Retornando os 5 primeiros elementos do array de dados que satisfaçam a query
-    return this._arrayDeDados.filter((item: string) => item.includes(name)).slice(0, 5);
+    return this._arrayDeDados.filter((item: string) => item.includes(name.toLowerCase())).slice(0, 6);
   }
 }
