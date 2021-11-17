@@ -1,4 +1,4 @@
-import formatText from "../../js/util/text.js";
+import formatText from "../../src/util/text";
 
 test("function should format to uppercase only the first letter of a full lowcase text", () => {
   expect(formatText("eeve")).toBe("Eeve");
