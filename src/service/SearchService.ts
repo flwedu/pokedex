@@ -18,3 +18,17 @@ export function searchInAPI(params: string): Promise<IPokemon> {
       .catch(reject);
   });
 }
+
+export function searchInAPIforMoreData(args: string[]): Promise<any> {
+  return new Promise((resolve, reject) => {
+    fetch(args.join(""))
+      .then((response) => {
+        if (response.ok) {
+          response.json().then(resolve);
+        } else {
+          reject(response);
+        }
+      })
+      .catch(reject);
+  });
+}
