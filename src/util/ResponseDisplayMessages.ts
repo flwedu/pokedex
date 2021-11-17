@@ -13,7 +13,7 @@ errorMessages.set("500", "Server Error");
  * @param {IPokemon} pokemon
  * @returns {string}
  */
-export function sucessTextWithPokemonData(pokemon: IPokemon): string {
+export function pokemonData(pokemon: IPokemon): string {
   const parentElement = document.createElement("div");
   const h2 = document.createElement("h2");
   const img = document.createElement("img");
@@ -22,7 +22,7 @@ export function sucessTextWithPokemonData(pokemon: IPokemon): string {
 
   h2.textContent = `Nº:${pokemon.id} / ${formatText(pokemon.name)}`;
   img.src = pokemon.sprites.front_default;
-  p.textContent = `Type: ${pokemon.types.map(type => type.type.name).join("|")}`;
+  p.textContent = `Type: ${pokemon.types.map(type => type.type.name).join(" & ")}`;
   pw.textContent = `Weight: ${pokemon.weight} (in hectograms)`;
 
   parentElement.append(h2, img, p, pw);
@@ -34,7 +34,7 @@ export function sucessTextWithPokemonData(pokemon: IPokemon): string {
  * @param {IPokemon} pokemon
  * @returns {string}
  */
-export function sucessTextWithPokemonStats(pokemon: IPokemon): string {
+export function pokemonStats(pokemon: IPokemon): string {
   const parentElement = document.createElement("div");
   const p = document.createElement("p");
   const ul = document.createElement("ul");
@@ -49,6 +49,10 @@ export function sucessTextWithPokemonStats(pokemon: IPokemon): string {
 
   parentElement.append(p, ul);
   return parentElement.innerHTML;
+}
+
+export function pokemonAbilities(pokemon: IPokemon) {
+
 }
 
 /**

@@ -1,12 +1,12 @@
 import { IPokemon } from "../model/Pokemon";
 import { display__data } from "../ui/DomElements";
-import { errorMessageWithResponseCode, sucessTextWithPokemonData, sucessTextWithPokemonStats } from "../util/ResponseDisplayMessages";
+import { errorMessageWithResponseCode, pokemonData, pokemonStats } from "../util/ResponseDisplayMessages";
 
 
 export const ResultsView = {
 
     // Declaring avaliables view
-    avaliableRenderViewsFunctions: [sucessTextWithPokemonData, sucessTextWithPokemonStats],
+    avaliableRenderViewsFunctions: [pokemonData, pokemonStats],
     actualView: 0,
 
     // Functions to execute render the results
