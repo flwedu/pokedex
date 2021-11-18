@@ -1,6 +1,7 @@
+//@ts-nocheck
 import { IAbility } from "../../model/Ability";
 import { IPokemon } from "../../model/Pokemon";
-import { searchInAPIforMoreData } from "../../service/SearchService"
+import { searchInAPIforMoreData } from "../../service/SearchService";
 import { errorWithResponseCode } from "./ErrorWithResponseCode";
 
 export async function pokemonAbilities(pokemon: IPokemon) {
@@ -9,14 +10,15 @@ export async function pokemonAbilities(pokemon: IPokemon) {
         const ability: IAbility = await searchInAPIforMoreData([pokemon.abilities[0].ability.url]);
         return renderPokemonAbilities(ability);
     }
-    catch {
-        return "";
+    catch (err) {
+        return errorWithResponseCode(err);
     }
 }
 
 function renderPokemonAbilities(ability: IAbility) {
     return `
-        <h2>Ability name: ${ability.name}</h2>
-        <p>Effects: "${ability.effect_entries[0].effect}"</p>
+    <h3>Ability:</h3>
+    <h2>${ability.name}</h2>
+        <p>"${ability.effect_entries[1].effect}"</p>
     `
 }
