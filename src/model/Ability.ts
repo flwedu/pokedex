@@ -8,7 +8,8 @@ export interface IAbility {
             language: {
                 name: string,
                 url: string
-            }
-        }
+            },
+            short_effect: string
+        },
     ]
 }

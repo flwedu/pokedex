@@ -19,6 +19,6 @@ function renderPokemonAbilities(ability: IAbility) {
     return `
     <h3>Ability:</h3>
     <h2>${ability.name}</h2>
-        <p>"${ability.effect_entries[1].effect}"</p>
+        <p>"${ability.effect_entries[1].short_effect}"</p>
     `
 }
