@@ -2,7 +2,9 @@ import { EventEmitter } from "../core/EventEmitter";
 import { getLastSearchedPokemon } from "../index";
 import { IPokemon } from "../model/Pokemon";
 import { display__data } from "../ui/DomElements";
-import { errorMessageWithResponseCode, pokemonData, pokemonStats } from "../util/ResponseDisplayMessages";
+import { errorWithResponseCode } from "./display/ErrorWithResponseCode";
+import { pokemonData } from "./display/PokemonData";
+import { pokemonStats } from "./display/PokemonStats";
 
 
 export const ResultsView = {
@@ -32,7 +34,7 @@ export const ResultsView = {
     },
     renderWithError: (response: Response) => {
 
-        display__data.innerHTML = errorMessageWithResponseCode(response);
+        display__data.innerHTML = errorWithResponseCode(response);
         playTransition();
     }
 }
