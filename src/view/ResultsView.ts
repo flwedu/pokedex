@@ -3,6 +3,7 @@ import { getLastSearchedPokemon } from "../index";
 import { IPokemon } from "../model/Pokemon";
 import { display__data } from "../ui/DomElements";
 import { errorWithResponseCode } from "./display/ErrorWithResponseCode";
+import { pokemonAbilities } from "./display/PokemonAbilities";
 import { pokemonData } from "./display/PokemonData";
 import { pokemonStats } from "./display/PokemonStats";
 
@@ -10,17 +11,17 @@ import { pokemonStats } from "./display/PokemonStats";
 export const ResultsView = {
 
     // Declaring avaliables view
-    avaliableRenderViewsFunctions: [pokemonData, pokemonStats],
+    avaliableRenderViewsFunctions: [pokemonData, pokemonStats, pokemonAbilities],
     actualView: 0,
 
     // Functions to execute render the results
-    renderView: function (pokemon: IPokemon) {
-        display__data.innerHTML = ResultsView.avaliableRenderViewsFunctions[ResultsView.actualView](pokemon);
+    renderView: async function (pokemon: IPokemon) {
+        display__data.innerHTML = await ResultsView.avaliableRenderViewsFunctions[ResultsView.actualView](pokemon);
         playTransition();
     },
 
     renderNextView: function (pokemon: IPokemon) {
-        if (ResultsView.actualView < ResultsView.avaliableRenderViewsFunctions.length) {
+        if (ResultsView.actualView < ResultsView.avaliableRenderViewsFunctions.length - 1) {
             ResultsView.actualView++;
             ResultsView.renderView(pokemon);
         }
