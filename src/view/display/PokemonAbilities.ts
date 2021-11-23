@@ -16,9 +16,12 @@ export async function pokemonAbilities(pokemon: IPokemon) {
 }
 
 function renderPokemonAbilities(ability: IAbility) {
+
+    const abilityInEnglish = ability.effect_entries.filter(ability => ability.language.name === "en")[0];
+
     return `
     <h3>Ability:</h3>
     <h2>${ability.name}</h2>
-        <p>"${ability.effect_entries[1].short_effect}"</p>
+        <p>"${abilityInEnglish.short_effect}"</p>
     `
 }
