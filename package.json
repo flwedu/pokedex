@@ -34,6 +34,7 @@
   "scripts": {
     "test": "jest --no-cache",
     "build-dev": "webpack --mode development --config webpack.config.js",
+    "build-prod": "webpack --mode production --config webpack.config.js",
     "serve-dev": "webpack serve --mode development --config webpack.config.js"
   },
   "repository": "git+https://github.com/flwedu/pokedex.git",
