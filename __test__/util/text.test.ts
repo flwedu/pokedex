@@ -20,10 +20,18 @@ describe("Remove invalid characters functions", () => {
         expect(removeInvalidCharacters("eeve")).toBe("eeve");
     })
 
-    it("Removing first caracter if is equal to 0", () => {
+    it("Removing first caracter if is equal to 0 and returning a number", () => {
 
         expect(removeInvalidCharacters("020")).toBe(20);
         expect(removeInvalidCharacters("001")).toBe(1);
+    })
+
+    it("Removing symbols and returning only lowercase string", () => {
+
+        expect(removeInvalidCharacters("Pika#ch@u")).toBe("pikachu");
+        expect(removeInvalidCharacters("dIt!to")).toBe("ditto");
+        expect(removeInvalidCharacters("C$HARM+AN**DER")).toBe("charmander");
+        expect(removeInvalidCharacters("------zubat------")).toBe("zubat");
     })
 
     it("Returning only lowercase string", () => {
