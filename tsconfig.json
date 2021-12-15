@@ -5,9 +5,15 @@
 
     /* Modules */
     "module": "ES2015" /* Specify what module code is generated. */,
-    "rootDirs": [
-      "./src"
-    ] /* Specify the root folder within your source files. */,
+    "moduleResolution": "node",
+
+    /* Paths */
+    "baseUrl": ".",
+    "paths": {
+      "@model/*": ["src/model/*"],
+      "@util/*": ["src/util/*"],
+      "@view/*": ["src/view/*"]
+    },
 
     /* JavaScript Support */
     "allowJs": false /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */,
