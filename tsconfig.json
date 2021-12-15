@@ -6,8 +6,7 @@
     /* Modules */
     "module": "ES2015" /* Specify what module code is generated. */,
     "rootDirs": [
-      "./src",
-      "./__test__"
+      "./src"
     ] /* Specify the root folder within your source files. */,
 
     /* JavaScript Support */
