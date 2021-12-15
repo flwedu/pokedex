@@ -3,32 +3,35 @@ import { IPokemon } from "./model/Pokemon";
 import { searchInAPI } from "./service/SearchService";
 import { ResultsView } from "./view/ResultsView";
 
-const searchResultsList: IPokemon[] = [];
+export const app = {
 
-//Function to save the last search
-export function saveSearch(pokemon: IPokemon) {
-    if (searchResultsList.length > 10)
-        searchResultsList.pop();
-    searchResultsList.unshift(pokemon);
-    return pokemon;
-};
+    searchResultsList: [] as IPokemon[],
 
-// Function to load the last saved pokemon
-export function getLastSearchedPokemon() {
-    return searchResultsList[0];
+    //Function to save the last search
+    saveSearch(pokemon: IPokemon) {
+        if (app.searchResultsList.length > 10)
+            app.searchResultsList.pop();
+        app.searchResultsList.unshift(pokemon);
+        return pokemon;
+    },
+
+    // Function to load the last saved pokemon
+    getLastSearchedPokemon() {
+        return app.searchResultsList[0];
+    }
 }
 
 // Listning to events
 EventEmitter.on("search", (searchParam: string) => {
-    searchInAPI(searchParam).then(saveSearch).then(ResultsView.renderView).catch(ResultsView.renderWithError);
+    searchInAPI(searchParam).then(app.saveSearch).then(ResultsView.renderView).catch(ResultsView.renderWithError);
 })
 
 EventEmitter.on("nextPokemon", () => {
-    if (getLastSearchedPokemon())
-        EventEmitter.emit("search", getLastSearchedPokemon().id + 1);
+    if (app.getLastSearchedPokemon())
+        EventEmitter.emit("search", app.getLastSearchedPokemon().id + 1);
 })
 
 EventEmitter.on("previousPokemon", () => {
-    if (getLastSearchedPokemon())
-        EventEmitter.emit("search", getLastSearchedPokemon().id - 1);
+    if (app.getLastSearchedPokemon())
+        EventEmitter.emit("search", app.getLastSearchedPokemon().id - 1);
 })
