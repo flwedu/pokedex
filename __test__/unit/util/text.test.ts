@@ -1,4 +1,5 @@
-import { formatFirstLetterToUppercase, removeInvalidCharacters } from "../../src/util/text"
+import { formatFirstLetterToUppercase, removeInvalidCharacters } from "../../../src/util/text";
+
 
 describe("Format text case functions", () => {
 
