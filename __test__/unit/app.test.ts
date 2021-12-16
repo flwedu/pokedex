@@ -1,44 +1,12 @@
 import { IPokemon } from "../../src/model/Pokemon";
+import { ditto } from "../__mock__/ditto";
 
 // Mocking input elements
 jest.spyOn(document, "getElementById").mockReturnValue(document.createElement("input"))
 
 import { app } from "../../src/app";
 
-const pokemonData: IPokemon = {
-    id: 1,
-    name: "bulbassaur",
-    generation: {
-        name: "",
-        url: ""
-    },
-    sprites: {
-        front_default: "",
-        back_default: ""
-    },
-    weight: "",
-    stats: [{
-        stat: {
-            name: "attack",
-            url: null
-        },
-        base_stat: 0,
-        effort: 0
-    }],
-    types: [{
-        slot: 0,
-        type: {
-            name: "grass",
-            url: null
-        }
-    }],
-    abilities: [{
-        ability: {
-            name: "grass",
-            url: null
-        }, is_hidden: true, slot: 0
-    }]
-}
+const pokemonData: IPokemon = ditto;
 
 describe("saveSearch functions", () => {
 
