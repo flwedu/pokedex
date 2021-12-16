@@ -1,10 +1,6 @@
 export interface IPokemon {
   id: number,
   name: string,
-  generation: {
-    name: string,
-    url: string
-  },
   sprites: {
     front_default: string,
     back_default: string,
