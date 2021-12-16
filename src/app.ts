@@ -1,7 +1,8 @@
-import { EventEmitter } from "./core/EventEmitter";
 import { IPokemon } from "./model/Pokemon";
 import { searchInAPI } from "./service/SearchService";
-import { ResultsView } from "./view/ResultsView";
+import { display__data } from "./ui/DomElements";
+import { RenderView } from "./view/RenderView";
+import { EventEmitter } from "./core/EventEmitter";
 
 export const app = {
 
@@ -21,9 +22,11 @@ export const app = {
     }
 }
 
+const render = new RenderView(display__data);
+
 // Listning to events
 EventEmitter.on("search", (searchParam: string) => {
-    searchInAPI(searchParam).then(app.saveSearch).then(ResultsView.renderView).catch(ResultsView.renderWithError);
+    searchInAPI(searchParam).then((data) => app.saveSearch(data)).then((data) => render.renderView(data)).catch(render.renderWithError);
 })
 
 EventEmitter.on("nextPokemon", () => {
@@ -34,4 +37,14 @@ EventEmitter.on("nextPokemon", () => {
 EventEmitter.on("previousPokemon", () => {
     if (app.getLastSearchedPokemon())
         EventEmitter.emit("search", app.getLastSearchedPokemon().id - 1);
+})
+
+EventEmitter.on("nextView", () => {
+    if (app.getLastSearchedPokemon())
+        render.renderNextView(app.getLastSearchedPokemon());
+})
+
+EventEmitter.on("previousView", () => {
+    if (app.getLastSearchedPokemon())
+        render.renderpreviousView(app.getLastSearchedPokemon());
 })
