@@ -1,5 +1,9 @@
-import { saveSearch, getLastSearchedPokemon } from "../../src/app";
 import { IPokemon } from "../../src/model/Pokemon";
+
+// Mocking input elements
+jest.spyOn(document, "getElementById").mockReturnValue(document.createElement("input"))
+
+import { app } from "../../src/app";
 
 const pokemonData: IPokemon = {
     id: 1,
@@ -38,12 +42,13 @@ const pokemonData: IPokemon = {
 
 describe("saveSearch functions", () => {
 
-    it("Should save a pokemon", () => {
+    it("Should save and get last searched pokemon", () => {
 
-        saveSearch(pokemonData);
+        app.saveSearch(pokemonData);
 
-        const lastSaved = getLastSearchedPokemon();
+        const lastSaved = app.getLastSearchedPokemon();
 
         expect(lastSaved).toEqual(pokemonData);
     })
+
 })
