@@ -1,5 +1,5 @@
+import { app } from "../app";
 import { EventEmitter } from "../core/EventEmitter";
-import { getLastSearchedPokemon } from "../index";
 import { IPokemon } from "../model/Pokemon";
 import { display__data } from "../ui/DomElements";
 import { errorWithResponseCode } from "./display/ErrorWithResponseCode";
@@ -47,11 +47,11 @@ function playTransition() {
 }
 
 EventEmitter.on("nextView", () => {
-    if (getLastSearchedPokemon())
-        ResultsView.renderNextView(getLastSearchedPokemon());
+    if (app.getLastSearchedPokemon())
+        ResultsView.renderNextView(app.getLastSearchedPokemon());
 })
 
 EventEmitter.on("previousView", () => {
-    if (getLastSearchedPokemon())
-        ResultsView.renderpreviousView(getLastSearchedPokemon());
+    if (app.getLastSearchedPokemon())
+        ResultsView.renderpreviousView(app.getLastSearchedPokemon());
 })
