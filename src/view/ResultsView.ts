@@ -2,10 +2,7 @@ import { app } from "../app";
 import { EventEmitter } from "../core/EventEmitter";
 import { IPokemon } from "../model/Pokemon";
 import { display__data } from "../ui/DomElements";
-import { errorWithResponseCode } from "./display/ErrorWithResponseCode";
-import { pokemonAbilities } from "./display/PokemonAbilities";
-import { pokemonData } from "./display/PokemonData";
-import { pokemonStats } from "./display/PokemonStats";
+import { errorWithResponseCode, pokemonAbilities, pokemonData, pokemonStats } from "./display/";
 
 
 export const ResultsView = {
