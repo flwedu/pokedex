@@ -8,17 +8,17 @@ import { errorWithResponseCode, pokemonAbilities, pokemonData, pokemonStats } fr
 export const ResultsView = {
 
     // Declaring avaliables view
-    avaliableRenderViewsFunctions: [pokemonData, pokemonStats, pokemonAbilities],
+    viewFunctions: [pokemonData, pokemonStats, pokemonAbilities],
     actualView: 0,
 
     // Functions to execute render the results
     renderView: async function (pokemon: IPokemon) {
-        display__data.innerHTML = await ResultsView.avaliableRenderViewsFunctions[ResultsView.actualView](pokemon);
+        display__data.innerHTML = await ResultsView.viewFunctions[ResultsView.actualView](pokemon);
         playTransition();
     },
 
     renderNextView: function (pokemon: IPokemon) {
-        if (ResultsView.actualView < ResultsView.avaliableRenderViewsFunctions.length - 1) {
+        if (ResultsView.actualView < ResultsView.viewFunctions.length - 1) {
             ResultsView.actualView++;
             ResultsView.renderView(pokemon);
         }
