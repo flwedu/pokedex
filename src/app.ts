@@ -26,7 +26,10 @@ const render = new RenderView(display__data);
 
 // Listning to events
 EventEmitter.on("search", (searchParam: string) => {
-    searchInAPI(searchParam).then((data) => app.saveSearch(data)).then((data) => render.renderView(data)).catch(render.renderWithError);
+    searchInAPI(searchParam)
+        .then((data) => app.saveSearch(data))
+        .then((data) => render.renderView(data))
+        .catch((error) => render.renderWithError(error));
 })
 
 EventEmitter.on("nextPokemon", () => {
