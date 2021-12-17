@@ -1,5 +1,5 @@
 import { IPokemon } from "../../model/Pokemon";
-import formatText from "../../util/text";
+import { formatFirstLetterToUppercase } from "../../util/text";
 
 export function pokemonData(pokemon: IPokemon): string {
     const parentElement = document.createElement("div");
@@ -8,7 +8,7 @@ export function pokemonData(pokemon: IPokemon): string {
     const p = document.createElement("p");
     const pw = document.createElement("p");
 
-    h2.textContent = `Nº:${pokemon.id} / ${formatText(pokemon.name)}`;
+    h2.textContent = `Nº:${pokemon.id} / ${formatFirstLetterToUppercase(pokemon.name)}`;
     img.src = pokemon.sprites.front_default;
     p.textContent = `Type: ${pokemon.types.map(type => type.type.name).join(" & ")}`;
     pw.textContent = `Weight: ${pokemon.weight} (in hectograms)`;

@@ -5,7 +5,10 @@
 
     /* Modules */
     "module": "ES2015" /* Specify what module code is generated. */,
-    "rootDir": "./src" /* Specify the root folder within your source files. */,
+    "moduleResolution": "node",
+
+    /* Paths */
+    "baseUrl": ".",
 
     /* JavaScript Support */
     "allowJs": false /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */,
@@ -19,6 +22,7 @@
     "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied `any` type.. */,
     "strictNullChecks": false
   },
+  "include": ["./src"],
   "exclude": [
     "./plugins/**/*",
     "./typings/**/*",

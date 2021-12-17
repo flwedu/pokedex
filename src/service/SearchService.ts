@@ -1,4 +1,5 @@
 import { IPokemon } from "../model/Pokemon";
+import { removeInvalidCharacters } from "../util/text";
 
 const URL = "https://pokeapi.co/api/v2/pokemon/";
 /**
@@ -7,7 +8,7 @@ const URL = "https://pokeapi.co/api/v2/pokemon/";
  */
 export function searchInAPI(params: string): Promise<IPokemon> {
   return new Promise((resolve, reject) => {
-    fetch(URL + params)
+    fetch(URL + removeInvalidCharacters(params))
       .then((response) => {
         if (response.ok) {
           response.json().then(resolve);
