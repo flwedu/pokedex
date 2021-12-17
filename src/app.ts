@@ -30,6 +30,8 @@ EventEmitter.on("search", (searchParam: string) => {
         .then((data) => app.saveSearch(data))
         .then((data) => render.renderView(data))
         .catch((error) => render.renderWithError(error));
+
+    EventEmitter.emit("closeAutoComplete", null);
 })
 
 EventEmitter.on("nextPokemon", () => {
