@@ -9,16 +9,11 @@ it("Should add a listner", () => {
 
 it("Should trigger the function", () => {
 
-    const functions = {
+    const testFunction = jest.fn().mockImplementation((args) => args);
 
-        newFunction: (arg: any) => { return arg }
-    }
-
-    const spy = jest.spyOn(functions, "newFunction");
-
-    EventEmitter.on("A", functions.newFunction);
+    EventEmitter.on("A", (args: any) => testFunction(args));
     EventEmitter.emit("A", "Test");
 
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith("Test");
+    expect(testFunction).toHaveBeenCalledTimes(1);
+    expect(testFunction).toHaveBeenCalledWith("Test");
 })
