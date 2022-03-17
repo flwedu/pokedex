@@ -9,7 +9,7 @@ export function removeInvalidCharacters(text: string) {
   const number = Number.parseInt(text);
   if (!Number.isNaN(number)) return number;
 
-  const symbolRegex = /[^a-z]/g;
+  const symbolRegex = /[^a-zA-Z]/g;
   return text.toLowerCase().replace(symbolRegex, '');
 
 }
