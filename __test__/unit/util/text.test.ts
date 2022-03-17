@@ -3,42 +3,27 @@ import { formatFirstLetterToUppercase, removeInvalidCharacters } from "../../../
 
 describe("Format text case functions", () => {
 
-    it("First letter Uppercase", () => {
+    test.each([["abcd", "Abcd", "ABCD"]])("First letter Uppercase", (value: string) => {
 
-        expect(formatFirstLetterToUppercase("abcd")).toBe("Abcd");
+        expect(formatFirstLetterToUppercase(value)).toEqual("Abcd");
 
-        expect(formatFirstLetterToUppercase("ABCD")).toBe("Abcd");
-
-        expect(formatFirstLetterToUppercase("Efgh")).toBe("Efgh");
     })
 })
 
 describe("Remove invalid characters functions", () => {
 
-    it("Doesn't removes any character", () => {
+    test.each(["pikachu", "eeve", "abc"])("Doesn't removes any character", (value: string) => {
 
-        expect(removeInvalidCharacters("pikachu")).toBe("pikachu");
-        expect(removeInvalidCharacters("eeve")).toBe("eeve");
+        expect(removeInvalidCharacters(value)).toEqual(value);
     })
 
-    it("Removing first caracter if is equal to 0 and returning a number", () => {
+    test.each([["020", 20], ["001", 1], ["40", 40]])("Removing first character if is equal to 0 and returning a number", (value, expected) => {
 
-        expect(removeInvalidCharacters("020")).toBe(20);
-        expect(removeInvalidCharacters("001")).toBe(1);
+        expect(removeInvalidCharacters(value)).toEqual(expected);
     })
 
-    it("Removing symbols and returning only lowercase string", () => {
+    test.each([["Pika#ch@u", "pikachu"], ["dIt!to", "ditto"], ["C$HARM+AN**DER", "charmander"], ["------zubat------", "zubat"]])("Removing symbols and returning only lowercase string", (input, expected) => {
 
-        expect(removeInvalidCharacters("Pika#ch@u")).toBe("pikachu");
-        expect(removeInvalidCharacters("dIt!to")).toBe("ditto");
-        expect(removeInvalidCharacters("C$HARM+AN**DER")).toBe("charmander");
-        expect(removeInvalidCharacters("------zubat------")).toBe("zubat");
-    })
-
-    it("Returning only lowercase string", () => {
-
-        expect(removeInvalidCharacters("Pikachu")).toBe("pikachu");
-        expect(removeInvalidCharacters("dItto")).toBe("ditto");
-        expect(removeInvalidCharacters("CHARMANDER")).toBe("charmander");
+        expect(removeInvalidCharacters(input)).toEqual(expected);
     })
 })
