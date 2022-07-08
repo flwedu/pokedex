@@ -12,7 +12,10 @@ export function errorWithResponseCode(response: Response): string {
   const img = document.createElement("img");
 
   h2.textContent = `Error ${response.status}`;
-  p.textContent = `${errorMessages.get(response.status.toString()) || errorMessages.get("default")}`;
+  p.textContent = `${
+    errorMessages.get(response.status.toString()) ||
+    errorMessages.get("default")
+  }`;
   img.src = errorImageSrc;
 
   parentElement.append(h2, p, img);

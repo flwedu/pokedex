@@ -5,51 +5,49 @@ import { RenderView } from "./view/RenderView";
 import { EventEmitter } from "./core/EventEmitter";
 
 export const app = {
+  searchResultsList: [] as IPokemon[],
 
-    searchResultsList: [] as IPokemon[],
+  //Function to save the last search
+  saveSearch(pokemon: IPokemon) {
+    if (app.searchResultsList.length > 10) app.searchResultsList.pop();
+    app.searchResultsList.unshift(pokemon);
+    return pokemon;
+  },
 
-    //Function to save the last search
-    saveSearch(pokemon: IPokemon) {
-        if (app.searchResultsList.length > 10)
-            app.searchResultsList.pop();
-        app.searchResultsList.unshift(pokemon);
-        return pokemon;
-    },
-
-    // Function to load the last saved pokemon
-    getLastSearchedPokemon() {
-        return app.searchResultsList[0];
-    }
-}
+  // Function to load the last saved pokemon
+  getLastSearchedPokemon() {
+    return app.searchResultsList[0];
+  },
+};
 
 const render = new RenderView(display__data);
 
 // Listning to events
 EventEmitter.on("search", (searchParam: string) => {
-    searchInAPI(searchParam)
-        .then((data) => app.saveSearch(data))
-        .then((data) => render.renderView(data))
-        .catch((error) => render.renderWithError(error));
+  searchInAPI(searchParam)
+    .then((data) => app.saveSearch(data))
+    .then((data) => render.renderView(data))
+    .catch((error) => render.renderWithError(error));
 
-    EventEmitter.emit("closeAutoComplete", null);
-})
+  EventEmitter.emit("closeAutoComplete", null);
+});
 
 EventEmitter.on("nextPokemon", () => {
-    if (app.getLastSearchedPokemon())
-        EventEmitter.emit("search", app.getLastSearchedPokemon().id + 1);
-})
+  if (app.getLastSearchedPokemon())
+    EventEmitter.emit("search", app.getLastSearchedPokemon().id + 1);
+});
 
 EventEmitter.on("previousPokemon", () => {
-    if (app.getLastSearchedPokemon())
-        EventEmitter.emit("search", app.getLastSearchedPokemon().id - 1);
-})
+  if (app.getLastSearchedPokemon())
+    EventEmitter.emit("search", app.getLastSearchedPokemon().id - 1);
+});
 
 EventEmitter.on("nextView", () => {
-    if (app.getLastSearchedPokemon())
-        render.renderNextView(app.getLastSearchedPokemon());
-})
+  if (app.getLastSearchedPokemon())
+    render.renderNextView(app.getLastSearchedPokemon());
+});
 
 EventEmitter.on("previousView", () => {
-    if (app.getLastSearchedPokemon())
-        render.renderpreviousView(app.getLastSearchedPokemon());
-})
+  if (app.getLastSearchedPokemon())
+    render.renderPreviousView(app.getLastSearchedPokemon());
+});

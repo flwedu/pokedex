@@ -8,9 +8,13 @@ export function pokemonStats(pokemon: IPokemon): string {
   h2.textContent = "Initial Stats:";
 
   ul.innerHTML = `
-  ${pokemon.stats.map(stat => `
+  ${pokemon.stats
+    .map(
+      (stat) => `
   <li><strong>${stat.stat.name}</strong>: ${stat.base_stat}<li>
-  `).join("")}
+  `
+    )
+    .join("")}
   `;
 
   parentElement.append(h2, ul);
