@@ -6,7 +6,7 @@ const errorMessages: { [index: number | string]: string } = {
   500: "Server Error",
 };
 
-export function errorScreen(response: Response): string {
+export function errorScreen(response: { status: number }): string {
   const responseCode = response.status;
 
   const html = `<div>
