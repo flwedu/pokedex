@@ -5,7 +5,7 @@ export class ApiClient {
   private url: string = "https://pokeapi.co/api/v2/pokemon/";
 
   public async get(query: string): Promise<IPokemon> {
-    const pokeResponse = await fetch(`${this.url}${query}`);
+    const pokeResponse = await fetch(`${this.url}${query.toLowerCase()}`);
 
     if (pokeResponse.status !== 200) {
       const error = statusErrors[pokeResponse.status] ?? new Error();
