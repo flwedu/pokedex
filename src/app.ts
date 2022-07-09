@@ -17,7 +17,7 @@ const screenList = {
   success: [new PokemonData(), new PokemonStats(), new PokemonAbilities()],
   error: new ErrorScreen(),
 };
-const uiController = new UiController(DomElements.divData, screenList);
+const uiController = new UiController(DomElements.divResults, screenList);
 const apiClient = new ApiClient();
 const eventEmitter = new EventEmitter();
 const uiEventListener = new UiEventListener(eventEmitter);
