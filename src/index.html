@@ -13,16 +13,16 @@
   </head>
 
   <body>
-    <section class="container main">
-      <section class="container display">
-        <div class="container display__data" id="display__data">
+    <div class="app" id="app">
+      <section class="container container__top">
+        <div class="container display__data" id="display">
           <span>Waiting for parameters...</span>
         </div>
       </section>
 
-      <section class="container bottom">
+      <section class="container container__middle">
         <div class="features" id="navigation__dots"></div>
-        <div class="container navigation" id="navigation__buttons">
+        <div class="container container__navigation" id="navigation">
           <input
             type="button"
             class="button"
@@ -48,28 +48,21 @@
             id="button__next_pokemon"
           />
         </div>
-        <div class="container" id="search-tools">
-          <input
-            id="input__search"
-            placeholder="Pokémon name/number"
-            type="search"
-          />
-          <input
-            type="image"
-            class="button"
-            src="./assets/pokeball.svg"
-            id="button__search"
-            alt="PokéBall"
-          />
-        </div>
+      </section>
+      <section class="container container__bottom" id="search">
         <input
-          type="button"
+          id="input__search"
+          placeholder="Pokémon name/number"
+          type="search"
+        />
+        <input
+          type="image"
           class="button"
-          id="button__list"
-          value="show list"
+          src="./assets/pokeball.svg"
+          id="button__search"
+          alt="PokéBall"
         />
       </section>
-      <div id="display__autocomplete" class="list invisible"></div>
-    </section>
+    </div>
   </body>
 </html>

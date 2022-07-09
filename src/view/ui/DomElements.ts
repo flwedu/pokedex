@@ -2,7 +2,7 @@ const getById = (id: string) => document.getElementById(id);
 
 const DomElements = {
   inputSearch: getById("input__search") as HTMLInputElement,
-  divResults: getById("display__data") as HTMLDivElement,
+  divResults: getById("display") as HTMLDivElement,
   divNavigationButtons: getById("navigation") as HTMLDivElement,
 };
 
