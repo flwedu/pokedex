@@ -1,17 +1,11 @@
 const errorImageSrc = "../../../assets/error.svg";
 
-const errorMessages: { [index: number | string]: string } = {
-  default: "Error",
-  404: "No Pokémon found",
-  500: "Server Error",
-};
-
-function errorScreen(response: { status: number }): string {
-  const responseCode = response.status;
+function errorScreen(error: Error): string {
+  const { name: title, message } = error;
 
   const html = `<div>
-  <h2>Error ${responseCode}</h2>
-  <p>${errorMessages[responseCode] ?? errorMessages.default}</p>
+  <h2>${title}</h2>
+  <p>${message}</p>
   <img src="${errorImageSrc}" alt="X">
   </div>`;
 
@@ -19,7 +13,7 @@ function errorScreen(response: { status: number }): string {
 }
 
 export class ErrorScreen {
-  getHtml(response: { status: number }): string {
-    return errorScreen(response);
+  getHtml(error: Error): string {
+    return errorScreen(error);
   }
 }

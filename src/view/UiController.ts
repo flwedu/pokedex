@@ -22,8 +22,8 @@ export class UiController {
     this.uiElement.innerHTML = this.screenList.success[id].getHtml(pokemon);
   }
 
-  public renderError(response: Response) {
-    this.uiElement.innerHTML = this.screenList.error.getHtml(response);
+  public renderError(error: Error) {
+    this.uiElement.innerHTML = this.screenList.error.getHtml(error);
   }
 
   public renderNextSuccess(pokemon: IPokemon) {
