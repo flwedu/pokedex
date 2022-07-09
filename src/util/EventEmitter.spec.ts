@@ -1,19 +1,13 @@
-import { EventEmitter } from "./EventEmitter";
+import EventEmitter from "./EventEmitter";
 
-it("Should add a listener", () => {
-  EventEmitter.on("A", () => {
-    return;
-  });
+it("Emit event should execute the function", () => {
+  const testFunction = jest.fn();
+  const emitter = new EventEmitter();
 
-  expect(EventEmitter.events.has("A")).toBe(true);
-});
+  emitter.on("A", (args: any) => testFunction(args));
+  emitter.emit("A", "Test");
 
-it("Should trigger the function", () => {
-  const testFunction = jest.fn().mockImplementation((args) => args);
-
-  EventEmitter.on("A", (args: any) => testFunction(args));
-  EventEmitter.emit("A", "Test");
-
+  expect.assertions(2);
   expect(testFunction).toHaveBeenCalledTimes(1);
   expect(testFunction).toHaveBeenCalledWith("Test");
 });
