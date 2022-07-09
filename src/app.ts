@@ -41,11 +41,9 @@ uiEventListener.listenToInput();
 eventEmitter.on("search", (query: string) => {
   apiClient
     .get(query)
-    .then((data) => saveSearch(data))
-    .then((data) => uiController.renderSuccess(data))
+    .then((pokemon) => saveSearch(pokemon))
+    .then((pokemon) => uiController.renderSuccess(pokemon))
     .catch((error) => uiController.renderError(error));
-
-  eventEmitter.emit("closeAutoComplete", null);
 });
 
 eventEmitter.on("nextPokemon", () => {
