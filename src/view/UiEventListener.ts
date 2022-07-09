@@ -9,6 +9,9 @@ export class UiEventListener {
       "click",
       (event: Event) => {
         switch (event.target) {
+          case Buttons.search:
+            this.search();
+            break;
           case Buttons.previousView:
             this.eventEmitter.emit("previousView", null);
             break;
@@ -21,9 +24,6 @@ export class UiEventListener {
           case Buttons.nextPokemon:
             this.eventEmitter.emit("nextPokemon", null);
             break;
-          case Buttons.search:
-            this.eventEmitter.emit("search", DomElements.inputSearch.value);
-            break;
         }
       }
     );
@@ -34,9 +34,13 @@ export class UiEventListener {
       "keyup",
       (event: KeyboardEvent) => {
         if (event.key === "Enter") {
-          this.eventEmitter.emit("search", DomElements.inputSearch.value);
+          this.search();
         }
       }
     );
+  }
+
+  private search() {
+    this.eventEmitter.emit("search", DomElements.inputSearch.value);
   }
 }
