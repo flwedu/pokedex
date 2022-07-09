@@ -2,7 +2,7 @@
 import { IAbility } from "../../model/Ability";
 import { IPokemon } from "../../model/Pokemon";
 import { searchInAPIforMoreData } from "../../service/SearchService";
-import { errorWithResponseCode } from "./ErrorWithResponseCode";
+import { errorScreen } from "./ErrorScreen";
 
 export async function pokemonAbilities(pokemon: IPokemon) {
   try {
@@ -11,7 +11,7 @@ export async function pokemonAbilities(pokemon: IPokemon) {
     ]);
     return renderPokemonAbilities(ability);
   } catch (err) {
-    return errorWithResponseCode(err);
+    return errorScreen(err);
   }
 }
 
