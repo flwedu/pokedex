@@ -1,6 +1,6 @@
-import { errorWithResponseCode } from "./ErrorWithResponseCode";
+import { errorScreen } from "./ErrorScreen";
 import { pokemonAbilities } from "./PokemonAbilities";
 import { pokemonData } from "./PokemonData";
 import { pokemonStats } from "./PokemonStats";
 
-export { errorWithResponseCode, pokemonAbilities, pokemonData, pokemonStats };
+export { errorScreen, pokemonAbilities, pokemonData, pokemonStats };

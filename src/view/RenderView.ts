@@ -1,6 +1,6 @@
 import { IPokemon } from "../model/Pokemon";
 import {
-  errorWithResponseCode,
+  errorScreen,
   pokemonAbilities,
   pokemonData,
   pokemonStats,
@@ -36,7 +36,7 @@ export class RenderView {
     }
   }
   async renderWithError(response: Response) {
-    this.display.innerHTML = errorWithResponseCode(response);
+    this.display.innerHTML = errorScreen(response);
     playTransition(this.display);
   }
 }
