@@ -40,6 +40,7 @@ export class UiEventListener {
   }
 
   private search() {
-    this.eventEmitter.emit("search", DomElements.inputSearch.value);
+    const query = DomElements.inputSearch.value;
+    if (query.length > 0) this.eventEmitter.emit("search", query);
   }
 }
