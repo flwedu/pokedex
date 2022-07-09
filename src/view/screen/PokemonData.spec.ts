@@ -1,9 +1,10 @@
 import { ditto } from "../../util/mock_data";
-import { pokemonData } from "./PokemonData";
+import { PokemonData } from "./";
 
 describe("Pokemon data screen", () => {
   it("should render the pokemon data", () => {
-    const html = pokemonData(ditto);
+    const screen = new PokemonData();
+    const html = screen.getHtml(ditto);
 
     expect(html).toMatchSnapshot();
   });

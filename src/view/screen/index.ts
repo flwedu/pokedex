@@ -1,6 +1,11 @@
-import { errorScreen } from "./ErrorScreen";
-import { pokemonAbilities } from "./PokemonAbilities";
-import { pokemonData } from "./PokemonData";
-import { pokemonStats } from "./PokemonStats";
+import { IPokemon } from "src/model/Pokemon";
+import { ErrorScreen } from "./ErrorScreen";
+import { PokemonAbilities } from "./PokemonAbilities";
+import { PokemonData } from "./PokemonData";
+import { PokemonStats } from "./PokemonStats";
 
-export { errorScreen, pokemonAbilities, pokemonData, pokemonStats };
+export default interface IScreen {
+  getHtml(pokemon: IPokemon): string;
+}
+
+export { ErrorScreen, PokemonAbilities, PokemonData, PokemonStats };
