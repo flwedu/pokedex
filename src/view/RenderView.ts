@@ -4,7 +4,7 @@ import {
   pokemonAbilities,
   pokemonData,
   pokemonStats,
-} from "./display/";
+} from "./screen";
 
 export class RenderView {
   // Declaring available view
