@@ -1,4 +1,4 @@
-import { EventEmitter } from "../core/EventEmitter";
+import { EventEmitter } from "../util/EventEmitter";
 import AutoCompleteService from "../service/AutoCompleteService";
 import { display__autocomplete, input__search } from "../ui/DomElements";
 
