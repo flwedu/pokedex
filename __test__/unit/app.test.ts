@@ -1,22 +1,18 @@
-import { IPokemon } from "../../src/model/Pokemon";
-import { ditto } from "../__mock__/ditto";
+import { ditto } from "../../src/util/mock_data";
 
 // Mocking input elements
-jest.spyOn(document, "getElementById").mockReturnValue(document.createElement("input"))
+jest
+  .spyOn(document, "getElementById")
+  .mockReturnValue(document.createElement("input"));
 
 import { app } from "../../src/app";
 
-const pokemonData: IPokemon = ditto;
-
 describe("saveSearch functions", () => {
+  it("Should save and get last searched pokemon", () => {
+    app.saveSearch(ditto);
 
-    it("Should save and get last searched pokemon", () => {
+    const lastSaved = app.getLastSearchedPokemon();
 
-        app.saveSearch(pokemonData);
-
-        const lastSaved = app.getLastSearchedPokemon();
-
-        expect(lastSaved).toEqual(pokemonData);
-    })
-
-})
+    expect(lastSaved).toEqual(ditto);
+  });
+});
