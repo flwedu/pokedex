@@ -1,53 +1,69 @@
+import { ApiClient } from "./ApiClient";
 import { IPokemon } from "./model/Pokemon";
-import { searchInAPI } from "./service/SearchService";
-import { display__data } from "./ui/DomElements";
-import { RenderView } from "./view/RenderView";
-import { EventEmitter } from "./core/EventEmitter";
+import EventEmitter from "./util/EventEmitter";
 
-export const app = {
-  searchResultsList: [] as IPokemon[],
+import {
+  ErrorScreen,
+  PokemonAbilities,
+  PokemonData,
+  PokemonStats,
+} from "./view/screen";
+import { DomElements } from "./view/ui";
+import { UiController } from "./view/UiController";
+import { UiEventListener } from "./view/UiEventListener";
 
-  //Function to save the last search
-  saveSearch(pokemon: IPokemon) {
-    if (app.searchResultsList.length > 10) app.searchResultsList.pop();
-    app.searchResultsList.unshift(pokemon);
-    return pokemon;
-  },
-
-  // Function to load the last saved pokemon
-  getLastSearchedPokemon() {
-    return app.searchResultsList[0];
-  },
+const searchResultsList = [] as IPokemon[];
+const screenList = {
+  success: [new PokemonData(), new PokemonStats(), new PokemonAbilities()],
+  error: new ErrorScreen(),
 };
+const uiController = new UiController(DomElements.divData, screenList);
+const apiClient = new ApiClient();
+const eventEmitter = new EventEmitter();
+const uiEventListener = new UiEventListener(eventEmitter);
 
-const render = new RenderView(display__data);
+//Function to save the last search
+function saveSearch(pokemon: IPokemon) {
+  if (searchResultsList.length > 10) searchResultsList.pop();
+  searchResultsList.unshift(pokemon);
+  return pokemon;
+}
+
+// Function to load the last saved pokemon
+function getLastSearchedPokemon() {
+  return searchResultsList[0];
+}
+
+uiEventListener.listenToButtons();
+uiEventListener.listenToInput();
 
 // Listening to events
-EventEmitter.on("search", (searchParam: string) => {
-  searchInAPI(searchParam)
-    .then((data) => app.saveSearch(data))
-    .then((data) => render.renderView(data))
-    .catch((error) => render.renderWithError(error));
+eventEmitter.on("search", (query: string) => {
+  apiClient
+    .get(query)
+    .then((data) => saveSearch(data))
+    .then((data) => uiController.renderSuccess(data))
+    .catch((error) => uiController.renderError(error));
 
-  EventEmitter.emit("closeAutoComplete", null);
+  eventEmitter.emit("closeAutoComplete", null);
 });
 
-EventEmitter.on("nextPokemon", () => {
-  if (app.getLastSearchedPokemon())
-    EventEmitter.emit("search", app.getLastSearchedPokemon().id + 1);
+eventEmitter.on("nextPokemon", () => {
+  if (getLastSearchedPokemon())
+    eventEmitter.emit("search", getLastSearchedPokemon().id + 1);
 });
 
-EventEmitter.on("previousPokemon", () => {
-  if (app.getLastSearchedPokemon())
-    EventEmitter.emit("search", app.getLastSearchedPokemon().id - 1);
+eventEmitter.on("previousPokemon", () => {
+  if (getLastSearchedPokemon())
+    eventEmitter.emit("search", getLastSearchedPokemon().id - 1);
 });
 
-EventEmitter.on("nextView", () => {
-  if (app.getLastSearchedPokemon())
-    render.renderNextView(app.getLastSearchedPokemon());
+eventEmitter.on("nextView", () => {
+  if (getLastSearchedPokemon())
+    uiController.renderNextSuccess(getLastSearchedPokemon());
 });
 
-EventEmitter.on("previousView", () => {
-  if (app.getLastSearchedPokemon())
-    render.renderPreviousView(app.getLastSearchedPokemon());
+eventEmitter.on("previousView", () => {
+  if (getLastSearchedPokemon())
+    uiController.renderPreviousSuccess(getLastSearchedPokemon());
 });
