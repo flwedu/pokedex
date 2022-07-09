@@ -8,7 +8,7 @@ export class PokemonStats implements IScreen {
       .join("\n");
 
     const html = `
-  <div>
+  <div class="container">
   <h2>Initial Stats:</h2>
   <ul>
   ${statsList}

@@ -2,7 +2,7 @@
 
 exports[`Pokemon stats screen should render the pokemon stats 1`] = `
 "
-  <div>
+  <div class=\\"container\\">
   <h2>Initial Stats:</h2>
   <ul>
   <li>hp: 48</li>
