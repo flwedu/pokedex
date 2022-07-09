@@ -1,0 +1,53 @@
+.app {
+  width: $externalWidth;
+  height: $externalHeight;
+
+  display: grid;
+  grid-template-rows: 3fr 1fr 1fr;
+
+  border-radius: 5px;
+  background: radial-gradient(
+    circle at bottom,
+    $color-case-dark,
+    $color-case,
+    $color-case-light
+  );
+}
+
+.container__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container__navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+}
+
+.container__bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+// elements
+#display {
+  width: 90%;
+  height: 90%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+    to bottom,
+    $displayColor 0%,
+    $displayDarkColor 100%
+  );
+  color: $displayFontColor;
+}
