@@ -26,6 +26,12 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 1rem;
+
+  input {
+    @include button(8rem, 2rem);
+    justify-self: center;
+    align-self: center;
+  }
 }
 
 .container__bottom {
