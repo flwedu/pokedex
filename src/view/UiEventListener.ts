@@ -9,9 +9,6 @@ export class UiEventListener {
       "click",
       (event: Event) => {
         switch (event.target) {
-          case Buttons.search:
-            this.search();
-            break;
           case Buttons.previousView:
             this.eventEmitter.emit("previousView", null);
             break;
@@ -27,6 +24,8 @@ export class UiEventListener {
         }
       }
     );
+
+    Buttons.search.addEventListener("click", () => this.search());
   }
 
   public listenToInput() {
