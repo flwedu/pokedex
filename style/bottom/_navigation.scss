@@ -1,5 +1,5 @@
 /* Left and right arrows */
-#navigation {
+#navigation__buttons {
   width: $externalWidth - 3rem;
 
   grid-template-rows: 1fr 1fr;
@@ -9,4 +9,8 @@
   .button {
     @include button(7rem, 2rem);
   }
+}
+
+#navigation__dots {
+  height: 1rem;
 }
