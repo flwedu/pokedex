@@ -46,8 +46,8 @@
 
   background: linear-gradient(
     to bottom,
-    $displayColor 0%,
-    $displayDarkColor 100%
+    $color-display 0%,
+    $color-display-dark 100%
   );
-  color: $displayFontColor;
+  color: $color-display-dark-font;
 }
