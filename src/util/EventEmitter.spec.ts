@@ -1,4 +1,4 @@
-import { EventEmitter } from "../../../src/core/EventEmitter";
+import { EventEmitter } from "./EventEmitter";
 
 it("Should add a listener", () => {
   EventEmitter.on("A", () => {
