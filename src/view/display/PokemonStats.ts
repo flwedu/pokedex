@@ -1,22 +1,17 @@
 import { IPokemon } from "../../model/Pokemon";
 
 export function pokemonStats(pokemon: IPokemon): string {
-  const parentElement = document.createElement("div");
-  const h2 = document.createElement("h2");
-  const ul = document.createElement("ul");
+  const statsList = pokemon.stats
+    .map((stat) => `<li>${stat.stat.name}: ${stat.base_stat}</li>`)
+    .join("\n");
 
-  h2.textContent = "Initial Stats:";
-
-  ul.innerHTML = `
-  ${pokemon.stats
-    .map(
-      (stat) => `
-  <li><strong>${stat.stat.name}</strong>: ${stat.base_stat}<li>
-  `
-    )
-    .join("")}
+  const html = `
+  <div>
+  <h2>Initial Stats:</h2>
+  <ul>
+  ${statsList}
+  </ul>
+  </div>
   `;
-
-  parentElement.append(h2, ul);
-  return parentElement.innerHTML;
+  return html;
 }

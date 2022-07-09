@@ -1,24 +1,19 @@
 const errorImageSrc = "../../../assets/error.svg";
 
-const errorMessages = new Map();
-errorMessages.set("default", "Error");
-errorMessages.set("404", "No Pokémon found");
-errorMessages.set("500", "Server Error");
+const errorMessages: { [index: number | string]: string } = {
+  default: "Error",
+  404: "No Pokémon found",
+  500: "Server Error",
+};
 
 export function errorWithResponseCode(response: Response): string {
-  const parentElement = document.createElement("div");
-  const h2 = document.createElement("h2");
-  const p = document.createElement("p");
-  const img = document.createElement("img");
+  const responseCode = response.status;
 
-  h2.textContent = `Error ${response.status}`;
-  p.textContent = `${
-    errorMessages.get(response.status.toString()) ||
-    errorMessages.get("default")
-  }`;
-  img.src = errorImageSrc;
+  const html = `<div>
+  <h2>Error ${responseCode}</h2>
+  <p>${errorMessages[responseCode] ?? errorMessages.default}</p>
+  <img src="${errorImageSrc}" alt="X">
+  </div>`;
 
-  parentElement.append(h2, p, img);
-
-  return parentElement.innerHTML;
+  return html;
 }

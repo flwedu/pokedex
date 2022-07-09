@@ -2,21 +2,14 @@ import { IPokemon } from "../../model/Pokemon";
 import { formatFirstLetterToUppercase } from "../../util/text";
 
 export function pokemonData(pokemon: IPokemon): string {
-  const parentElement = document.createElement("div");
-  const h2 = document.createElement("h2");
-  const img = document.createElement("img");
-  const p = document.createElement("p");
-  const pw = document.createElement("p");
+  const html = `
+  <div>
+  <h2>Nº:${pokemon.id} / ${formatFirstLetterToUppercase(pokemon.name)}</h2>
+  <img src="${pokemon.sprites.front_default}" alt="${pokemon.name} picture">
+  <p>Type: ${pokemon.types.map((type) => type.type.name).join(" & ")}</p>
+  <p>Weight: ${pokemon.weight} (in hectograms)</p>
+  </div>
+  `;
 
-  h2.textContent = `Nº:${pokemon.id} / ${formatFirstLetterToUppercase(
-    pokemon.name
-  )}`;
-  img.src = pokemon.sprites.front_default;
-  p.textContent = `Type: ${pokemon.types
-    .map((type) => type.type.name)
-    .join(" & ")}`;
-  pw.textContent = `Weight: ${pokemon.weight} (in hectograms)`;
-
-  parentElement.append(h2, img, p, pw);
-  return parentElement.innerHTML;
+  return html;
 }
