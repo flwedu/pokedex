@@ -22,7 +22,7 @@ export const app = {
 
 const render = new RenderView(display__data);
 
-// Listning to events
+// Listening to events
 EventEmitter.on("search", (searchParam: string) => {
   searchInAPI(searchParam)
     .then((data) => app.saveSearch(data))

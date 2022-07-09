@@ -24,7 +24,6 @@ keyMapper.set("Default", () =>
   EventEmitter.emit("autoComplete", input__search.value)
 );
 keyMapper.set("Backspace", () => {
-  //@ts-ignore
   if (input__search.value.length < 2) {
     EventEmitter.emit("closeAutoComplete", null);
   }
