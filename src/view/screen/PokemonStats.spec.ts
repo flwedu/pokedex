@@ -1,9 +1,10 @@
 import { ditto } from "../../util/mock_data";
-import { pokemonStats } from "./PokemonStats";
+import { PokemonStats } from "./";
 
 describe("Pokemon stats screen", () => {
   it("should render the pokemon stats", () => {
-    const html = pokemonStats(ditto);
+    const screen = new PokemonStats();
+    const html = screen.getHtml(ditto);
 
     expect(html).toMatchSnapshot();
   });
