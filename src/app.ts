@@ -47,13 +47,17 @@ eventEmitter.on("search", (query: string) => {
 });
 
 eventEmitter.on("nextPokemon", () => {
-  if (getLastSearchedPokemon())
-    eventEmitter.emit("search", getLastSearchedPokemon().id + 1);
+  if (getLastSearchedPokemon()) {
+    const id = String(getLastSearchedPokemon().id + 1);
+    eventEmitter.emit("search", id);
+  }
 });
 
 eventEmitter.on("previousPokemon", () => {
-  if (getLastSearchedPokemon())
-    eventEmitter.emit("search", getLastSearchedPokemon().id - 1);
+  if (getLastSearchedPokemon()) {
+    const id = String(getLastSearchedPokemon().id - 1);
+    eventEmitter.emit("search", id);
+  }
 });
 
 eventEmitter.on("nextView", () => {
