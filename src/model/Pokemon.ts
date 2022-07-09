@@ -1,3 +1,5 @@
+import { IAbility } from "./Ability";
+
 export type IPokemon = {
   id: number;
   name: string;
@@ -35,4 +37,5 @@ export type IPokemon = {
       slot: number;
     }
   ];
+  ability?: IAbility;
 };
