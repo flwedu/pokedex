@@ -1,7 +1,7 @@
 {
   "name": "pokedex",
-  "version": "1.0.0",
-  "description": "Projeto de pokédex utilizando a API do [Pokeapi](https://github.com/PokeAPI/pokeapi). Utilizando HTML e Javascript puro (inicialmente).",
+  "version": "3.0.1",
+  "description": "Projeto de uma pokédex utilizando a API do [PokeAPI](https://github.com/PokeAPI/pokeapi). Utilizando HTML e Javascript puro (inicialmente).",
   "main": "index.js",
   "dependencies": {
     "commonjs": "^0.0.1",

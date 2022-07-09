@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pokemon data screen should render the pokemon data 1`] = `
+"
+  <div class=\\"container\\">
+  <h2>Nº:132 / Ditto</h2>
+  <img src=\\"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png\\" alt=\\"ditto picture\\">
+  <p>Type: normal</p>
+  <p>Weight: 40 (in hectograms)</p>
+  </div>
+  "
+`;

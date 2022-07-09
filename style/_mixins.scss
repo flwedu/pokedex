@@ -1,17 +1,18 @@
 @mixin button($width, $height) {
   box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
 
   font-size: x-small;
   text-transform: uppercase;
   letter-spacing: 1px;
 
-  box-shadow: -1px 2px 0 $shadow;
+  box-shadow: -1px 2px 0 $color-shadow;
   text-decoration: none;
 
   width: $width;
   height: $height;
   text-align: center;
 
-  background: $butonColor;
-  border: none;
+  background: $color-button;
 }

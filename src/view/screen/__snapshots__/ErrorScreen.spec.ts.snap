@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error Screen tests should render the error screen 1`] = `
+"<div>
+  <h2>BadRequestError</h2>
+  <p></p>
+  <img src=\\"../../../assets/error.svg\\" alt=\\"X\\">
+  </div>"
+`;
+
+exports[`Error Screen tests should render the error screen 2`] = `
+"<div>
+  <h2>NotFoundError</h2>
+  <p></p>
+  <img src=\\"../../../assets/error.svg\\" alt=\\"X\\">
+  </div>"
+`;
+
+exports[`Error Screen tests should render the error screen 3`] = `
+"<div>
+  <h2>InternalServerError</h2>
+  <p></p>
+  <img src=\\"../../../assets/error.svg\\" alt=\\"X\\">
+  </div>"
+`;
+
+exports[`Error Screen tests should render the error screen 4`] = `
+"<div>
+  <h2>Error</h2>
+  <p></p>
+  <img src=\\"../../../assets/error.svg\\" alt=\\"X\\">
+  </div>"
+`;
