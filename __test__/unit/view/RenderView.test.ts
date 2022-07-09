@@ -1,27 +1,33 @@
-import { ditto } from "../../__mock__/ditto";
+import { ditto } from "../../../src/util/mock_data";
 import { RenderView } from "../../../src/view/RenderView";
+import { pokemonData, pokemonStats } from "../../../src/view/screen";
 
 const display = document.createElement("div");
 const render = new RenderView(display);
-const pokemonMockData = ditto;
-const function1 = () => `<div>function1</div>`;
-const function2 = () => `<div>function2</div>`;
-render.viewFunctions = [function1, function2];
+const view1 = pokemonData(ditto);
+const view2 = pokemonStats(ditto);
+render.viewFunctions = [pokemonData, pokemonStats];
 
 it("Should render the innerHTML of the display HTML Element", async () => {
-  await render.renderView(pokemonMockData);
+  await render.renderView(ditto);
 
-  expect(display.innerHTML).toEqual(function1());
+  setTimeout(() => {
+    expect(display).toMatchInlineSnapshot(view1);
+  }, 1000);
 });
 
 it("Should render the innerHTML with the next function data", async () => {
-  await render.renderNextView(pokemonMockData);
+  await render.renderNextView(ditto);
 
-  expect(display.innerHTML).toEqual(function2());
+  setTimeout(() => {
+    expect(display).toMatchInlineSnapshot(view2);
+  }, 1000);
 });
 
 it("Should render the innerHTML of the display HTML Element with previous function data", async () => {
-  await render.renderPreviousView(pokemonMockData);
+  await render.renderPreviousView(ditto);
 
-  expect(display.innerHTML).toEqual(function1());
+  setTimeout(() => {
+    expect(display).toMatchInlineSnapshot(view1);
+  }, 1000);
 });
