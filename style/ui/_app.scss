@@ -14,13 +14,6 @@
   );
 }
 
-.container__top {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .container__navigation {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -35,10 +28,7 @@
 }
 
 .container__bottom {
-  display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
 
 // elements

@@ -5,7 +5,7 @@ import { formatFirstLetterToUppercase } from "../../util/text";
 export class PokemonData implements IScreen {
   getHtml(pokemon: IPokemon): string {
     const html = `
-  <div>
+  <div class="container">
   <h2>Nº:${pokemon.id} / ${formatFirstLetterToUppercase(pokemon.name)}</h2>
   <img src="${pokemon.sprites.front_default}" alt="${pokemon.name} picture">
   <p>Type: ${pokemon.types.map((type) => type.type.name).join(" & ")}</p>

@@ -2,7 +2,7 @@
 
 exports[`Pokemon data screen should render the pokemon data 1`] = `
 "
-  <div>
+  <div class=\\"container\\">
   <h2>Nº:132 / Ditto</h2>
   <img src=\\"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png\\" alt=\\"ditto picture\\">
   <p>Type: normal</p>
