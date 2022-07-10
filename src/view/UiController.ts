@@ -18,6 +18,10 @@ export class UiController {
     this.lastIndex = screenList.success.length - 1;
   }
 
+  public getRenderedIndex(): number {
+    return this.renderedIndex;
+  }
+
   public renderSuccess(pokemon: IPokemon, id: number = this.renderedIndex) {
     this.uiElement.innerHTML = this.screenList.success[id].getHtml(pokemon);
   }
