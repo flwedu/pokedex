@@ -11,6 +11,7 @@ import {
 import { DomElements } from "./view/ui";
 import { UiController } from "./view/UiController";
 import { UiEventListener } from "./view/UiEventListener";
+import { UIFeatures } from "./view/UIFeatures";
 
 const searchResultsList = [] as IPokemon[];
 const screenList = {
@@ -18,6 +19,7 @@ const screenList = {
   error: new ErrorScreen(),
 };
 const uiController = new UiController(DomElements.divResults, screenList);
+const uiFeatures = new UIFeatures();
 const apiClient = new ApiClient();
 const eventEmitter = new EventEmitter();
 const uiEventListener = new UiEventListener(eventEmitter);
@@ -36,6 +38,11 @@ function getLastSearchedPokemon() {
 
 uiEventListener.listenToButtons();
 uiEventListener.listenToInput();
+uiFeatures.initNavigationDots(
+  DomElements.divNavigationDots,
+  screenList.success
+);
+uiFeatures.changeActiveNavigationDot(0);
 
 // Listening to events
 eventEmitter.on("search", (query: string) => {
@@ -61,11 +68,17 @@ eventEmitter.on("previousPokemon", () => {
 });
 
 eventEmitter.on("nextView", () => {
-  if (getLastSearchedPokemon())
+  if (getLastSearchedPokemon()) {
     uiController.renderNextSuccess(getLastSearchedPokemon());
+    const index = uiController.getRenderedIndex();
+    uiFeatures.changeActiveNavigationDot(index);
+  }
 });
 
 eventEmitter.on("previousView", () => {
-  if (getLastSearchedPokemon())
+  if (getLastSearchedPokemon()) {
     uiController.renderPreviousSuccess(getLastSearchedPokemon());
+    const index = uiController.getRenderedIndex();
+    uiFeatures.changeActiveNavigationDot(index);
+  }
 });
