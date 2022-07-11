@@ -21,14 +21,9 @@ export class UIFeatures {
     if (id > -1) this.dots[id].classList.add("active");
   }
 
-  initNameSuggestion(htmlEl: HTMLDataListElement) {
+  initNameSuggestion(htmlEl: HTMLDataListElement, pokemonNames: string[]) {
     this.suggestionDataList = htmlEl;
-
-    fetch("../../assets/data/pokemon_names.json")
-      .then((res) => res.json())
-      .then((data: { list: { id: string; name: string }[] }) => {
-        this.pokemonNames = data.list.map((pokemon) => pokemon.name);
-      });
+    this.pokemonNames = pokemonNames;
   }
 
   updateNameSuggestion(query: string) {

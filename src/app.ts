@@ -43,7 +43,14 @@ uiFeatures.initNavigationDots(
   screenList.success
 );
 uiFeatures.changeActiveNavigationDot(0);
-uiFeatures.initNameSuggestion(DomElements.listNameSuggestion);
+
+// Loading name suggestions
+fetch("../../assets/data/pokemon_names.json")
+  .then((res) => res.json())
+  .then((data: { list: { id: string; name: string }[] }) => {
+    const pokemonNames = data.list.map((pokemon) => pokemon.name);
+    uiFeatures.initNameSuggestion(DomElements.listNameSuggestion, pokemonNames);
+  });
 
 // Listening to events
 eventEmitter.on("search", (query: string) => {
