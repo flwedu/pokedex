@@ -26,8 +26,8 @@ export class UIFeatures {
 
     fetch("../../assets/data/pokemon_names.json")
       .then((res) => res.json())
-      .then((data: { id: string; name: string }[]) => {
-        this.pokemonNames = data.map((pokemon) => pokemon.name);
+      .then((data: { list: { id: string; name: string }[] }) => {
+        this.pokemonNames = data.list.map((pokemon) => pokemon.name);
       });
   }
 

@@ -43,6 +43,7 @@ uiFeatures.initNavigationDots(
   screenList.success
 );
 uiFeatures.changeActiveNavigationDot(0);
+uiFeatures.initNameSuggestion(DomElements.listNameSuggestion);
 
 // Listening to events
 eventEmitter.on("search", (query: string) => {
@@ -81,4 +82,8 @@ eventEmitter.on("previousView", () => {
     const index = uiController.getRenderedIndex();
     uiFeatures.changeActiveNavigationDot(index);
   }
+});
+
+eventEmitter.on("updateNameSuggestion", (query: string) => {
+  uiFeatures.updateNameSuggestion(query);
 });
