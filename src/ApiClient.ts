@@ -1,10 +1,16 @@
 import { IPokemon } from "./model/Pokemon";
 import { statusErrors } from "./util/custom-errors";
+import { SearchMemo } from "./util/SearchMemo";
 
 export class ApiClient {
   private url: string = "https://pokeapi.co/api/v2/pokemon/";
+  private memo = new SearchMemo();
 
   public async get(query: string): Promise<IPokemon> {
+    if (this.memo.has(query)) {
+      return this.memo.get(query);
+    }
+
     const pokeResponse = await fetch(`${this.url}${query.toLowerCase()}`);
 
     if (pokeResponse.status !== 200) {
@@ -25,6 +31,9 @@ export class ApiClient {
         ...abilityData,
       },
     };
+
+    this.memo.add(query, pokemon);
+    this.memo.add(String(pokemon.id), pokemon);
 
     return pokemon;
   }

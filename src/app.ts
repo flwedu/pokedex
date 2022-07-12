@@ -24,18 +24,6 @@ const apiClient = new ApiClient();
 const eventEmitter = new EventEmitter();
 const uiEventListener = new UiEventListener(eventEmitter);
 
-//Function to save the last search
-function saveSearch(pokemon: IPokemon) {
-  if (searchResultsList.length > 10) searchResultsList.pop();
-  searchResultsList.unshift(pokemon);
-  return pokemon;
-}
-
-// Function to load the last saved pokemon
-function getLastSearchedPokemon() {
-  return searchResultsList[0];
-}
-
 uiEventListener.listenToButtons();
 uiEventListener.listenToInput();
 uiFeatures.initNavigationDots(
@@ -44,41 +32,50 @@ uiFeatures.initNavigationDots(
 );
 uiFeatures.changeActiveNavigationDot(0);
 
+// Loading name suggestions
+fetch("../../assets/data/pokemon_names.json")
+  .then((res) => res.json())
+  .then((data: { list: { id: string; name: string }[] }) => {
+    const pokemonNames = data.list.map((pokemon) => pokemon.name);
+    uiFeatures.initNameSuggestion(DomElements.listNameSuggestion, pokemonNames);
+  });
+
 // Listening to events
 eventEmitter.on("search", (query: string) => {
   apiClient
     .get(query)
-    .then((pokemon) => saveSearch(pokemon))
     .then((pokemon) => uiController.renderSuccess(pokemon))
     .catch((error) => uiController.renderError(error));
 });
 
 eventEmitter.on("nextPokemon", () => {
-  if (getLastSearchedPokemon()) {
-    const id = String(getLastSearchedPokemon().id + 1);
-    eventEmitter.emit("search", id);
+  const renderedId = uiController.getRenderedPokemonId();
+  if (renderedId) {
+    const nextId = String(renderedId + 1);
+    eventEmitter.emit("search", nextId);
   }
 });
 
 eventEmitter.on("previousPokemon", () => {
-  if (getLastSearchedPokemon()) {
-    const id = String(getLastSearchedPokemon().id - 1);
-    eventEmitter.emit("search", id);
+  const renderedId = uiController.getRenderedPokemonId();
+  if (renderedId && renderedId > 0) {
+    const previousId = String(renderedId - 1);
+    eventEmitter.emit("search", previousId);
   }
 });
 
 eventEmitter.on("nextView", () => {
-  if (getLastSearchedPokemon()) {
-    uiController.renderNextSuccess(getLastSearchedPokemon());
-    const index = uiController.getRenderedIndex();
-    uiFeatures.changeActiveNavigationDot(index);
-  }
+  uiController.renderNextSuccess();
+  const index = uiController.getRenderedIndex();
+  uiFeatures.changeActiveNavigationDot(index);
 });
 
 eventEmitter.on("previousView", () => {
-  if (getLastSearchedPokemon()) {
-    uiController.renderPreviousSuccess(getLastSearchedPokemon());
-    const index = uiController.getRenderedIndex();
-    uiFeatures.changeActiveNavigationDot(index);
-  }
+  uiController.renderPreviousSuccess();
+  const index = uiController.getRenderedIndex();
+  uiFeatures.changeActiveNavigationDot(index);
+});
+
+eventEmitter.on("updateNameSuggestion", (query: string) => {
+  uiFeatures.updateNameSuggestion(query);
 });

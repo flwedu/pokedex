@@ -28,7 +28,7 @@ describe("UI Controller tests", () => {
   it("should render the second screen", () => {
     const uiController = new UiController(mockUiElement, screenList);
     uiController.renderSuccess(pokemon);
-    uiController.renderNextSuccess(pokemon);
+    uiController.renderNextSuccess();
 
     expect(mockUiElement.innerHTML).toEqual(
       screenList.success[1].getHtml(pokemon)
@@ -38,7 +38,7 @@ describe("UI Controller tests", () => {
   it("should render the first screen again", () => {
     const uiController = new UiController(mockUiElement, screenList);
     uiController.renderSuccess(pokemon);
-    uiController.renderPreviousSuccess(pokemon);
+    uiController.renderPreviousSuccess();
 
     expect(mockUiElement.innerHTML).toEqual(
       screenList.success[0].getHtml(pokemon)

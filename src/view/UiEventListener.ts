@@ -33,8 +33,10 @@ export class UiEventListener {
       "keyup",
       (event: KeyboardEvent) => {
         if (event.key === "Enter") {
-          this.search();
+          return this.search();
         }
+        const input = event.target as HTMLInputElement;
+        this.eventEmitter.emit("updateNameSuggestion", input.value);
       }
     );
   }

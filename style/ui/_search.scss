@@ -1,3 +1,4 @@
+@import "../animations";
 /* Search bar & tools */
 #search-tools {
   grid-template-columns: 12rem 2rem;
@@ -21,14 +22,5 @@
 
   &:hover {
     animation: spin 1s infinite linear;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
