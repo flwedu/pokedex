@@ -9,6 +9,7 @@ type ScreenList = {
 export class UiController {
   private renderedIndex: number;
   private lastIndex: number;
+  private pokemon: IPokemon | undefined;
 
   constructor(
     private readonly uiElement: HTMLDivElement,
@@ -22,25 +23,35 @@ export class UiController {
     return this.renderedIndex;
   }
 
+  public getRenderedPokemonId(): number {
+    return this.pokemon?.id;
+  }
+
   public renderSuccess(pokemon: IPokemon, id: number = this.renderedIndex) {
-    this.uiElement.innerHTML = this.screenList.success[id].getHtml(pokemon);
+    this.pokemon = pokemon;
+    this.uiElement.innerHTML = this.screenList.success[id].getHtml(
+      this.pokemon
+    );
   }
 
   public renderError(error: Error) {
+    this.pokemon = undefined;
     this.uiElement.innerHTML = this.screenList.error.getHtml(error);
   }
 
-  public renderNextSuccess(pokemon: IPokemon) {
+  public renderNextSuccess() {
+    if (!this.pokemon) return;
     if (this.renderedIndex < this.lastIndex) {
       this.renderedIndex++;
-      this.renderSuccess(pokemon, this.renderedIndex);
+      this.renderSuccess(this.pokemon, this.renderedIndex);
     }
   }
 
-  public renderPreviousSuccess(pokemon: IPokemon) {
+  public renderPreviousSuccess() {
+    if (!this.pokemon) return;
     if (this.renderedIndex > 0) {
       this.renderedIndex--;
-      this.renderSuccess(pokemon, this.renderedIndex);
+      this.renderSuccess(this.pokemon, this.renderedIndex);
     }
   }
 }
