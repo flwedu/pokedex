@@ -31,6 +31,12 @@ p {
   text-justify: auto;
 }
 
+input {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
