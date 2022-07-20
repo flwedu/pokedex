@@ -1,5 +1,4 @@
 import { ApiClient } from "./ApiClient";
-import { IPokemon } from "./model/Pokemon";
 import EventEmitter from "./util/EventEmitter";
 
 import {
@@ -13,7 +12,6 @@ import { UiController } from "./view/UiController";
 import { UiEventListener } from "./view/UiEventListener";
 import { UIFeatures } from "./view/UIFeatures";
 
-const searchResultsList = [] as IPokemon[];
 const screenList = {
   success: [new PokemonData(), new PokemonStats(), new PokemonAbilities()],
   error: new ErrorScreen(),
