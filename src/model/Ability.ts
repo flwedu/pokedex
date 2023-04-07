@@ -1,14 +1,14 @@
 export type IAbility = {
-  id: number;
-  name: string;
-  effect_entries: [
-    {
-      effect: string;
-      language: {
-        name: string;
-        url: string;
-      };
-      short_effect: string;
-    }
-  ];
+	id: number;
+	name: string;
+	effect_entries: [
+		{
+			effect: string;
+			language: {
+				name: string;
+				url: string;
+			};
+			short_effect: string;
+		}
+	];
 };
