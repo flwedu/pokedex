@@ -1,65 +1,66 @@
 @import "../animations";
 
 .app {
-  background: radial-gradient(circle at bottom, $color-case-dark, $color-case, $color-case-light);
-  border-radius: 0.4rem;
-  display: grid;
-  grid-template-rows: 3fr 1fr 1fr;
-  height: $externalHeight;
-  margin-inline: auto;
-  margin-top: 10vh;
-  width: $externalWidth;
+	background: radial-gradient(circle at bottom, $color-case-dark, $color-case, $color-case-light);
+	border-radius: 0.4rem;
+	display: grid;
+	grid-template-rows: 3fr 1fr 1fr;
+	height: $externalHeight;
+	margin-inline: auto;
+	margin-top: 10vh;
+	width: $externalWidth;
 }
 
 .container {
-  &__navigation {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+	&__navigation {
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
 
-    input {
-      @include button(8rem, 2rem);
-      align-self: center;
-      justify-self: center;
-    }
-  }
+		input {
+			@include button(8rem, 2rem);
+			align-self: center;
+			justify-self: center;
+		}
+	}
 
-  &__bottom {
-    flex-direction: row;
-  }
+	&__bottom {
+		flex-direction: row;
+	}
 
-  &__dots {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0.625rem;
-    width: 50%;
+	&__dots {
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 0.625rem;
+		width: 50%;
 
-    .dot {
-      background: $color-button-gray;
-      border-radius: 50%;
-      border: none;
-      height: 1fr;
-      width: 1rem;
+		.dot {
+			background: $color-button-gray;
+			border-radius: 50%;
+			border: none;
+			height: 1fr;
+			width: 1rem;
 
-      &.active {
-        background: $color-shiny;
-        box-shadow: 0 0 0.625rem $color-shiny, 0 0 5rem $color-light;
-      }
-    }
-  }
+			&.active {
+				background: $color-shiny;
+				box-shadow: 0 0 0.625rem $color-shiny, 0 0 5rem $color-light;
+			}
+		}
+	}
 }
 
 // elements
 #display {
-  align-items: center;
-  background: linear-gradient(to bottom, $color-display 0%, $color-display-dark 100%);
-  color: $color-display-dark-font;
-  display: flex;
-  height: 90%;
-  justify-content: center;
-  width: 90%;
-  * {
-    animation: fade-in forwards 1500ms;
-  }
+	align-items: center;
+	background: linear-gradient(to bottom, $color-display 0%, $color-display-dark 100%);
+	color: $color-display-dark-font;
+	display: flex;
+	height: 90%;
+	justify-content: center;
+	width: 90%;
+
+	* {
+		animation: fade-in forwards 1500ms;
+	}
 }
