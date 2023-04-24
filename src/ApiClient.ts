@@ -1,6 +1,6 @@
-import { IPokemon } from "./model/Pokemon";
-import { statusErrors } from "./util/custom-errors";
-import { SearchMemo } from "./util/SearchMemo";
+import {IPokemon} from "./model/Pokemon";
+import {statusErrors} from "./util/custom-errors";
+import {SearchMemo} from "./util/SearchMemo";
 
 export class ApiClient {
 	private url: string = "https://pokeapi.co/api/v2/pokemon/";
@@ -14,8 +14,7 @@ export class ApiClient {
 		const pokeResponse = await fetch(`${this.url}${query.toLowerCase()}`);
 
 		if (pokeResponse.status !== 200) {
-			const error = statusErrors[pokeResponse.status] ?? new Error();
-			throw error;
+			throw statusErrors[pokeResponse.status] ?? new Error();
 		}
 
 		const pokeData = await pokeResponse.json();

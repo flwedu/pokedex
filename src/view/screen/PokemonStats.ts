@@ -1,5 +1,5 @@
 import IScreen from ".";
-import { IPokemon } from "../../model/Pokemon";
+import {IPokemon} from "../../model/Pokemon";
 
 export class PokemonStats implements IScreen {
   getHtml(pokemon: IPokemon): string {
@@ -7,7 +7,7 @@ export class PokemonStats implements IScreen {
       .map((stat) => `<li>${stat.stat.name}: ${stat.base_stat}</li>`)
       .join("\n");
 
-    const html = `
+  return `
   <div class="container">
   <h2>Initial Stats:</h2>
   <ul>
@@ -15,6 +15,5 @@ export class PokemonStats implements IScreen {
   </ul>
   </div>
   `;
-    return html;
   }
 }

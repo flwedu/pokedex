@@ -1,5 +1,4 @@
 import { ApiClient } from "./ApiClient";
-import { IPokemon } from "./model/Pokemon";
 import EventEmitter from "./util/EventEmitter";
 
 import {

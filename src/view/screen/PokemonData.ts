@@ -1,10 +1,10 @@
 import IScreen from ".";
-import { IPokemon } from "../../model/Pokemon";
-import { formatFirstLetterToUppercase } from "../../util/text";
+import {IPokemon} from "../../model/Pokemon";
+import {formatFirstLetterToUppercase} from "../../util/text";
 
 export class PokemonData implements IScreen {
   getHtml(pokemon: IPokemon): string {
-    const html = `
+	  return `
   <div class="container">
   <h2>Nº:${pokemon.id} / ${formatFirstLetterToUppercase(pokemon.name)}</h2>
   <img src="${pokemon.sprites.front_default}" alt="${pokemon.name} picture">
@@ -12,7 +12,5 @@ export class PokemonData implements IScreen {
   <p>Weight: ${pokemon.weight} (in hectograms)</p>
   </div>
   `;
-
-    return html;
   }
 }
