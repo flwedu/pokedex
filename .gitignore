@@ -11,3 +11,7 @@ dist/js
 .idea/inspectionProfiles/Project_Default.xml
 
 /coverage
+/.pnp.loader.mjs
+/.pnp.cjs
+/.yarn/
+/.idea/
