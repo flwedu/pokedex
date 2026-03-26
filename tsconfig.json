@@ -1,32 +1,19 @@
 {
-  "compilerOptions": {
-    /* Language and Environment */
-    "target": "ES2015",
-
-    /* Modules */
-    "module": "ES2015" /* Specify what module code is generated. */,
-    "moduleResolution": "node",
-
-    /* Paths */
-    "baseUrl": ".",
-
-    /* JavaScript Support */
-    "allowJs": false /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */,
-    "checkJs": false /* Enable error reporting in type-checked JavaScript files. */,
-    "outDir": "dist/js/",
-
-    "esModuleInterop": true,
-
-    /* Type Checking */
-    "strict": false /* Enable all strict type-checking options. */,
-    "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied `any` type.. */,
-    "strictNullChecks": false
-  },
-  "include": ["./src"],
-  "exclude": [
-    "./plugins/**/*",
-    "./typings/**/*",
-    "./built/**/*",
-    "./coverage/**/*"
-  ]
+	"compilerOptions": {
+		"target": "ES2020",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"baseUrl": ".",
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"strict": false,
+		"noImplicitAny": true,
+		"strictNullChecks": false,
+		"types": ["vitest/globals"]
+	},
+	"include": ["./src", "vite.config.ts"],
+	"exclude": ["node_modules"]
 }

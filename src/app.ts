@@ -31,7 +31,7 @@ uiFeatures.initNavigationDots(
 uiFeatures.changeActiveNavigationDot(0);
 
 // Loading name suggestions
-fetch("../../assets/data/pokemon_names.json")
+fetch("/assets/data/pokemon_names.json")
 	.then((res) => res.json())
 	.then((data: { list: { id: string; name: string }[] }) => {
 		const pokemonNames = data.list.map((pokemon) => pokemon.name);

@@ -1,7 +1,7 @@
 import EventEmitter from "./EventEmitter";
 
 it("Emit event should execute the function", () => {
-	const testFunction = jest.fn();
+	const testFunction = vi.fn();
 	const emitter = new EventEmitter();
 
 	emitter.on("A", (args: any) => testFunction(args));
