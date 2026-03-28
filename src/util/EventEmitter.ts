@@ -1,22 +1,19 @@
 export default class EventEmitter {
-	private events;
+	private events: Map<string, Function[]>;
 
 	constructor() {
-		this.events = new Map<string, Function[]>();
+		this.events = new Map();
 	}
 
-	on(topic: string, callback: Function) {
-		const oldEvents = this.events.get(topic);
-		if (this.events.has(topic)) {
-			this.events.set(topic, [...oldEvents, callback]);
-		}
-		return this.events.set(topic, [callback]);
+	on(topic: string, callback: Function): void {
+		const existing = this.events.get(topic) ?? [];
+		this.events.set(topic, [...existing, callback]);
 	}
 
-	emit(topic: string, data: any) {
+	emit(topic: string, data?: unknown): void {
 		const listeners = this.events.get(topic);
 		if (Array.isArray(listeners) && listeners.length) {
-			listeners.forEach((event) => event(data));
+			listeners.forEach((fn) => fn(data));
 		}
 	}
 }

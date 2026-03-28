@@ -109,21 +109,37 @@
 .container__bottom {
 	background: $color-device-bottom;
 	border-top: 1px solid darken($color-device-bottom-dark, 4%);
-	flex-direction: row;
-	gap: 0.4rem;
-	padding: 0.35rem 0.6rem;
+	padding: 0.35rem 0.7rem;
+	width: 100%;
 }
 
 .container__navigation {
-	display: grid;
-	gap: 0.35rem;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
+	flex-direction: row;
+	gap: 1.2rem;
+	padding: 0.15rem 0.5rem;
 
-	input {
-		@include button(7.8rem, 1.55rem);
-		align-self: center;
-		justify-self: center;
+	.nav-group {
+		align-items: center;
+		display: flex;
+		gap: 0.35rem;
+
+		&__label {
+			color: $color-dark;
+			font-size: 0.45rem;
+			font-weight: 700;
+			letter-spacing: 1px;
+			min-width: 2.8rem;
+			opacity: 0.5;
+			text-align: center;
+			text-transform: uppercase;
+		}
+	}
+
+	.nav-arrow {
+		@include button(1.9rem, 1.65rem);
+		font-size: 0.8rem;
+		line-height: 1;
+		padding: 0;
 	}
 }
 

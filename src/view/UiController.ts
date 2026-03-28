@@ -24,7 +24,7 @@ export class UiController {
 		return this.renderedIndex;
 	}
 
-	public getRenderedPokemonId(): number {
+	public getRenderedPokemonId(): number | undefined {
 		return this.pokemon?.id;
 	}
 

@@ -5,7 +5,7 @@ const DomElements = {
 	divResults: getById("display") as HTMLDivElement,
 	divNavigationButtons: getById("navigation") as HTMLDivElement,
 	divNavigationDots: getById("navigation__dots") as HTMLDivElement,
-	listNameSuggestion: getById("data_list") as HTMLDataListElement,
+	comboboxDropdown: getById("combobox__dropdown") as HTMLDivElement,
 };
 
 export default DomElements;

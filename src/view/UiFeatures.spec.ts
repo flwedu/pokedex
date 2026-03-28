@@ -32,26 +32,30 @@ describe("UI Features tests", () => {
 		);
 	});
 
-	test("initNameSuggestion() should not render any <option> element", () => {
-		const dataListElement = document.createElement("datalist");
+	test("initCombobox() should store references without throwing", () => {
+		const dropdown = document.createElement("div");
+		const input = document.createElement("input");
 
 		const uiFeatures = new UIFeatures();
+		uiFeatures.initCombobox(dropdown, input);
 
-		uiFeatures.initNameSuggestion(dataListElement, ["pikachu", "charmander"]);
-
-		expect(dataListElement.innerHTML).toMatchInlineSnapshot(`""`);
+		expect(uiFeatures.isComboboxOpen()).toBe(false);
 	});
 
-	test("updateNameSuggestion() should render the correct innerHTML to a element", () => {
-		const dataListElement = document.createElement("datalist");
+	test("openCombobox() with names should render suggestion items after debounce", () => {
+		vi.useFakeTimers();
+		const dropdown = document.createElement("div");
+		const input = document.createElement("input");
 
 		const uiFeatures = new UIFeatures();
+		uiFeatures.initCombobox(dropdown, input);
+		uiFeatures.setNames(["bulbasaur", "charmander"]);
+		uiFeatures.openCombobox("bul");
 
-		uiFeatures.initNameSuggestion(dataListElement, ["bulbasaur", "charmander"]);
-		uiFeatures.updateNameSuggestion("bul");
+		vi.runAllTimers();
+		vi.useRealTimers();
 
-		expect(dataListElement.innerHTML).toMatchInlineSnapshot(
-			`"<option value="bulbasaur"></option>"`
-		);
+		expect(dropdown.querySelectorAll(".combobox__item").length).toBe(1);
+		expect(dropdown.querySelector(".combobox__item-label")?.textContent).toBe("bulbasaur");
 	});
 });

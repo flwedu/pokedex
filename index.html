@@ -18,18 +18,27 @@
     </section>
 
     <section class="container container__middle">
-      <div class="container container__dots" id="navigation__dots"></div>
+      <div class="container container__dots" id="navigation__dots">
+        <span id="type__filter__indicator" class="type-filter-indicator" style="display:none;"></span>
+      </div>
       <div class="container container__navigation" id="navigation">
-        <input type="button" class="button" id="button__previous_view" value="Prev. Page" />
-        <input type="button" class="button" id="button__next_view" value="Next Page" />
-        <input type="button" class="button" value="Prev. Pokemon" id="button__previous_pokemon" />
-        <input type="button" class="button" value="Next Pokemon" id="button__next_pokemon" />
+        <div class="nav-group">
+          <input type="button" class="button nav-arrow" id="button__previous_pokemon" value="◀" title="Previous Pokémon (←)" />
+          <span class="nav-group__label">Pokémon</span>
+          <input type="button" class="button nav-arrow" id="button__next_pokemon" value="▶" title="Next Pokémon (→)" />
+        </div>
+        <div class="nav-group">
+          <input type="button" class="button nav-arrow" id="button__previous_view" value="▲" title="Previous View (↑)" />
+          <span class="nav-group__label">View</span>
+          <input type="button" class="button nav-arrow" id="button__next_view" value="▼" title="Next View (↓)" />
+        </div>
       </div>
     </section>
     <section class="container container__bottom" id="search">
-      <label for="input__search"></label><input id="input__search" placeholder="Pokémon name/number" type="search" list="data_list" />
-      <datalist id="data_list"> </datalist>
-      <input alt="PokéBall" class="button" id="button__search" src="/assets/pokeball.svg" type="image"/>
+      <div class="combobox" id="combobox">
+        <input id="input__search" placeholder="Pokémon name/number" type="text" autocomplete="off" />
+        <div class="combobox__dropdown" id="combobox__dropdown" role="listbox"></div>
+      </div>
     </section>
   </div>
   <script type="module" src="/src/index.ts"></script>
