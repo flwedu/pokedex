@@ -1,4 +1,4 @@
-import { IPokemon } from "src/model/Pokemon";
+import { IPokemon } from "../model/Pokemon";
 
 export class SearchMemo {
 	private readonly memo: Map<string, IPokemon>;

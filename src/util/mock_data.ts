@@ -1,4 +1,4 @@
-import { IPokemon } from "src/model/Pokemon";
+import { IPokemon } from "../model/Pokemon";
 
 export const ditto: IPokemon = {
 	id: 132,
@@ -8,8 +8,11 @@ export const ditto: IPokemon = {
 			"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
 		back_default:
 			"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png",
+		front_shiny:
+			"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png",
 	},
-	weight: "40",
+	height: 3,
+	weight: 40,
 	stats: [
 		{
 			base_stat: 48,

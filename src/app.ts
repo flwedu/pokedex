@@ -12,10 +12,13 @@ import { UiController } from "./view/UiController";
 import { UiEventListener } from "./view/UiEventListener";
 import { UIFeatures } from "./view/UIFeatures";
 
+const pokemonData = new PokemonData();
+
 const screenList = {
-	success: [new PokemonData(), new PokemonStats(), new PokemonAbilities()],
+	success: [pokemonData, new PokemonStats(), new PokemonAbilities()],
 	error: new ErrorScreen(),
 };
+
 const uiController = new UiController(DomElements.divResults, screenList);
 const uiFeatures = new UIFeatures();
 const apiClient = new ApiClient();
@@ -24,54 +27,59 @@ const uiEventListener = new UiEventListener(eventEmitter);
 
 uiEventListener.listenToButtons();
 uiEventListener.listenToInput();
-uiFeatures.initNavigationDots(
-	DomElements.divNavigationDots,
-	screenList.success
-);
+uiEventListener.listenToDisplay();
+
+uiFeatures.initNavigationDots(DomElements.divNavigationDots, screenList.success);
 uiFeatures.changeActiveNavigationDot(0);
 
-// Loading name suggestions
 fetch("/assets/data/pokemon_names.json")
 	.then((res) => res.json())
 	.then((data: { list: { id: string; name: string }[] }) => {
-		const pokemonNames = data.list.map((pokemon) => pokemon.name);
+		const pokemonNames = data.list.map((p) => p.name);
 		uiFeatures.initNameSuggestion(DomElements.listNameSuggestion, pokemonNames);
 	});
 
-// Listening to events
 eventEmitter.on("search", (query: string) => {
+	uiController.renderLoading();
 	apiClient
 		.get(query)
-		.then((pokemon) => uiController.renderSuccess(pokemon))
+		.then((pokemon) => {
+			uiController.renderSuccess(pokemon, 0);
+			uiFeatures.changeActiveNavigationDot(0);
+		})
 		.catch((error) => uiController.renderError(error));
+});
+
+eventEmitter.on("toggleShiny", () => {
+	pokemonData.toggleShiny();
+	const currentPokemon = uiController.getLastPokemon();
+	if (currentPokemon && uiController.getRenderedIndex() === 0) {
+		uiController.renderSuccess(currentPokemon, 0);
+	}
 });
 
 eventEmitter.on("nextPokemon", () => {
 	const renderedId = uiController.getRenderedPokemonId();
 	if (renderedId) {
-		const nextId = String(renderedId + 1);
-		eventEmitter.emit("search", nextId);
+		eventEmitter.emit("search", String(renderedId + 1));
 	}
 });
 
 eventEmitter.on("previousPokemon", () => {
 	const renderedId = uiController.getRenderedPokemonId();
-	if (renderedId && renderedId > 0) {
-		const previousId = String(renderedId - 1);
-		eventEmitter.emit("search", previousId);
+	if (renderedId && renderedId > 1) {
+		eventEmitter.emit("search", String(renderedId - 1));
 	}
 });
 
 eventEmitter.on("nextView", () => {
 	uiController.renderNextSuccess();
-	const index = uiController.getRenderedIndex();
-	uiFeatures.changeActiveNavigationDot(index);
+	uiFeatures.changeActiveNavigationDot(uiController.getRenderedIndex());
 });
 
 eventEmitter.on("previousView", () => {
 	uiController.renderPreviousSuccess();
-	const index = uiController.getRenderedIndex();
-	uiFeatures.changeActiveNavigationDot(index);
+	uiFeatures.changeActiveNavigationDot(uiController.getRenderedIndex());
 });
 
 eventEmitter.on("updateNameSuggestion", (query: string) => {

@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Error Screen tests > should render the error screen 1`] = `
+"
+			<div class="error-screen">
+				<img class="error-screen__img" src="/assets/error.svg" alt="Error">
+				<span class="error-screen__title">BadRequestError</span>
+				<p class="error-screen__msg"></p>
+			</div>
+		"
+`;
+
+exports[`Error Screen tests > should render the error screen 2`] = `
+"
+			<div class="error-screen">
+				<img class="error-screen__img" src="/assets/error.svg" alt="Error">
+				<span class="error-screen__title">NotFoundError</span>
+				<p class="error-screen__msg"></p>
+			</div>
+		"
+`;
+
+exports[`Error Screen tests > should render the error screen 3`] = `
+"
+			<div class="error-screen">
+				<img class="error-screen__img" src="/assets/error.svg" alt="Error">
+				<span class="error-screen__title">InternalServerError</span>
+				<p class="error-screen__msg"></p>
+			</div>
+		"
+`;
+
+exports[`Error Screen tests > should render the error screen 4`] = `
+"
+			<div class="error-screen">
+				<img class="error-screen__img" src="/assets/error.svg" alt="Error">
+				<span class="error-screen__title">Error</span>
+				<p class="error-screen__msg"></p>
+			</div>
+		"
+`;
