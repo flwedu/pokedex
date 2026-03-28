@@ -1,10 +1,22 @@
 import { vi, describe, it, expect, beforeEach } from "vitest";
+import { MainClient } from "pokenode-ts";
 import { ApiClient } from "./ApiClient";
 import { ditto } from "./util/mock_data";
 import { NotFoundError, BadRequestError } from "./util/custom-errors";
 
-const mockFetch = vi.fn();
-vi.stubGlobal("fetch", mockFetch);
+const mockGetPokemonByName = vi.fn();
+const mockGetPokemonById = vi.fn();
+const mockGetAbilityByName = vi.fn();
+
+vi.mock("pokenode-ts", () => ({
+	MainClient: vi.fn().mockImplementation(() => ({
+		pokemon: {
+			getPokemonByName: mockGetPokemonByName,
+			getPokemonById: mockGetPokemonById,
+			getAbilityByName: mockGetAbilityByName,
+		},
+	})),
+}));
 
 const pokeApiResponse = {
 	id: 132,
@@ -36,9 +48,8 @@ const abilityApiResponse = {
 };
 
 function mockSuccess() {
-	mockFetch
-		.mockResolvedValueOnce({ status: 200, json: async () => pokeApiResponse })
-		.mockResolvedValueOnce({ status: 200, json: async () => abilityApiResponse });
+	mockGetPokemonByName.mockResolvedValueOnce(pokeApiResponse);
+	mockGetAbilityByName.mockResolvedValueOnce(abilityApiResponse);
 }
 
 describe("ApiClient", () => {
@@ -46,7 +57,9 @@ describe("ApiClient", () => {
 
 	beforeEach(() => {
 		client = new ApiClient();
-		mockFetch.mockReset();
+		mockGetPokemonByName.mockReset();
+		mockGetPokemonById.mockReset();
+		mockGetAbilityByName.mockReset();
 	});
 
 	it("fetches and returns a pokemon with ability details", async () => {
@@ -58,31 +71,39 @@ describe("ApiClient", () => {
 	});
 
 	it("throws NotFoundError on 404", async () => {
-		mockFetch.mockResolvedValueOnce({ status: 404, json: async () => ({}) });
+		mockGetPokemonByName.mockRejectedValueOnce({ response: { status: 404 } });
 		await expect(client.get("missingno")).rejects.toBeInstanceOf(NotFoundError);
 	});
 
 	it("throws BadRequestError on 400", async () => {
-		mockFetch.mockResolvedValueOnce({ status: 400, json: async () => ({}) });
+		mockGetPokemonByName.mockRejectedValueOnce({ response: { status: 400 } });
 		await expect(client.get("???")).rejects.toBeInstanceOf(BadRequestError);
 	});
 
 	it("returns cached result on subsequent calls without re-fetching", async () => {
 		mockSuccess();
 		const first = await client.get("ditto");
-		const callCount = mockFetch.mock.calls.length;
+		const callCountAfterFirst = mockGetPokemonByName.mock.calls.length;
 
 		const second = await client.get("ditto");
-		expect(mockFetch.mock.calls.length).toBe(callCount);
+		expect(mockGetPokemonByName.mock.calls.length).toBe(callCountAfterFirst);
 		expect(first).toBe(second);
 	});
 
 	it("caches by ID as well as name", async () => {
 		mockSuccess();
 		await client.get("ditto");
-		const callCountAfterFirst = mockFetch.mock.calls.length;
+		const callCountAfterFirst = mockGetPokemonByName.mock.calls.length;
 
 		await client.get("132");
-		expect(mockFetch.mock.calls.length).toBe(callCountAfterFirst);
+		expect(mockGetPokemonByName.mock.calls.length).toBe(callCountAfterFirst);
+	});
+
+	it("uses getPokemonById for numeric queries", async () => {
+		mockGetPokemonById.mockResolvedValueOnce(pokeApiResponse);
+		mockGetAbilityByName.mockResolvedValueOnce(abilityApiResponse);
+		const pokemon = await client.get("132");
+		expect(mockGetPokemonById).toHaveBeenCalledWith(132);
+		expect(pokemon.name).toBe("ditto");
 	});
 });

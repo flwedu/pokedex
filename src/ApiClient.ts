@@ -1,45 +1,46 @@
+import { MainClient, type Ability } from "pokenode-ts";
 import { IPokemon } from "./model/Pokemon";
-import { IAbility } from "./model/Ability";
 import { statusErrors } from "./util/custom-errors";
 import { SearchMemo } from "./util/SearchMemo";
 
 export class ApiClient {
-	private url = "https://pokeapi.co/api/v2/pokemon/";
+	private client = new MainClient();
 	private memo = new SearchMemo();
 
 	public async get(query: string): Promise<IPokemon> {
 		const cached = this.memo.get(query);
 		if (cached) return cached;
 
-		const pokeResponse = await fetch(`${this.url}${query.toLowerCase()}`);
+		try {
+			const isNumeric = /^\d+$/.test(query);
+			const pokeData = isNumeric
+				? await this.client.pokemon.getPokemonById(Number(query))
+				: await this.client.pokemon.getPokemonByName(query.toLowerCase());
 
-		if (pokeResponse.status !== 200) {
-			throw statusErrors[pokeResponse.status] ?? new Error();
+			const abilityDetails: Ability[] = await Promise.all(
+				pokeData.abilities
+					.filter((a) => a?.ability?.name)
+					.map((a) => this.client.pokemon.getAbilityByName(a.ability.name))
+			);
+
+			const pokemon: IPokemon = {
+				...(pokeData as unknown as IPokemon),
+				ability: abilityDetails[0],
+				abilityDetails,
+			};
+
+			this.memo.add(query, pokemon);
+			this.memo.add(String(pokemon.id), pokemon);
+
+			return pokemon;
+		} catch (error: unknown) {
+			const status = (error as { response?: { status?: number } }).response?.status;
+			throw statusErrors[status ?? 0] ?? error;
 		}
+	}
 
-		const pokeData = await pokeResponse.json();
-
-		const abilityEntries: Array<{ ability: { name: string; url: string }; is_hidden: boolean; slot: number }> =
-			pokeData.abilities ?? [];
-
-		const abilityDetails: IAbility[] = await Promise.all(
-			abilityEntries
-				.filter((a) => a?.ability?.url)
-				.map(async (a) => {
-					const res = await fetch(a.ability.url);
-					return res.json() as Promise<IAbility>;
-				})
-		);
-
-		const pokemon: IPokemon = {
-			...pokeData,
-			ability: abilityDetails[0],
-			abilityDetails,
-		};
-
-		this.memo.add(query, pokemon);
-		this.memo.add(String(pokemon.id), pokemon);
-
-		return pokemon;
+	public async getTypePokemons(typeName: string): Promise<string[]> {
+		const typeData = await this.client.pokemon.getTypeByName(typeName);
+		return typeData.pokemon.map((p) => p.pokemon.name);
 	}
 }

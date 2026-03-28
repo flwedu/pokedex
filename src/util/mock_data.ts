@@ -1,7 +1,7 @@
+import type { Ability } from "pokenode-ts";
 import { IPokemon } from "../model/Pokemon";
-import { IAbility } from "../model/Ability";
 
-const limberAbility: IAbility = {
+const limberAbility = {
 	id: 7,
 	name: "limber",
 	effect_entries: [
@@ -11,9 +11,9 @@ const limberAbility: IAbility = {
 			short_effect: "Prevents paralysis.",
 		},
 	],
-};
+} as unknown as Ability;
 
-export const ditto: IPokemon = {
+export const ditto = {
 	id: 132,
 	name: "ditto",
 	sprites: {
@@ -57,4 +57,4 @@ export const ditto: IPokemon = {
 	],
 	ability: limberAbility,
 	abilityDetails: [limberAbility],
-};
+} as unknown as IPokemon;

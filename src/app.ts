@@ -147,11 +147,7 @@ eventEmitter.on(AppEvents.SET_TYPE_FILTER, async (typeName: string) => {
 
 	uiController.renderLoading();
 	try {
-		const res = await fetch(`https://pokeapi.co/api/v2/type/${typeName}`);
-		const data = await res.json();
-		typeFilterList = (
-			data.pokemon as Array<{ pokemon: { name: string } }>
-		).map((p) => p.pokemon.name);
+		typeFilterList = await apiClient.getTypePokemons(typeName);
 		typeFilterIndex = 0;
 		setTypeFilterIndicator(typeName);
 		if (typeFilterList.length > 0) {

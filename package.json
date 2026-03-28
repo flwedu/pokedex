@@ -3,6 +3,7 @@
 	"version": "3.0.1",
 	"description": "Projeto de uma pokédex utilizando a API do [PokeAPI](https://github.com/PokeAPI/pokeapi). Utilizando HTML e Javascript puro (inicialmente).",
 	"dependencies": {
+		"pokenode-ts": "^1.20.0",
 		"sass": "^1.98.0"
 	},
 	"devDependencies": {
