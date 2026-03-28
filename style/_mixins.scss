@@ -1,18 +1,30 @@
 @mixin button($width, $height) {
 	box-sizing: border-box;
-	border-radius: 0.4rem;
+	border-radius: 0.3rem;
 	border: none;
+	background: $color-button;
+	color: $color-dark;
+	cursor: pointer;
 
-	font-size: x-small;
+	font-size: 0.6rem;
+	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 
-	box-shadow: -1px 2px 0 $color-shadow;
+	box-shadow: 0 2px 0 $color-button-shadow;
 	text-decoration: none;
 
 	width: $width;
 	height: $height;
 	text-align: center;
+	transition: background 100ms, transform 80ms, box-shadow 80ms;
 
-	background: $color-button;
+	&:hover {
+		background: $color-button-hover;
+	}
+
+	&:active {
+		transform: translateY(2px);
+		box-shadow: none;
+	}
 }

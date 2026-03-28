@@ -1,15 +1,33 @@
-$color-button-gray: #bdbdbd;
-$color-button: #ffe800;
-$color-case-dark: #c50118;
-$color-case-light: #fa364d;
-$color-case: #e60721;
-$color-dark: #000000;
-$color-display-dark-font: #246d03;
-$color-display-dark: #66ff48;
-$color-display: #b4f894;
-$color-light: #f0f0f0;
-$color-shadow: #242424;
-$color-shiny: #00ee9f;
-$externalHeight: 28rem;
-$externalWidth: 20rem;
-$topHeight: 15rem;
+// Device body
+$color-device-top: #c0112c;
+$color-device-mid: #a00e25;
+$color-device-dark: #7a0018;
+$color-device-highlight: #e8253a;
+$color-device-bottom: #e2dcd4;
+$color-device-bottom-dark: #c8c0b8;
+$color-device-shadow: #3a0008;
+
+// Display (retro LCD)
+$color-display-bg: #0b1a0b;
+$color-display-text: #39ff14;
+$color-display-dim: #1d6409;
+$color-display-border: #080808;
+
+// Buttons
+$color-button: #f5c800;
+$color-button-hover: #ffe040;
+$color-button-shadow: #8a7000;
+
+// Accents
+$color-shiny: #00e6c3;
+$color-shiny-glow: rgba(0, 230, 195, 0.6);
+$color-dot-inactive: #a09890;
+
+// Base
+$color-dark: #111111;
+$color-light: #f5f5f5;
+$color-shadow: #1a0005;
+
+// Sizes
+$externalWidth: 22rem;
+$externalHeight: 38rem;

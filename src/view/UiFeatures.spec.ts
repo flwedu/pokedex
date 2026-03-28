@@ -15,7 +15,7 @@ describe("UI Features tests", () => {
 		uiFeatures.initNavigationDots(divElement, successScreen);
 
 		expect(divElement.innerHTML).toMatchInlineSnapshot(
-			`"<input type=\\"button\\" class=\\"dot\\" id=\\"dot__0\\"><input type=\\"button\\" class=\\"dot\\" id=\\"dot__1\\"><input type=\\"button\\" class=\\"dot\\" id=\\"dot__2\\">"`
+			`"<input type="button" class="dot" id="dot__0"><input type="button" class="dot" id="dot__1"><input type="button" class="dot" id="dot__2">"`
 		);
 	});
 
@@ -28,7 +28,7 @@ describe("UI Features tests", () => {
 		uiFeatures.changeActiveNavigationDot(1);
 
 		expect(divElement.innerHTML).toMatchInlineSnapshot(
-			`"<input type=\\"button\\" class=\\"dot\\" id=\\"dot__0\\"><input type=\\"button\\" class=\\"dot active\\" id=\\"dot__1\\"><input type=\\"button\\" class=\\"dot\\" id=\\"dot__2\\">"`
+			`"<input type="button" class="dot" id="dot__0"><input type="button" class="dot active" id="dot__1"><input type="button" class="dot" id="dot__2">"`
 		);
 	});
 
@@ -51,7 +51,7 @@ describe("UI Features tests", () => {
 		uiFeatures.updateNameSuggestion("bul");
 
 		expect(dataListElement.innerHTML).toMatchInlineSnapshot(
-			`"<option value=\\"bulbasaur\\"></option>"`
+			`"<option value="bulbasaur"></option>"`
 		);
 	});
 });

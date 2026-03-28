@@ -1,23 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+* {
+	box-sizing: border-box;
+}
 
 body {
-	--body-gradient: linear-gradient(30deg, rgba(131, 58, 180, 1) 0%, rgba(76, 55, 220, 1) 30%, rgba(29, 52, 253, 1) 48%, rgba(69, 199, 252, 1) 100%);
-	background: var(--body-gradient);
-	box-sizing: border-box;
+	background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 30%, #0d2240 60%, #0a1628 100%);
 	font-family: "Roboto", sans-serif;
-	height: 100vh;
-	width: 100vw;
-}
-
-h2 {
-	font-weight: 700;
-	font-size: 1.4rem;
-}
-
-p {
-	font-size: 1rem;
-	text-align: center;
-	text-justify: auto;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow-x: hidden;
 }
 
 .container {

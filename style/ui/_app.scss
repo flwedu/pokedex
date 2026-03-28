@@ -1,66 +1,153 @@
-@import "../animations";
-
 .app {
-	background: radial-gradient(circle at bottom, $color-case-dark, $color-case, $color-case-light);
-	border-radius: 0.4rem;
+	background: $color-device-bottom;
+	border-radius: 1.2rem 0.5rem 0.8rem 0.8rem;
+	box-shadow:
+		3px 5px 0 $color-device-shadow,
+		0 16px 48px rgba(0, 0, 0, 0.6),
+		inset 0 1px 0 rgba(255, 255, 255, 0.25);
 	display: grid;
 	grid-template-rows: 3fr 1fr 1fr;
 	height: $externalHeight;
 	margin-inline: auto;
-	margin-top: 10vh;
 	width: $externalWidth;
+	overflow: hidden;
+	position: relative;
 }
 
-.container {
-	&__navigation {
-		display: grid;
-		gap: 1rem;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr 1fr;
+// Top section — red device body
+.container__top {
+	background: linear-gradient(160deg, $color-device-highlight 0%, $color-device-mid 45%, $color-device-dark 100%);
+	position: relative;
 
-		input {
-			@include button(8rem, 2rem);
-			align-self: center;
-			justify-self: center;
-		}
+	// Camera lens
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0.65rem;
+		left: 0.85rem;
+		width: 1.5rem;
+		height: 1.5rem;
+		background: radial-gradient(circle at 35% 35%, #80d8ff, #1565c0 60%, #0d3d70);
+		border-radius: 50%;
+		border: 3px solid #0a2540;
+		box-shadow:
+			0 0 0 3px rgba(255, 255, 255, 0.08),
+			inset 0 1px 0 rgba(255, 255, 255, 0.3);
+		z-index: 1;
 	}
 
-	&__bottom {
-		flex-direction: row;
-	}
-
-	&__dots {
-		flex-direction: row;
-		justify-content: space-between;
-		padding: 0.625rem;
-		width: 50%;
-
-		.dot {
-			background: $color-button-gray;
-			border-radius: 50%;
-			border: none;
-			height: 1fr;
-			width: 1rem;
-
-			&.active {
-				background: $color-shiny;
-				box-shadow: 0 0 0.625rem $color-shiny, 0 0 5rem $color-light;
-			}
-		}
+	// LED indicator dots
+	&::after {
+		content: '';
+		position: absolute;
+		top: 1.15rem;
+		left: 2.85rem;
+		width: 0.45rem;
+		height: 0.45rem;
+		background: #ff3030;
+		border-radius: 50%;
+		box-shadow:
+			0.7rem 0 0 #ffaa00,
+			1.4rem 0 0 #22cc44;
+		z-index: 1;
 	}
 }
 
-// elements
+// LCD screen
 #display {
-	align-items: center;
-	background: linear-gradient(to bottom, $color-display 0%, $color-display-dark 100%);
-	color: $color-display-dark-font;
-	display: flex;
-	height: 90%;
-	justify-content: center;
-	width: 90%;
+	background: $color-display-bg;
+	border: 3px solid $color-display-border;
+	border-radius: 0.5rem;
+	box-shadow:
+		inset 0 0 24px rgba(0, 0, 0, 0.9),
+		0 0 0 5px #100808,
+		0 0 0 7px darken($color-device-dark, 5%);
+	color: $color-display-text;
+	height: 72%;
+	margin-top: 2.2rem;
+	overflow: hidden;
+	position: relative;
+	width: 84%;
 
-	* {
-		animation: fade-in forwards 1500ms;
+	// CRT scanlines
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: repeating-linear-gradient(
+			to bottom,
+			transparent 0px,
+			transparent 3px,
+			rgba(0, 0, 0, 0.12) 3px,
+			rgba(0, 0, 0, 0.12) 4px
+		);
+		pointer-events: none;
+		z-index: 10;
+	}
+
+	> * {
+		animation: slide-up 350ms ease forwards;
+		position: relative;
+		z-index: 5;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+// Middle section — controls
+.container__middle {
+	background: $color-device-bottom;
+	border-top: 2px solid $color-device-bottom-dark;
+	padding: 0.3rem 0.5rem 0.1rem;
+	gap: 0.25rem;
+}
+
+.container__bottom {
+	background: $color-device-bottom;
+	border-top: 1px solid darken($color-device-bottom-dark, 4%);
+	flex-direction: row;
+	gap: 0.4rem;
+	padding: 0.35rem 0.6rem;
+}
+
+.container__navigation {
+	display: grid;
+	gap: 0.35rem;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+
+	input {
+		@include button(7.8rem, 1.55rem);
+		align-self: center;
+		justify-self: center;
+	}
+}
+
+.container__dots {
+	flex-direction: row;
+	gap: 0.55rem;
+	padding: 0.15rem 0.5rem;
+
+	.dot {
+		background: $color-dot-inactive;
+		border-radius: 50%;
+		border: none;
+		width: 0.7rem;
+		height: 0.7rem;
+		cursor: pointer;
+		transition: background 200ms, box-shadow 200ms;
+
+		&.active {
+			background: $color-shiny;
+			box-shadow: 0 0 8px $color-shiny-glow, 0 0 18px rgba(0, 230, 195, 0.25);
+		}
+
+		&:hover:not(.active) {
+			background: lighten($color-dot-inactive, 12%);
+		}
 	}
 }
