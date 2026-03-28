@@ -1,7 +1,8 @@
-FROM node:latest
+FROM node:22-alpine
 COPY . /var/pokedex
 WORKDIR /var/pokedex
-RUN yarn install
-ENTRYPOINT yarn serve-dev
+RUN npm ci
+RUN npm run build
+ENTRYPOINT npm run preview -- --host 0.0.0.0
 
-EXPOSE 3000
+EXPOSE 4173
