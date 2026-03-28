@@ -1,44 +1,92 @@
+// ── Combobox wrapper ──────────────────────────────
+.combobox {
+	flex: 1;
+	min-width: 0;
+	position: relative;
+}
+
+.combobox__dropdown {
+	background: $color-device-bottom;
+	border: 1.5px solid rgba(0, 0, 0, 0.18);
+	border-radius: 0.4rem;
+	bottom: calc(100% + 5px);
+	box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.18);
+	left: 0;
+	max-height: 9rem;
+	overflow-y: auto;
+	position: absolute;
+	right: 0;
+	z-index: 100;
+
+	&::-webkit-scrollbar {
+		width: 3px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: rgba(0, 0, 0, 0.18);
+		border-radius: 2px;
+	}
+}
+
+.combobox__item {
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	gap: 0.4rem;
+	padding: 0.28rem 0.5rem;
+	transition: background 80ms;
+
+	& + & {
+		border-top: 1px solid rgba(0, 0, 0, 0.06);
+	}
+
+	&:hover,
+	&--active {
+		background: rgba(0, 0, 0, 0.07);
+	}
+
+	&-icon {
+		color: $color-button-shadow;
+		flex-shrink: 0;
+		font-size: 0.5rem;
+		opacity: 0.55;
+	}
+
+	&-label {
+		color: $color-dark;
+		font-size: 0.72rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-transform: capitalize;
+		white-space: nowrap;
+	}
+
+	&--history &-icon {
+		color: $color-dark;
+		opacity: 0.4;
+	}
+}
+
+// ── Search input ──────────────────────────────────
 #input__search {
 	background: rgba(0, 0, 0, 0.15);
 	border: 1.5px solid rgba(0, 0, 0, 0.25);
 	border-radius: 0.3rem;
 	color: $color-dark;
-	flex: 1;
 	font-family: inherit;
-	font-size: 0.78rem;
-	min-width: 0;
-	padding: 0.35rem 0.5rem;
+	font-size: 0.82rem;
+	padding: 0.4rem 0.7rem;
 	text-align: center;
 	transition: border-color 150ms, box-shadow 150ms;
+	width: 100%;
 
 	&::placeholder {
 		color: rgba(0, 0, 0, 0.38);
-		font-size: 0.7rem;
+		font-size: 0.72rem;
 	}
 
 	&:focus {
 		outline: none;
 		border-color: rgba(0, 0, 0, 0.4);
 		box-shadow: 0 0 0 2px rgba(245, 200, 0, 0.5);
-	}
-}
-
-#button__search {
-	background: none;
-	border: none;
-	box-shadow: none;
-	cursor: pointer;
-	flex-shrink: 0;
-	height: 2rem;
-	width: 2rem;
-	padding: 0;
-	transition: transform 100ms;
-
-	&:hover {
-		animation: spin 1s infinite linear;
-	}
-
-	&:active {
-		transform: scale(0.9);
 	}
 }

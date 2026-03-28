@@ -25,7 +25,7 @@ const uiController = new UiController(DomElements.divResults, screenList);
 const uiFeatures = new UIFeatures();
 const apiClient = new ApiClient();
 const eventEmitter = new EventEmitter();
-const uiEventListener = new UiEventListener(eventEmitter);
+const uiEventListener = new UiEventListener(eventEmitter, uiFeatures);
 
 uiEventListener.listenToButtons();
 uiEventListener.listenToInput();
@@ -34,6 +34,9 @@ uiEventListener.listenToKeyboard();
 
 uiFeatures.initNavigationDots(DomElements.divNavigationDots, screenList.success);
 uiFeatures.changeActiveNavigationDot(0);
+
+// Init combobox with DOM references immediately
+uiFeatures.initCombobox(DomElements.comboboxDropdown, DomElements.inputSearch);
 
 // Lazy-load Pokémon names on first input focus
 let namesLoaded = false;
@@ -45,8 +48,7 @@ DomElements.inputSearch.addEventListener(
 		fetch("/assets/data/pokemon_names.json")
 			.then((res) => res.json())
 			.then((data: { list: { id: string; name: string }[] }) => {
-				const pokemonNames = data.list.map((p) => p.name);
-				uiFeatures.initNameSuggestion(DomElements.listNameSuggestion, pokemonNames);
+				uiFeatures.setNames(data.list.map((p) => p.name));
 			});
 	},
 	{ passive: true }
@@ -78,7 +80,6 @@ eventEmitter.on(AppEvents.SEARCH, (query: string) => {
 		.then((pokemon) => {
 			uiController.renderSuccess(pokemon, 0);
 			uiFeatures.changeActiveNavigationDot(0);
-			uiFeatures.addToHistory(query);
 		})
 		.catch((error: Error) => uiController.renderError(error));
 });
@@ -132,10 +133,6 @@ eventEmitter.on(AppEvents.NEXT_VIEW, () => {
 eventEmitter.on(AppEvents.PREV_VIEW, () => {
 	uiController.renderPreviousSuccess();
 	uiFeatures.changeActiveNavigationDot(uiController.getRenderedIndex());
-});
-
-eventEmitter.on(AppEvents.UPDATE_SUGGESTION, (query: string) => {
-	uiFeatures.updateNameSuggestion(query);
 });
 
 eventEmitter.on(AppEvents.SET_TYPE_FILTER, async (typeName: string) => {

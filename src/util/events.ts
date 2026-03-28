@@ -6,7 +6,6 @@ export const AppEvents = {
 	PREV_POKEMON: 'previousPokemon',
 	NEXT_VIEW: 'nextView',
 	PREV_VIEW: 'previousView',
-	UPDATE_SUGGESTION: 'updateNameSuggestion',
 	SET_TYPE_FILTER: 'setTypeFilter',
 } as const;
 

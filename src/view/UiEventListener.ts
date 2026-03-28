@@ -1,9 +1,13 @@
 import EventEmitter from "../util/EventEmitter";
 import { AppEvents } from "../util/events";
 import { Buttons, DomElements } from "./ui";
+import { UIFeatures } from "./UIFeatures";
 
 export class UiEventListener {
-	constructor(private readonly eventEmitter: EventEmitter) {}
+	constructor(
+		private readonly eventEmitter: EventEmitter,
+		private readonly uiFeatures: UIFeatures,
+	) {}
 
 	public listenToButtons(): void {
 		DomElements.divNavigationButtons.addEventListener("click", (event: Event) => {
@@ -23,20 +27,52 @@ export class UiEventListener {
 			}
 		});
 
-		Buttons.search.addEventListener("click", () => this.search());
 	}
 
 	public listenToInput(): void {
-		DomElements.inputSearch.addEventListener("keyup", (event: KeyboardEvent) => {
-			if (event.key === "Enter") {
-				return this.search();
-			}
-			const input = event.target as HTMLInputElement;
-			this.eventEmitter.emit(AppEvents.UPDATE_SUGGESTION, input.value);
+		const input = DomElements.inputSearch;
+
+		input.addEventListener("focus", () => {
+			this.uiFeatures.openCombobox(input.value);
 		});
 
-		DomElements.inputSearch.addEventListener("focus", () => {
-			this.eventEmitter.emit(AppEvents.UPDATE_SUGGESTION, DomElements.inputSearch.value);
+		input.addEventListener("blur", () => {
+			this.uiFeatures.closeCombobox();
+		});
+
+		input.addEventListener("keydown", (event: KeyboardEvent) => {
+			if (event.key === "ArrowDown") {
+				event.preventDefault();
+				this.uiFeatures.navigateCombobox("down");
+				return;
+			}
+			if (event.key === "ArrowUp") {
+				event.preventDefault();
+				this.uiFeatures.navigateCombobox("up");
+				return;
+			}
+			if (event.key === "Escape") {
+				input.value = "";
+				input.blur();
+				this.uiFeatures.closeCombobox();
+			}
+		});
+
+		input.addEventListener("keyup", (event: KeyboardEvent) => {
+			if (event.key === "ArrowDown" || event.key === "ArrowUp" || event.key === "Escape") return;
+			if (event.key === "Enter") {
+				const selected = this.uiFeatures.confirmComboboxSelection();
+				if (selected) {
+					input.value = selected;
+					this.uiFeatures.closeCombobox();
+				}
+				return this.search();
+			}
+			this.uiFeatures.openCombobox(input.value);
+		});
+
+		input.addEventListener("combobox:select", () => {
+			this.search();
 		});
 	}
 
@@ -60,10 +96,6 @@ export class UiEventListener {
 			const isTyping = document.activeElement === DomElements.inputSearch;
 
 			if (isTyping) {
-				if (event.key === "Escape") {
-					DomElements.inputSearch.value = "";
-					DomElements.inputSearch.blur();
-				}
 				return;
 			}
 
@@ -102,6 +134,9 @@ export class UiEventListener {
 
 	private search(): void {
 		const query = DomElements.inputSearch.value;
-		if (query.length > 0) this.eventEmitter.emit(AppEvents.SEARCH, query);
+		if (query.length > 0) {
+			this.uiFeatures.addToHistory(query);
+			this.eventEmitter.emit(AppEvents.SEARCH, query);
+		}
 	}
 }
