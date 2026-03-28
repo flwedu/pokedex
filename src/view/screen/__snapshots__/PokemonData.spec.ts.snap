@@ -6,14 +6,15 @@ exports[`Pokemon data screen > should render the pokemon data 1`] = `
 				<div class="pokemon-data__header">
 					<span class="pokemon-data__id">#132</span>
 					<span class="pokemon-data__name">Ditto</span>
+					<button id="toggle__favorite" class="fav-btn" title="Favorite (F)">★</button>
 				</div>
 				<img class="pokemon-data__img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" alt="ditto">
-				<div class="pokemon-data__types"><span class="type-badge type--normal">normal</span></div>
+				<div class="pokemon-data__types"><span class="type-badge type--normal" data-type="normal">normal</span></div>
 				<div class="pokemon-data__info">
 					<span>wt: 4.0 kg</span>
 					<span>ht: 0.3 m</span>
 				</div>
-				<button id="toggle__shiny" class="shiny-btn">✨ Shiny</button>
+				<button id="toggle__shiny" class="shiny-btn" title="Shiny (S)">✨ Shiny</button>
 			</div>
 		"
 `;

@@ -53,6 +53,26 @@
 	}
 }
 
+.fav-btn {
+	background: transparent;
+	border: none;
+	color: $color-display-dim;
+	cursor: pointer;
+	font-size: 0.85rem;
+	line-height: 1;
+	padding: 0 0.1rem;
+	transition: color 150ms, text-shadow 150ms;
+
+	&:hover {
+		color: #ffcc00;
+	}
+
+	&--active {
+		color: #ffcc00;
+		text-shadow: 0 0 8px rgba(255, 204, 0, 0.7);
+	}
+}
+
 .shiny-btn {
 	background: transparent;
 	border: 1px solid $color-display-dim;
@@ -144,33 +164,81 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 0.5rem;
-	padding: 0.8rem 1rem;
+	gap: 0.4rem;
+	padding: 0.5rem 0.8rem;
 	text-align: center;
+	overflow-y: auto;
+	width: 100%;
+	height: 100%;
 
 	.ability-label {
 		font-size: 0.52rem;
 		text-transform: uppercase;
 		letter-spacing: 2.5px;
 		color: $color-display-dim;
+		flex-shrink: 0;
 	}
 
 	.ability-name {
-		font-size: 1rem;
+		font-size: 0.85rem;
 		font-weight: 700;
 		color: $color-display-text;
-		text-shadow: 0 0 10px $color-display-text;
+		text-shadow: 0 0 8px $color-display-text;
 		letter-spacing: 1.5px;
 		text-transform: capitalize;
 	}
 
 	.ability-desc {
-		font-size: 0.62rem;
+		font-size: 0.58rem;
 		line-height: 1.5;
 		color: rgba(57, 255, 20, 0.65);
 		font-style: italic;
-		max-width: 88%;
+		max-width: 92%;
 	}
+}
+
+.ability-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.2rem;
+	padding: 0.3rem 0;
+	width: 100%;
+
+	& + & {
+		border-top: 1px solid rgba(57, 255, 20, 0.08);
+		padding-top: 0.35rem;
+		margin-top: 0.1rem;
+	}
+
+	&--hidden .ability-name {
+		color: rgba(57, 255, 20, 0.6);
+	}
+}
+
+.ability-hidden-tag {
+	font-size: 0.45rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: $color-display-dim;
+	border: 1px solid $color-display-dim;
+	border-radius: 0.8rem;
+	padding: 0.05rem 0.3rem;
+	vertical-align: middle;
+	margin-left: 0.3rem;
+}
+
+.type-filter-indicator {
+	font-size: 0.55rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	padding: 0.1rem 0.45rem;
+	border-radius: 1rem;
+	color: #fff;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+	cursor: default;
 }
 
 // ── Error Screen ──────────────────────────────────

@@ -43,12 +43,16 @@ describe("UI Features tests", () => {
 	});
 
 	test("updateNameSuggestion() should render the correct innerHTML to a element", () => {
+		vi.useFakeTimers();
 		const dataListElement = document.createElement("datalist");
 
 		const uiFeatures = new UIFeatures();
 
 		uiFeatures.initNameSuggestion(dataListElement, ["bulbasaur", "charmander"]);
 		uiFeatures.updateNameSuggestion("bul");
+
+		vi.runAllTimers();
+		vi.useRealTimers();
 
 		expect(dataListElement.innerHTML).toMatchInlineSnapshot(
 			`"<option value="bulbasaur"></option>"`

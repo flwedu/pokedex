@@ -47,4 +47,5 @@ export type IPokemon = {
 		}
 	];
 	ability?: IAbility;
+	abilityDetails?: IAbility[];
 };

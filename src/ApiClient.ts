@@ -1,15 +1,15 @@
-import {IPokemon} from "./model/Pokemon";
-import {statusErrors} from "./util/custom-errors";
-import {SearchMemo} from "./util/SearchMemo";
+import { IPokemon } from "./model/Pokemon";
+import { IAbility } from "./model/Ability";
+import { statusErrors } from "./util/custom-errors";
+import { SearchMemo } from "./util/SearchMemo";
 
 export class ApiClient {
-	private url: string = "https://pokeapi.co/api/v2/pokemon/";
+	private url = "https://pokeapi.co/api/v2/pokemon/";
 	private memo = new SearchMemo();
 
 	public async get(query: string): Promise<IPokemon> {
-		if (this.memo.has(query)) {
-			return this.memo.get(query);
-		}
+		const cached = this.memo.get(query);
+		if (cached) return cached;
 
 		const pokeResponse = await fetch(`${this.url}${query.toLowerCase()}`);
 
@@ -19,16 +19,22 @@ export class ApiClient {
 
 		const pokeData = await pokeResponse.json();
 
-		const abilityUrl = pokeData.abilities[0].ability.url;
-		const abilityResponse = await fetch(abilityUrl);
-		const abilityData = await abilityResponse.json();
+		const abilityEntries: Array<{ ability: { name: string; url: string }; is_hidden: boolean; slot: number }> =
+			pokeData.abilities ?? [];
 
-		// Merging Pokémon data and ability
+		const abilityDetails: IAbility[] = await Promise.all(
+			abilityEntries
+				.filter((a) => a?.ability?.url)
+				.map(async (a) => {
+					const res = await fetch(a.ability.url);
+					return res.json() as Promise<IAbility>;
+				})
+		);
+
 		const pokemon: IPokemon = {
 			...pokeData,
-			ability: {
-				...abilityData,
-			},
+			ability: abilityDetails[0],
+			abilityDetails,
 		};
 
 		this.memo.add(query, pokemon);

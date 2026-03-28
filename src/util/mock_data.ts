@@ -1,4 +1,17 @@
 import { IPokemon } from "../model/Pokemon";
+import { IAbility } from "../model/Ability";
+
+const limberAbility: IAbility = {
+	id: 7,
+	name: "limber",
+	effect_entries: [
+		{
+			effect: "Prevents paralysis.",
+			language: { name: "en", url: "https://pokeapi.co/api/v2/language/9/" },
+			short_effect: "Prevents paralysis.",
+		},
+	],
+};
 
 export const ditto: IPokemon = {
 	id: 132,
@@ -42,4 +55,6 @@ export const ditto: IPokemon = {
 			slot: 1,
 		},
 	],
+	ability: limberAbility,
+	abilityDetails: [limberAbility],
 };
